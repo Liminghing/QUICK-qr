@@ -1,16 +1,13 @@
 package com.jkweyu.quickqr
 
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import com.jkweyu.quickqr.base.BaseFragment
+import com.jkweyu.quickqr.databinding.FragmentFavoritesBinding
 
-class FavoritesFragment : Fragment() {
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_favorites, container, false)
+
+class FavoritesFragment: BaseFragment<FragmentFavoritesBinding>(R.layout.fragment_favorites) {
+    override fun initView() {
+        binding.apply {
+
+        }
     }
 }

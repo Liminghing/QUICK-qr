@@ -26,5 +26,4 @@ abstract class BaseActivity<T: ViewDataBinding>(@LayoutRes val layoutRes: Int)
             .commit()
         return true
     }
-
 }

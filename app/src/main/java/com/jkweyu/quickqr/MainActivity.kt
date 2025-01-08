@@ -2,8 +2,13 @@ package com.jkweyu.quickqr
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import com.jkweyu.quickqr.view.home.HomeFragment
+import com.jkweyu.quickqr.view.all.AllFragment
 import com.jkweyu.quickqr.base.BaseActivity
 import com.jkweyu.quickqr.databinding.ActivityMainBinding
+import com.jkweyu.quickqr.view.favorites.FavoritesFragment
+import com.jkweyu.quickqr.view.history.HistoryFragment
+import com.jkweyu.quickqr.view.payment.PaymentFragment
 
 class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {

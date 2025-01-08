@@ -1,5 +1,6 @@
-package com.jkweyu.quickqr
+package com.jkweyu.quickqr.view.all
 
+import com.jkweyu.quickqr.R
 import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.databinding.FragmentAllBinding
 

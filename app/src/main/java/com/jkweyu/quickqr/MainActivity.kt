@@ -2,18 +2,21 @@ package com.jkweyu.quickqr
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
-import com.jkweyu.quickqr.view.home.HomeFragment
-import com.jkweyu.quickqr.view.all.AllFragment
+import androidx.room.Room
 import com.jkweyu.quickqr.base.BaseActivity
+import com.jkweyu.quickqr.data.homervdata.HomeRVItemDatabase
 import com.jkweyu.quickqr.databinding.ActivityMainBinding
+import com.jkweyu.quickqr.view.all.AllFragment
 import com.jkweyu.quickqr.view.favorites.FavoritesFragment
 import com.jkweyu.quickqr.view.history.HistoryFragment
+import com.jkweyu.quickqr.view.home.HomeFragment
 import com.jkweyu.quickqr.view.payment.PaymentFragment
 
 class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.apply {
+
             enableEdgeToEdge()
             // 기본 화면 설정
             if (savedInstanceState == null) {

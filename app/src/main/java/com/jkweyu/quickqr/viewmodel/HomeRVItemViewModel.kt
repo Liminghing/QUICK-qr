@@ -5,16 +5,17 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-
 class HomeRVItemViewModel : ViewModel() {
     private val _itemVisibility = MutableLiveData<Boolean>(false)
     val itemVisibility: LiveData<Boolean> get() {
         return _itemVisibility
     }
-    fun toggleItemVisibility(itme : HomeItem) : Boolean {
+    fun toggleItemVisibility(item : HomeItem) : Boolean {
         Log.d("ItemMoveCallback","--toggleItemVisibility 호출 : ${itemVisibility.value} in HomeRVItemViewModel--")
-        if(itme.title != null && itme.type != null){
-            _itemVisibility.value = true
+        if(item.title != null){
+            if(itemVisibility.value != true){
+                _itemVisibility.value = true
+            }
         }
         return true
     }
@@ -24,6 +25,6 @@ class HomeRVItemViewModel : ViewModel() {
         return true
     }
 }
+data class HomeItem(var itemID : Long = System.currentTimeMillis(),var itemType : Int,var menuType: Int? = null, var title: String? = null)
 
-data class HomeItem(var type: Int?, var title: String?)
 

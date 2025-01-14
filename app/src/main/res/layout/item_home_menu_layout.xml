@@ -2,6 +2,15 @@
 <layout xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="menuViewModel"
+            type="com.jkweyu.quickqr.viewmodel.HomeRVItemViewModel" />
+
+        <variable
+            name="item"
+            type="com.jkweyu.quickqr.viewmodel.HomeItem" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp">
@@ -22,6 +31,8 @@
             android:layout_height="0dp"
             android:layout_margin="10dp"
             android:elevation="4dp"
+            app:setCardViewResource="@{item.itemType}"
+            android:onLongClick="@{() -> menuViewModel.toggleItemVisibility(item)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -106,36 +117,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     app:layout_constraintGuide_percent="0.85" />
-                <ImageView
-                    android:id="@+id/add_icon"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:src="@drawable/ic_home_cardview_add_card"
 
-                    app:layout_constraintBottom_toBottomOf="@+id/guideline6_1"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/guideline5_1" />
-                <TextView
-                    android:id="@+id/add_title"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:autoSizeTextType="uniform"
-                    android:text="메뉴추가"
-                    android:gravity="center"
-
-                    app:layout_constraintBottom_toBottomOf="@+id/guideline6_2"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/guideline5_2" />
 
                 <TextView
                     android:id="@+id/textView"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:autoSizeTextType="uniform"
-
+                    android:text="@{item.title}"
                     app:layout_constraintBottom_toBottomOf="@+id/guideline5"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -169,7 +158,7 @@
                         android:id="@+id/QRImage"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-
+                        app:setCardViewQR="@{item.itemType}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintEnd_toStartOf="@+id/guideline8"
@@ -179,7 +168,7 @@
                         android:id="@+id/IconImage"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-
+                        app:setCardViewIcon="@{item.itemType}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintEnd_toEndOf="parent"

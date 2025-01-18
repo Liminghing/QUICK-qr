@@ -3,9 +3,6 @@
     <style name="Base.Theme.QuickQRApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="android:windowBackground">@color/white</item>
-        <item name="android:ambientShadowAlpha">0.04</item>
-        <item name="android:spotShadowAlpha">0.04</item>
     </style>
 
     <style name="Theme.QuickQRApp" parent="Base.Theme.QuickQRApp" />

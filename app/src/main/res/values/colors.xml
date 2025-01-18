@@ -2,22 +2,4 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="transparent">#00FFFFFF</color>
-
-
-
-    <color name="Container_color">#EFF2F4</color>
-    <color name="selected_color">#413C4D</color>
-    <color name="unselected_color">#999999</color>
-
-    <color name="home_card_profile_color">#ECEBFF</color>
-    <color name="home_card_item_color">#FFF5EE</color>
-    <color name="home_card_normal_color">#EEF9FF</color>
-    <color name="home_card_add_color">#EFF2F4</color>
-
-    <color name="home_card_profile_icon_color">#766DFF</color>
-    <color name="home_card_item_icon_color">#FFA76D</color>
-    <color name="home_card_normal_icon_color">#37BCFF</color>
-
-
 </resources>

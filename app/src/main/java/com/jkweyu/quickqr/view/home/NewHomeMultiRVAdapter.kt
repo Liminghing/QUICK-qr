@@ -9,36 +9,29 @@ import com.jkweyu.quickqr.databinding.ItemHomeAddMenuLayoutBinding
 import com.jkweyu.quickqr.databinding.ItemHomeEmptyLayoutBinding
 import com.jkweyu.quickqr.databinding.ItemHomeMainLayoutBinding
 import com.jkweyu.quickqr.databinding.ItemHomeMenuLayoutBinding
+import com.jkweyu.quickqr.databinding.ItemHomeQrCreateLayoutBinding
+import com.jkweyu.quickqr.databinding.ItemHomeQrScanLayoutBinding
 import com.jkweyu.quickqr.view.home.HomeFragment.Companion.VIEW_TYPE_ADD_MENU
 import com.jkweyu.quickqr.view.home.HomeFragment.Companion.VIEW_TYPE_CREATE_QR
 import com.jkweyu.quickqr.view.home.HomeFragment.Companion.VIEW_TYPE_EMPTY
 import com.jkweyu.quickqr.view.home.HomeFragment.Companion.VIEW_TYPE_MAIN
 import com.jkweyu.quickqr.view.home.HomeFragment.Companion.VIEW_TYPE_MENU
+import com.jkweyu.quickqr.view.home.HomeFragment.Companion.VIEW_TYPE_SCAN_QR
 import com.jkweyu.quickqr.view.home.holder.HomeAddMenuViewHolder
 import com.jkweyu.quickqr.view.home.holder.HomeEmptyViewHolder
 import com.jkweyu.quickqr.view.home.holder.HomeMainViewHolder
 import com.jkweyu.quickqr.view.home.holder.HomeMenuViewHolder
+import com.jkweyu.quickqr.view.home.holder.HomeQRCreateViewHolder
+import com.jkweyu.quickqr.view.home.holder.HomeQRScanViewHolder
 import com.jkweyu.quickqr.viewmodel.home.HomeItem
 import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
-import java.util.Collections
 
 
-class HomeMultiRVAdapter(
-    private val list: MutableList<HomeItem>,
+class NewHomeMultiRVAdapter(
+    private var items: HomeRVList,
     private val viewModel: HomeRVItemViewModel,
-    private val myOwner: HomeFragment,
-    private val listener:  ItemClickListener
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),ItemMoveCallback.ItemTouchHelperContract {
     var animatorMap : MutableMap<Long, ObjectAnimator?> = mutableMapOf()
-    private var items : HomeRVList = HomeRVList(
-        HomeItem(itemID = 11L,itemType = VIEW_TYPE_MAIN),
-        HomeItem(itemID = 22L,itemType = VIEW_TYPE_CREATE_QR),
-        HomeItem(itemID = 33L,itemType = VIEW_TYPE_CREATE_QR),
-        list,
-        HomeItem(itemID = 44L,itemType = VIEW_TYPE_ADD_MENU),
-        HomeItem(itemID = 55L,itemType = VIEW_TYPE_EMPTY)
-    )
-
     init {
         setHasStableIds(true)
     }
@@ -47,6 +40,8 @@ class HomeMultiRVAdapter(
         val context = parent.context
         return when (viewType) {
             VIEW_TYPE_MAIN -> HomeMainViewHolder(ItemHomeMainLayoutBinding.inflate(LayoutInflater.from(context), parent, false))
+            VIEW_TYPE_CREATE_QR -> HomeQRCreateViewHolder(ItemHomeQrCreateLayoutBinding.inflate(LayoutInflater.from(context), parent, false),viewModel)
+            VIEW_TYPE_SCAN_QR -> HomeQRScanViewHolder(ItemHomeQrScanLayoutBinding.inflate(LayoutInflater.from(context), parent, false),viewModel)
             VIEW_TYPE_MENU -> HomeMenuViewHolder(ItemHomeMenuLayoutBinding.inflate(LayoutInflater.from(context), parent, false),viewModel,animatorMap)
             VIEW_TYPE_ADD_MENU -> HomeAddMenuViewHolder(ItemHomeAddMenuLayoutBinding.inflate(LayoutInflater.from(context), parent, false),viewModel)
             VIEW_TYPE_EMPTY -> HomeEmptyViewHolder(ItemHomeEmptyLayoutBinding.inflate(LayoutInflater.from(context), parent, false))
@@ -58,24 +53,18 @@ class HomeMultiRVAdapter(
         when (getItem(position).itemType) {
             VIEW_TYPE_MAIN -> {
                 (holder as HomeMainViewHolder).bind(getItem(position))
-                //QR 생성하기 버튼
+            }
+            VIEW_TYPE_CREATE_QR -> {
+                (holder as HomeQRCreateViewHolder).bind(getItem(position))
+            }
+            VIEW_TYPE_SCAN_QR -> {
+                (holder as HomeQRScanViewHolder).bind(getItem(position))
             }
             VIEW_TYPE_MENU -> {
                 (holder as HomeMenuViewHolder).bind(getItem(position))
-                holder.binding.itemCard.setOnClickListener {
-                    listener.onItemClick(itemId = getItemId(position),itemType = getItem(position).itemType)
-                }
-                holder.binding.deleteButton.setOnClickListener {
-//                    removeItem(itemId = getItem(position).itemID)
-                }
-
             }
             VIEW_TYPE_ADD_MENU -> {
                 (holder as HomeAddMenuViewHolder).bind(getItem(position))
-                holder.binding.itemCard.setOnClickListener {
-                    listener.onItemClick(itemId = getItemId(position),itemType = getItem(position).itemType)
-                    //addItem()
-                }
             }
             VIEW_TYPE_EMPTY -> {
                 (holder as HomeEmptyViewHolder).bind(getItem(position))
@@ -83,10 +72,10 @@ class HomeMultiRVAdapter(
             else -> throw IllegalArgumentException("Invalid view type")
         }
     }
+
     // 아이템 타입 반환 메서드
     override fun getItemViewType(position: Int): Int {
-        val item = items[position]
-        when(item){
+        when(val item = items[position]){
             is HomeItem -> {
                 return item.itemType
             }
@@ -95,10 +84,10 @@ class HomeMultiRVAdapter(
             }
         }
     }
+
     // 아이템 반환 메서드
     private fun getItem(position: Int): HomeItem {
-        val item = items[position]
-        when(item){
+        when(val item = items[position]){
             is HomeItem -> {
                 return item
             }
@@ -106,7 +95,7 @@ class HomeMultiRVAdapter(
                 return item[position] as HomeItem
             }
             else  -> {
-                return throw IllegalArgumentException("Invalid view value")
+                throw IllegalArgumentException("Invalid view value")
             }
         }
     }
@@ -114,24 +103,26 @@ class HomeMultiRVAdapter(
     //드래그 인터페이스
     override fun onRowMoved(fromPosition: Int, toPosition: Int) {
         val fromItem = items[fromPosition] as HomeItem
-        val fromItemPosition = list.indexOf(fromItem)
+        val fromItemPosition = viewModel.getIndex(fromItem)
         val toItem = items[toPosition] as HomeItem
-        val toItemPosition = list.indexOf(toItem)
+        val toItemPosition = viewModel.getIndex(toItem)
         if(toItem.itemType == VIEW_TYPE_MENU){
             if (fromPosition < toPosition) {
                 for (i in fromItemPosition until toItemPosition) {
-                    Collections.swap(list, i, i+1)
+                    items.swapList(i,i+1)
                 }
             } else {
                 for (i in fromItemPosition downTo toItemPosition + 1) {
-                    Collections.swap(list, i, i - 1)
+                    items.swapList(i,i-1)
                 }
             }
             notifyItemMoved(fromPosition, toPosition)
         }
     }
-    // 아이템 개수 반환 메서드
+
+    // 아이템 개수 반환 메서
     override fun getItemCount(): Int = items.size
+
     // 아이템 고유 ID 반환 메서드
     override fun getItemId(position: Int): Long {
         return if (position in items.indices) {
@@ -140,11 +131,6 @@ class HomeMultiRVAdapter(
             -1L // 아이디를 찾지 못했을 때 반환되는 기본값
         }
     }
-
-
-    // 아이템 클릭 인터페이스 설정
-    interface ItemClickListener {
-        fun onItemClick(itemType : Int,itemId: Long)
-    }
 }
+
 

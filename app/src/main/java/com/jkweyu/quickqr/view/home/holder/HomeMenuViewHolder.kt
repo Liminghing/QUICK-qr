@@ -3,57 +3,44 @@ package com.jkweyu.quickqr.view.home.holder
 import android.animation.ObjectAnimator
 import android.util.Log
 import android.view.ViewTreeObserver
-import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.jkweyu.quickqr.databinding.ItemHomeMenuLayoutBinding
-import com.jkweyu.quickqr.view.home.HomeFragment
-import com.jkweyu.quickqr.viewmodel.HomeItem
-import com.jkweyu.quickqr.viewmodel.HomeRVItemViewModel
+import com.jkweyu.quickqr.viewmodel.home.HomeItem
+import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
 
 class HomeMenuViewHolder(
     val binding: ItemHomeMenuLayoutBinding,
     private val viewModel: HomeRVItemViewModel,
-    private val myOwner: HomeFragment,
-    private var animatorMap : MutableMap<Long, ObjectAnimator?>,
-    private val listener:  OnDeleteBTClickListener
-
+    private var animatorMap : MutableMap<Long, ObjectAnimator?>
 ) : RecyclerView.ViewHolder(binding.root) {
-    private var animator : ObjectAnimator? = null
     init {
         setItemSize()
-        viewModel.itemVisibility.observe(myOwner, Observer { isVisible ->
+        viewModel.itemVisibility.observe(itemView.context as LifecycleOwner, Observer { isVisible ->
             setDeleteMode(isVisible)
         })
     }
     fun bind(item: HomeItem) {
         //아이템 재활용시 수정모드 조회
         setDeleteMode(viewModel.itemVisibility.value!!)
-
         //아이템 아이디 확인용
-        //binding.textView.text = itemId.toString()
-
-        //아이템 삭제 버튼 클릭리스너
+        binding.textView.text = item.itemID.toString()
         binding.deleteButton.setOnClickListener {
-            listener.deleteBTClick(adapterPosition,itemId)
+            viewModel.removeItem(adapterPosition)
         }
-        //아이템 클릭시
+
+        //아이템 클릭
         binding.itemCard.setOnClickListener {
-            if(!viewModel.itemVisibility.value!!){
-                Toast.makeText(itemView.context, "${item.itemID}인 ${item.title}이 클릭", Toast.LENGTH_SHORT).show()
-            }
+            viewModel.onItemClicked(item)
         }
         //바인딩 작업 수행
         binding.menuViewModel = viewModel
         binding.item = item
-
-
-
     }
     //아이템 객체 수정모드 진입 메서드
     private fun setDeleteMode(isVisible : Boolean){
-        Log.d("kokokok","qkqkqk ${itemId}")
         if(itemId != -1L){
             if(isVisible){
 
@@ -94,7 +81,6 @@ class HomeMenuViewHolder(
             }
         )
     }
-
     //아이템 객체 크기조정 메서드
     private fun setItemSize(){
         //뷰가 레이아웃을 완료한 후에 크기를 정확하게 가져오기
@@ -109,8 +95,5 @@ class HomeMenuViewHolder(
                 binding.root.viewTreeObserver.removeOnGlobalLayoutListener(this)
             }
         })
-    }
-    interface OnDeleteBTClickListener {
-        fun deleteBTClick(position: Int,itemId: Long) // 클릭 이벤트 발생 시 호출될 메서드
     }
 }

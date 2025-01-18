@@ -5,7 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import com.jkweyu.quickqr.R
 
-object HomeLayoutAdapter {
+object HomeLayoutBindingAdapter {
     @JvmStatic
     @BindingAdapter("setCardViewIcon")
     fun setCardViewIconResource(imageView: ImageView, type: Int?) {

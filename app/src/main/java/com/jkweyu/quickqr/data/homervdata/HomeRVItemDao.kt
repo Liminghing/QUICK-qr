@@ -14,12 +14,11 @@ interface HomeRVItemDao {
     @Query("SELECT * FROM homervitem WHERE rid IN (:userIds)")
     fun loadAllByIds(userIds: IntArray): List<HomeRVItem>
 
-    @Query("SELECT * FROM homervitem WHERE item_ID LIKE :itemID " +
-            "AND recycler_Type LIKE :itemType " +
+    @Query("SELECT * FROM homervitem WHERE recycler_Type LIKE :itemType " +
             "AND item_Type LIKE :menuType " +
             "AND item_Title LIKE :title " +
             "LIMIT 1")
-    fun findByItem(itemID : Long,itemType: Int, menuType: Int?, title: String?): HomeRVItem
+    fun findByItem(itemType: Int, menuType: Int?, title: String?): HomeRVItem
 
 
     // 기존 아이템을 모두 삭제하는 메서드

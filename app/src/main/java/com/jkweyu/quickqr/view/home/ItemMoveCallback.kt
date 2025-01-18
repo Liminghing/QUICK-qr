@@ -1,11 +1,10 @@
 package com.jkweyu.quickqr.view.home
 
 import android.animation.ObjectAnimator
-import android.util.Log
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.jkweyu.quickqr.view.home.HomeFragment.Companion.VIEW_TYPE_MENU
-import com.jkweyu.quickqr.viewmodel.HomeRVItemViewModel
+import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
 
 class ItemMoveCallback(private val mAdapter: ItemTouchHelperContract,private val viewModel: HomeRVItemViewModel) :
     ItemTouchHelper.Callback() {
@@ -16,7 +15,6 @@ class ItemMoveCallback(private val mAdapter: ItemTouchHelperContract,private val
         viewHolder: RecyclerView.ViewHolder
     ): Int {
         var dragFlags = 0
-        Log.d("MioveCallback","${dragFlags}")
         if(viewModel.itemVisibility.value == true){
             if(viewHolder.itemViewType == VIEW_TYPE_MENU){
                 dragFlags = ItemTouchHelper.UP or ItemTouchHelper.DOWN or ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT

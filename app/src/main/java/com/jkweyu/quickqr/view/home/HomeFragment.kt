@@ -1,76 +1,79 @@
 package com.jkweyu.quickqr.view.home
 
-import android.util.Log
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.ItemTouchHelper
-import androidx.room.Room
 import com.jkweyu.quickqr.R
 import com.jkweyu.quickqr.base.BaseFragment
-import com.jkweyu.quickqr.data.homervdata.HomeRVItem
-import com.jkweyu.quickqr.data.homervdata.HomeRVItemDatabase
 import com.jkweyu.quickqr.databinding.FragmentHomeBinding
-import com.jkweyu.quickqr.viewmodel.HomeItem
-import com.jkweyu.quickqr.viewmodel.HomeRVItemViewModel
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import com.jkweyu.quickqr.viewmodel.MainViewModel
+import com.jkweyu.quickqr.viewmodel.home.HomeItem
+import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
+import kotlin.random.Random
 
 
-class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+class HomeFragment(private val mainViewModel: MainViewModel): BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     companion object {
         val VIEW_TYPE_MAIN = 0
-        val VIEW_TYPE_MENU = 1
-        val VIEW_TYPE_ADD_MENU = 2
-        val VIEW_TYPE_EMPTY = 3
+        val VIEW_TYPE_CREATE_QR = 1
+        val VIEW_TYPE_SCAN_QR = 2
+        val VIEW_TYPE_MENU = 3
+        val VIEW_TYPE_ADD_MENU = 4
+        val VIEW_TYPE_EMPTY = 5
     }
-    private lateinit var viewModel: HomeRVItemViewModel
-    private lateinit var homeAdapter: HomeMultiRVAdapter
-    var touchHelper: ItemTouchHelper? = null
-    private var rvList = mutableListOf<HomeItem>()
+    private lateinit var homeViewModel: HomeRVItemViewModel
+
     override fun initView() {
+        //뷰모델 생성
+        homeViewModel = HomeRVItemViewModel(mainViewModel.homeRvItemList.value!!)
         binding.apply {
-            //뷰모델 생성
-            viewModel = ViewModelProvider(this@HomeFragment).get(HomeRVItemViewModel::class.java)
             //데이터 바인딩
-            myItem = viewModel
-            Log.d("myLifeCycle","HomeFragment")
+            hViewModel = homeViewModel
+            lifecycleOwner = this@HomeFragment
+
+            itemAddButton.setOnClickListener {
+                /** itemADD 처리 및 데이터 저장
+                 *
+                 */
+            }
+
+            binding.itemSaveButton.setOnClickListener {
+                homeViewModel.toggleItemVisibilityOff()
+                mainViewModel.saveList()
+            }
 
 
-
-            homeAdapter = HomeMultiRVAdapter(rvList,viewModel,this@HomeFragment)
-
-            val callback: ItemTouchHelper.Callback = ItemMoveCallback(homeAdapter,viewModel)
-            touchHelper = ItemTouchHelper(callback)
-            touchHelper!!.attachToRecyclerView(homeRecyclerview)
-
-            homeRecyclerview.adapter = homeAdapter
-
-            val gridLayoutManager = GridLayoutManager(requireContext(), 3)
-            gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    val viewType = homeAdapter.getItemViewType(position)
-                    Log.d("SpanSize", "Item at position $position has view type: $viewType")
-                    return if (viewType == VIEW_TYPE_MENU || viewType == VIEW_TYPE_ADD_MENU) 1 else 3
+            homeViewModel.deleteItemPosition.observe(this@HomeFragment, Observer {
+                if(it != null){
+                    homeRecyclerview.adapter?.notifyItemRemoved(it)
                 }
-            }
-            homeRecyclerview.layoutManager = gridLayoutManager
+            })
 
-            binding.button3.setOnClickListener {
-                viewModel.toggleItemVisibilityOff()
-                rvList.add(HomeItem(itemType = VIEW_TYPE_MENU, menuType = 1, title = "test"))
-                homeAdapter.notifyDataSetChanged()
+            homeViewModel.selectedItem.observe(this@HomeFragment, Observer { item ->
+                when(item?.itemType){
+                    VIEW_TYPE_CREATE_QR -> {
+                        Toast.makeText(this@HomeFragment.context,"qr 스캔하기}",Toast.LENGTH_SHORT).show()
+                    }
+                    VIEW_TYPE_SCAN_QR -> {
+                        Toast.makeText(this@HomeFragment.context,"qr 생성하기}",Toast.LENGTH_SHORT).show()
+                    }
+                    VIEW_TYPE_MENU -> {
+                        Toast.makeText(this@HomeFragment.context,"${item.itemID}",Toast.LENGTH_SHORT).show()
+                    }
+                    else -> {
+                        /** itemADD 처리 및 데이터 저장
+                         *
+                         */
+                        var addItem = HomeItem(itemID = Random.nextInt(0, 101).toLong(),itemType = VIEW_TYPE_MENU, menuType = 1,title = "item02")
+                        homeViewModel.addTodo(addItem)
+                        homeRecyclerview.adapter?.notifyItemInserted(homeViewModel.getInsertIndex())
 
+                    }
+                }
 
-            }
+            })
 
-
-
-            viewModel.itemVisibility.observe(this@HomeFragment, Observer { isVisible ->
-                Log.d("ItemMoveCallback","observed : $isVisible in HomeFragment")
+            homeViewModel.itemVisibility.observe(this@HomeFragment, Observer { isVisible ->
                 if(isVisible) {
                     binding.bottomView.isVisible = true
                 }else{
@@ -78,30 +81,5 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
                 }
             })
         }
-    }
-    private fun loadList() :  MutableList<HomeItem> {
-        val db = Room.databaseBuilder(
-            requireContext(),
-            HomeRVItemDatabase::class.java, "database-name"
-        ).build()
-        val homeRVDao = db.homeRVItemDao()
-        var loadList = mutableListOf<HomeItem>()
-        lifecycleScope.launch {
-            val users: List<HomeRVItem> = withContext(Dispatchers.IO) {
-                homeRVDao.getAll() // 백그라운드 스레드에서 실행
-            }
-            loadList = users.map { homeRVItem ->
-                // HomeRVItem을 HomeItem으로 변환하는 로직
-                HomeItem(
-                    // 예시: HomeRVItem의 프로퍼티를 사용해 HomeItem을 생성
-                    itemID = homeRVItem.itemID,
-                    itemType = homeRVItem.itemType,
-                    menuType = homeRVItem.menuType,
-                    title = homeRVItem.title
-                )
-            }.toMutableList()
-
-        }
-        return loadList
     }
 }

@@ -5,8 +5,8 @@
     <data>
         <!-- 필요한 변수 선언 -->
         <variable
-            name="myItem"
-            type="com.jkweyu.quickqr.viewmodel.HomeRVItemViewModel" />
+            name="hViewModel"
+            type="com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,6 +16,8 @@
             android:id="@+id/home_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="8dp"
+            app:viewModel = "@{hViewModel}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +38,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
             <TextView
-                android:id="@+id/button2"
+                android:id="@+id/item_add_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -52,7 +54,7 @@
                 android:layout_weight="3" />
 
             <TextView
-                android:id="@+id/button3"
+                android:id="@+id/item_save_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"

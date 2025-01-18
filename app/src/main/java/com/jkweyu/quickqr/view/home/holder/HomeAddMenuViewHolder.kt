@@ -1,26 +1,25 @@
 package com.jkweyu.quickqr.view.home.holder
 
 import android.view.ViewTreeObserver
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.jkweyu.quickqr.databinding.ItemHomeAddMenuLayoutBinding
-import com.jkweyu.quickqr.viewmodel.HomeItem
-import com.jkweyu.quickqr.viewmodel.HomeRVItemViewModel
+import com.jkweyu.quickqr.viewmodel.home.HomeItem
+import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
 
 
 class HomeAddMenuViewHolder(
-    private val binding: ItemHomeAddMenuLayoutBinding,
+    val binding: ItemHomeAddMenuLayoutBinding,
     private val viewModel: HomeRVItemViewModel,
 ) : RecyclerView.ViewHolder(binding.root) {
     init {
-
         setItemSize()
     }
     fun bind(item: HomeItem) {
-        binding.itemCard.setOnClickListener {
-            Toast.makeText(itemView.context, "${item.title}의 아이템 추가하기", Toast.LENGTH_SHORT).show()
-        }
         binding.menuViewModel = viewModel
+        binding.itemCard.setOnClickListener {
+            viewModel.onItemClicked(item)
+        }
+
     }
     //아이템 객체 크기조정 메서드
     private fun setItemSize(){

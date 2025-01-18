@@ -12,7 +12,7 @@ class HomeAddMenuViewHolder(
     private val viewModel: HomeRVItemViewModel,
 ) : RecyclerView.ViewHolder(binding.root) {
     init {
-        setItemSize()
+        setItemSize() 
     }
     fun bind(item: HomeItem) {
         binding.menuViewModel = viewModel

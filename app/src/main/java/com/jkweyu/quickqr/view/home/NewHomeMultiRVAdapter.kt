@@ -29,7 +29,7 @@ import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
 
 class NewHomeMultiRVAdapter(
     private var items: HomeRVList,
-    private val viewModel: HomeRVItemViewModel,
+    private val viewModel: HomeRVItemViewModel
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(),ItemMoveCallback.ItemTouchHelperContract {
     var animatorMap : MutableMap<Long, ObjectAnimator?> = mutableMapOf()
     init {

@@ -98,7 +98,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/QrCode_Button"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/shape_payment_card_top_load"
@@ -108,15 +108,18 @@
             app:layout_constraintTop_toTopOf="@+id/Guideline25h" />
 
         <ImageView
-            android:id="@+id/imageView5"
+            android:id="@+id/BarCode_Button"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/shape_payment_card_top_load"
             android:layout_marginEnd="20dp"
+            android:src="@drawable/shape_payment_card_top_load"
+            android:transitionName="BarCode"
             app:layout_constraintBottom_toTopOf="@+id/Guideline75h"
-            app:layout_constraintEnd_toStartOf="@+id/imageView6"
+            app:layout_constraintEnd_toStartOf="@+id/QrCode_Button"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/Guideline25h" />
+            app:layout_constraintTop_toTopOf="@+id/Guideline25h"
+            app:layout_constraintVertical_bias="1.0" />
 
         <TextView
             android:id="@+id/textView9"

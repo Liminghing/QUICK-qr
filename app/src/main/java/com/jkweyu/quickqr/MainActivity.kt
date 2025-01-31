@@ -1,7 +1,6 @@
 package com.jkweyu.quickqr
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.lifecycleScope
 import com.jkweyu.quickqr.base.BaseActivity
@@ -20,9 +19,9 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainViewModel = MainViewModel(application)
-        binding.button.setOnClickListener {
-            Log.d("quickQRapp","mainViewModel의 리스트[${mainViewModel.homeRvItemList.value?.size}] ${mainViewModel.homeRvItemList.value}")
-        }
+//        binding.button.setOnClickListener {
+//            Log.d("quickQRapp","mainViewModel의 리스트[${mainViewModel.homeRvItemList.value?.size}] ${mainViewModel.homeRvItemList.value}")
+//        }
         lifecycleScope.launch {
             val isLoaded = mainViewModel.loadList()
             if (isLoaded) {

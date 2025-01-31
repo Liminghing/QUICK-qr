@@ -4,8 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
-            name="fViewModel"
-            type="com.jkweyu.quickqr.viewmodel.favorites.FavoritesRVItemViewModel" />
+            name="allViewModel"
+            type="com.jkweyu.quickqr.viewmodel.all.AllItemViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,12 +16,13 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:padding="15dp"
             android:layout_marginTop="20dp"
             android:autoSizeTextType="uniform"
+            android:padding="15dp"
             android:text="전체"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -54,6 +55,7 @@
                 <com.jkweyu.quickqr.view.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick='@{() -> allViewModel.onItemClicked("QR명함 제작 기록")}'
                     app:icon="@drawable/ic_all_fragment_qr_card_history"
                     app:title="QR명함 제작 기록"
                     app:count="과거 제작했던 QR명함 기록"/>
@@ -61,6 +63,7 @@
                 <com.jkweyu.quickqr.view.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick='@{() -> allViewModel.onItemClicked("QR명함 즐겨찾기")}'
                     app:icon="@drawable/ic_all_fragment_qr_card_favorite"
                     app:title="QR명함 즐겨찾기"
                     app:count="QR명함 즐겨찾기 기록"/>
@@ -78,12 +81,14 @@
                 <com.jkweyu.quickqr.view.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick='@{() -> allViewModel.onItemClicked("QR페이지 제작 기록")}'
                     app:icon="@drawable/ic_all_fragment_qr_item_history"
                     app:title="QR페이지 제작 기록"
                     app:count="과거 제작했던 QR페이지 기록"/>
                 <com.jkweyu.quickqr.view.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick='@{() -> allViewModel.onItemClicked("QR페이지 즐겨찾기")}'
                     app:icon="@drawable/ic_all_fragment_qr_item_favorite"
                     app:title="QR페이지 즐겨찾기"
                     app:count="QR페이지 즐겨찾기 기록"/>
@@ -101,12 +106,14 @@
                 <com.jkweyu.quickqr.view.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick='@{() -> allViewModel.onItemClicked("일반QR 제작 기록")}'
                     app:icon="@drawable/ic_all_fragment_qr_general_history"
                     app:title="일반QR 제작 기록"
                     app:count="과거 제작했던 일반QR 기록"/>
                 <com.jkweyu.quickqr.view.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick='@{() -> allViewModel.onItemClicked("일반QR 즐겨찾기")}'
                     app:icon="@drawable/ic_all_fragment_qr_general_favorite"
                     app:title="일반QR 즐겨찾기"
                     app:count="일반QR 즐겨찾기 기록"/>
@@ -124,6 +131,7 @@
                 <com.jkweyu.quickqr.view.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick='@{() -> allViewModel.onItemClicked("QR 결제 내역")}'
                     app:icon="@drawable/ic_all_fragment_payment_history"
                     app:title="QR 결제 내역"
                     app:count="QR결제 내역 조회"/>

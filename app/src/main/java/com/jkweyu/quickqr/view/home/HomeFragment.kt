@@ -1,5 +1,7 @@
 package com.jkweyu.quickqr.view.home
 
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.widget.Toast
 import androidx.core.view.isVisible
@@ -67,8 +69,23 @@ class HomeFragment(private val mainViewModel: MainViewModel): BaseFragment<Fragm
                             .addOnSuccessListener { barcode ->
                                 // Task completed successfully
                                 val rawValue: String? = barcode.rawValue
-                                Log.d("qqqqqqq",rawValue.toString())
+//                                Toast.makeText(requireActivity(),"${rawValue.toString()}",Toast.LENGTH_SHORT).show()
+//                                val upiIntent = Intent(Intent.ACTION_VIEW, Uri.parse(rawValue))
+//                                startActivity(upiIntent)
+                                val upiIntent = Intent(Intent.ACTION_VIEW).apply {
+                                    data = Uri.parse(rawValue.toString())
+                                }
+                                val chooser = Intent.createChooser(upiIntent, "결제 앱 선택")
+                                // 3. Intent 실행
+                                Log.d("qqqqqqq","${requireContext().packageManager}")
+                                if (upiIntent.resolveActivity(requireContext().packageManager) != null) {
+                                    startActivity(chooser) // 프래그먼트에서 Activity 실행
+                                } else {
+                                    Toast.makeText(context, "사용 가능한 결제 앱이 없습니다.", Toast.LENGTH_SHORT).show()
+                                }
+
                             }
+
                             .addOnCanceledListener {
                                 // Task canceled
                                 Log.d("qqqqqqq","addOnCanceledListener")

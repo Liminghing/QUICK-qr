@@ -6,6 +6,13 @@
         <item name="android:windowBackground">@color/white</item>
         <item name="android:ambientShadowAlpha">0.04</item>
         <item name="android:spotShadowAlpha">0.04</item>
+
+
+        <item name="colorPrimary">#FFFFFF</item>
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="colorControlHighlight">#FFFFFF</item>
+        <item name="colorAccent">#FFFFFF</item>
+        <item name="android:statusBarColor">#FFFFFF</item>
     </style>
 
     <style name="Theme.QuickQRApp" parent="Base.Theme.QuickQRApp" />

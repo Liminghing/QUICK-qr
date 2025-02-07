@@ -24,5 +24,6 @@ class AllFragment: BaseFragment<FragmentAllBinding>(R.layout.fragment_all) {
                 }
             })
         }
+
     }
 }

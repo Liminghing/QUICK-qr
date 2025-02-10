@@ -15,6 +15,8 @@
             android:id="@+id/history_general_recyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:paddingBottom="100dp"
+            android:clipToPadding="false"
             app:hisViewModel = "@{hisViewModel}"
             app:rvType = "@{3}"
             app:layout_constraintBottom_toBottomOf="parent"

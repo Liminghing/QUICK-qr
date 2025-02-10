@@ -11,6 +11,6 @@ class FavoritesQrCardFragment(var favoritesViewModel : FavoritesRVItemViewModel)
         binding.apply {
             binding.favViewModel = favoritesViewModel
         }
-        
+
     }
 }

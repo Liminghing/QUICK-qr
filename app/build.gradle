@@ -56,4 +56,6 @@ dependencies {
 
     implementation libs.androidx.lifecycle
 
+    implementation libs.com.google.android.gms
+
 }

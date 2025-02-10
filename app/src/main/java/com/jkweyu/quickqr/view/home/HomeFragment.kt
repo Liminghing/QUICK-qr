@@ -1,9 +1,18 @@
 package com.jkweyu.quickqr.view.home
 
+import android.content.ClipData
+import android.content.ClipboardManager
+import android.content.Intent
+import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanner
+import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 import com.jkweyu.quickqr.R
+import com.jkweyu.quickqr.Util.BarcodeAnalysis
+import com.jkweyu.quickqr.Util.BarcodeResultListener
 import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.databinding.FragmentHomeBinding
 import com.jkweyu.quickqr.viewmodel.MainViewModel
@@ -12,7 +21,7 @@ import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
 import kotlin.random.Random
 
 
-class HomeFragment(private val mainViewModel: MainViewModel): BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
+class HomeFragment(private val mainViewModel: MainViewModel): BaseFragment<FragmentHomeBinding>(R.layout.fragment_home), BarcodeResultListener {
     companion object {
         val VIEW_TYPE_MAIN = 0
         val VIEW_TYPE_CREATE_QR = 1
@@ -22,8 +31,10 @@ class HomeFragment(private val mainViewModel: MainViewModel): BaseFragment<Fragm
         val VIEW_TYPE_EMPTY = 5
     }
     private lateinit var homeViewModel: HomeRVItemViewModel
+    private lateinit var scanner: GmsBarcodeScanner
 
     override fun initView() {
+        scanner = GmsBarcodeScanning.getClient(requireContext())
         //뷰모델 생성
         homeViewModel = HomeRVItemViewModel(mainViewModel.homeRvItemList.value!!)
         binding.apply {
@@ -52,10 +63,20 @@ class HomeFragment(private val mainViewModel: MainViewModel): BaseFragment<Fragm
             homeViewModel.selectedItem.observe(this@HomeFragment, Observer { item ->
                 when(item?.itemType){
                     VIEW_TYPE_CREATE_QR -> {
-                        Toast.makeText(this@HomeFragment.context,"qr 스캔하기}",Toast.LENGTH_SHORT).show()
+
                     }
                     VIEW_TYPE_SCAN_QR -> {
-                        Toast.makeText(this@HomeFragment.context,"qr 생성하기}",Toast.LENGTH_SHORT).show()
+                        scanner.startScan()
+                            .addOnSuccessListener { barcode ->
+                                BarcodeAnalysis(this@HomeFragment).startScanning(barcode)
+                            }
+                            .addOnCanceledListener {
+                                // 스캔 취소 시 처리할 로직
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.e("BarcodeScanner", "Scanning failed: ${exception.message}")
+                            }
+
                     }
                     VIEW_TYPE_MENU -> {
                         Toast.makeText(this@HomeFragment.context,"${item.itemID}",Toast.LENGTH_SHORT).show()
@@ -82,4 +103,16 @@ class HomeFragment(private val mainViewModel: MainViewModel): BaseFragment<Fragm
             })
         }
     }
+
+    override fun onBarcodeIntentDetected(intent: Intent?) {
+        if(intent != null){
+            startActivity(intent)
+        }
+    }
+    override fun onBarcodeClipBoardDetected(clip: ClipData){
+        val clipboard = getSystemService(requireContext(), ClipboardManager::class.java)
+        clipboard?.setPrimaryClip(clip)
+        Toast.makeText(requireContext(), "내용이 클립보드에 복사되었습니다", Toast.LENGTH_SHORT).show()
+    }
+
 }

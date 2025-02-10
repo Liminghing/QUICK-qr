@@ -9,12 +9,12 @@
         android:id="@+id/navigation_history"
         android:icon="@drawable/ic_history_selector"
         android:title="History"/>
-
+    <!--
     <item
         android:id="@+id/navigation_payment"
         android:icon="@drawable/ic_payment_selector"
         android:title="Payment"/>
-
+    -->
     <item
         android:id="@+id/navigation_favorites"
         android:icon="@drawable/ic_favorite_selector"

@@ -45,10 +45,10 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
                                     loadFragment(HistoryFragment())
                                     true
                                 }
-                                R.id.navigation_payment -> {
-                                    loadFragment(PaymentFragment())
-                                    true
-                                }
+//                                R.id.navigation_payment -> {
+//                                    loadFragment(PaymentFragment())
+//                                    true
+//                                }
                                 R.id.navigation_favorites -> {
                                     loadFragment(FavoritesFragment())
                                     true

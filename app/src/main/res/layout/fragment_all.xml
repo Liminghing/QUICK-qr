@@ -117,7 +117,7 @@
                     app:icon="@drawable/ic_all_fragment_qr_general_favorite"
                     app:title="일반QR 즐겨찾기"
                     app:count="일반QR 즐겨찾기 기록"/>
-
+                <!--
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
@@ -140,6 +140,7 @@
                     android:layout_height="wrap_content"
                     app:icon="@drawable/ic_all_fragment_payment_management"
                     app:title="QR 결제 수단"/>
+                    -->
 
                 <Space
                     android:layout_width="match_parent"

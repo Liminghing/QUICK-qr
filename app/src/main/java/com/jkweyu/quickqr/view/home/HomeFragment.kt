@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
+import com.jkweyu.quickqr.QrCreateActivity
 import com.jkweyu.quickqr.R
 import com.jkweyu.quickqr.Util.BarcodeAnalysis
 import com.jkweyu.quickqr.Util.BarcodeResultListener
@@ -63,7 +64,8 @@ class HomeFragment(private val mainViewModel: MainViewModel): BaseFragment<Fragm
             homeViewModel.selectedItem.observe(this@HomeFragment, Observer { item ->
                 when(item?.itemType){
                     VIEW_TYPE_CREATE_QR -> {
-
+                        var intent = Intent(this@HomeFragment.context, QrCreateActivity::class.java)
+                        startActivity(intent)
                     }
                     VIEW_TYPE_SCAN_QR -> {
                         scanner.startScan()

@@ -19,5 +19,7 @@
     <color name="home_card_item_icon_color">#FFA76D</color>
     <color name="home_card_normal_icon_color">#37BCFF</color>
 
+    <color name="status_bar_color">#867EFF</color>
+
 
 </resources>

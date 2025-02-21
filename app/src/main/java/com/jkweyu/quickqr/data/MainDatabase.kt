@@ -4,14 +4,17 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
+import com.jkweyu.quickqr.Util.DateConverters
 import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 import com.jkweyu.quickqr.data.homervdata.HomeRVItemDao
 
 //@Database(entities = [User::class, Post::class], version = 1)
-@Database(entities = [HomeRVItem::class], version = 1)
-
+@Database(entities = [HomeRVItem::class,QRCodeItem::class], version = 2)
+@TypeConverters(DateConverters::class)
 abstract class MainDatabase : RoomDatabase() {
     abstract fun homeRVItemDao(): HomeRVItemDao
+    abstract fun qrCodeItemDao(): QRCodeItemDao
     companion object {
         // Volatile: 이 변수의 값을 다른 스레드에서 변경할 수 있도록 보장
         @Volatile
@@ -25,7 +28,7 @@ abstract class MainDatabase : RoomDatabase() {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
                     MainDatabase::class.java,
-                    "home_rv_item_database"
+                    "database"
                 ).build()
 
                 // 인스턴스가 null인 경우에만 새로 할당

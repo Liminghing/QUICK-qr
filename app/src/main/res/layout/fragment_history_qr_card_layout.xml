@@ -4,8 +4,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
-            name="hisViewModel"
-            type="com.jkweyu.quickqr.viewmodel.history.HistoryRVItemViewModel" />
+            name="cardFragViewModel"
+            type="com.jkweyu.quickqr.viewmodel.MainViewModel" />
+
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,10 +16,10 @@
             android:id="@+id/history_qr_card_recyclerView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:hisViewModel = "@{hisViewModel}"
             android:paddingBottom="100dp"
             android:clipToPadding="false"
-            app:rvType = "@{1}"
+            app:rvViewModel = "@{cardFragViewModel}"
+            app:rvItemType = "@{1}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

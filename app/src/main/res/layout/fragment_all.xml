@@ -4,8 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
-            name="allViewModel"
-            type="com.jkweyu.quickqr.viewmodel.all.AllItemViewModel" />
+            name="mainActViewModel"
+            type="com.jkweyu.quickqr.viewmodel.MainViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -16,7 +16,6 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
             android:autoSizeTextType="uniform"
             android:padding="15dp"
             android:text="전체"
@@ -52,21 +51,23 @@
                     android:background="@color/white"
                     android:text="QR 명함"
                     android:textStyle="bold" />
-                <com.jkweyu.quickqr.view.all.customview.AllFragmentItem
+                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick='@{() -> allViewModel.onItemClicked("QR명함 제작 기록")}'
+                    android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("QR명함 제작 기록")}'
                     app:icon="@drawable/ic_all_fragment_qr_card_history"
                     app:title="QR명함 제작 기록"
                     app:count="과거 제작했던 QR명함 기록"/>
 
-                <com.jkweyu.quickqr.view.all.customview.AllFragmentItem
+                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick='@{() -> allViewModel.onItemClicked("QR명함 즐겨찾기")}'
+                    android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("QR명함 즐겨찾기")}'
                     app:icon="@drawable/ic_all_fragment_qr_card_favorite"
                     app:title="QR명함 즐겨찾기"
-                    app:count="QR명함 즐겨찾기 기록"/>
+                    app:count="QR명함 즐겨찾기 기록">
+
+                </com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -78,17 +79,20 @@
                     android:background="@color/white"
                     android:text="QR 상품"
                     android:textStyle="bold" />
-                <com.jkweyu.quickqr.view.all.customview.AllFragmentItem
+                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick='@{() -> allViewModel.onItemClicked("QR페이지 제작 기록")}'
+                    android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("QR페이지 제작 기록")}'
                     app:icon="@drawable/ic_all_fragment_qr_item_history"
                     app:title="QR페이지 제작 기록"
-                    app:count="과거 제작했던 QR페이지 기록"/>
-                <com.jkweyu.quickqr.view.all.customview.AllFragmentItem
+                    app:count="과거 제작했던 QR페이지 기록">
+
+
+                </com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem>
+                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick='@{() -> allViewModel.onItemClicked("QR페이지 즐겨찾기")}'
+                    android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("QR페이지 즐겨찾기")}'
                     app:icon="@drawable/ic_all_fragment_qr_item_favorite"
                     app:title="QR페이지 즐겨찾기"
                     app:count="QR페이지 즐겨찾기 기록"/>
@@ -101,23 +105,66 @@
                     android:paddingHorizontal="15dp"
                     android:autoSizeTextType="uniform"
                     android:background="@color/white"
-                    android:text="일반 QR"
+                    android:text="설정"
                     android:textStyle="bold" />
-                <com.jkweyu.quickqr.view.all.customview.AllFragmentItem
+                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick='@{() -> allViewModel.onItemClicked("일반QR 제작 기록")}'
+                    app:icon="@android:drawable/ic_menu_mapmode"
+                    app:title="언어"
+                    app:count="한국어"/>
+                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@android:drawable/ic_lock_silent_mode"
+                    app:title="소리"
+                    app:count="무음"/>
+                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/ic_phone_icon"
+                    app:title="진동"
+                    app:count="꺼짐"/>
+                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/googleg_standard_color_18"
+                    app:title="검색엔진"
+                    app:count="google"/>
+                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@android:drawable/ic_menu_info_details"
+                    app:title="개인정보처리방침"
+                    app:count="개인정보처리방침 확인"/>
+
+                <!--
+                                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:paddingVertical="10dp"
+                    android:paddingHorizontal="15dp"
+                    android:autoSizeTextType="uniform"
+                    android:background="@color/white"
+                    android:text="일반 QR"
+                    android:textStyle="bold" />
+                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("일반QR 제작 기록")}'
                     app:icon="@drawable/ic_all_fragment_qr_general_history"
                     app:title="일반QR 제작 기록"
                     app:count="과거 제작했던 일반QR 기록"/>
-                <com.jkweyu.quickqr.view.all.customview.AllFragmentItem
+                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick='@{() -> allViewModel.onItemClicked("일반QR 즐겨찾기")}'
+                    android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("일반QR 즐겨찾기")}'
                     app:icon="@drawable/ic_all_fragment_qr_general_favorite"
                     app:title="일반QR 즐겨찾기"
                     app:count="일반QR 즐겨찾기 기록"/>
-                <!--
+
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="40dp"

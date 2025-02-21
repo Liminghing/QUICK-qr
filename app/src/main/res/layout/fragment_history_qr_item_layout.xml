@@ -4,8 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
-            name="hisViewModel"
-            type="com.jkweyu.quickqr.viewmodel.history.HistoryRVItemViewModel" />
+            name="itemFragViewModel"
+            type="com.jkweyu.quickqr.viewmodel.MainViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -17,8 +17,8 @@
             android:layout_height="0dp"
             android:paddingBottom="100dp"
             android:clipToPadding="false"
-            app:hisViewModel = "@{hisViewModel}"
-            app:rvType = "@{2}"
+            app:rvViewModel = "@{itemFragViewModel}"
+            app:rvItemType = "@{2}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

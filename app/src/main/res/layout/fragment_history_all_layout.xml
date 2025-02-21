@@ -4,8 +4,8 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:android="http://schemas.android.com/apk/res/android">
 <data>
     <variable
-        name="hisViewModel"
-        type="com.jkweyu.quickqr.viewmodel.history.HistoryRVItemViewModel" />
+        name="allFragViewModel"
+        type="com.jkweyu.quickqr.viewmodel.MainViewModel" />
 </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
@@ -15,8 +15,8 @@ xmlns:android="http://schemas.android.com/apk/res/android">
         android:id="@+id/history_all_recyclerView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:hisViewModel = "@{hisViewModel}"
-        app:rvType = "@{0}"
+        app:rvViewModel = "@{allFragViewModel}"
+        app:rvItemType = "@{0}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -9,6 +9,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
+    <!-- 생성된 QR 이미지 저장시 필요한 권한 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+
     <queries>
         <package android:name="com.google.android.apps.nbu.paisa.user"/> <!-- Google Pay -->
         <package android:name="com.phonepe.app"/> <!-- PhonePe -->
@@ -25,17 +29,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.QuickQRApp"
+        android:hardwareAccelerated="true"
         tools:targetApi="34">
-        <activity
-            android:name=".QrCreateActivity"
+
+        <!-- qr코드 공유용 프로바이더 -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.jkweyu.quickqr.fileprovider"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
         <activity
-            android:name=".DetailActivity"
+            android:name=".view.TitleFrameActivity"
             android:exported="false"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".view.MainActivity"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

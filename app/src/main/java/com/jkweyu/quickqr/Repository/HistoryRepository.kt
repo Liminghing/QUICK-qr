@@ -1,7 +1,7 @@
 package com.jkweyu.quickqr.Repository
 
 import com.jkweyu.quickqr.model.history.HistoryRVItem
-import com.jkweyu.quickqr.view.history.HistoryFragment.Companion.VIEW_TYPE_HISTORY
+import com.jkweyu.quickqr.view.MainFragment.history.HistoryFragment.Companion.VIEW_TYPE_HISTORY
 import java.time.LocalDateTime
 
 

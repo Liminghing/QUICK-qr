@@ -4,12 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <data>
         <variable
-            name="historyViewModel"
-            type="com.jkweyu.quickqr.viewmodel.history.HistoryRVItemViewModel" />
-
-        <variable
             name="item"
-            type="com.jkweyu.quickqr.model.history.HistoryRVItem" />
+            type="com.jkweyu.quickqr.data.QRCodeItem" />
 
         <import type="com.jkweyu.quickqr.Util.DateTextUtil" />
     </data>
@@ -74,7 +70,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/guideline_85v"
                 app:layout_constraintStart_toStartOf="@+id/guideline_15v"
                 app:layout_constraintTop_toTopOf="@+id/guideline_15h"
-                app:setHistoryItemIcon="@{item.qrType}" />
+                app:setHistoryItemIcon="@{item.itemType}" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -159,13 +155,25 @@
                 android:layout_height="0dp"
                 android:autoSizeTextType="uniform"
                 android:gravity="center_vertical|end"
-                android:text="@{item.content}"
+                android:text="@{item.subTitle}"
                 app:layout_constraintBottom_toTopOf="@+id/guideline55h"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline25h" />
-
             <TextView
+                android:id="@+id/textView3"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center_vertical|end"
+
+                android:text="@{item.date.toString()}"
+                app:layout_constraintBottom_toTopOf="@+id/guideline75h"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline55h" />
+            <!--
+                        <TextView
                 android:id="@+id/textView3"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -177,6 +185,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/guideline55h" />
+            -->
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

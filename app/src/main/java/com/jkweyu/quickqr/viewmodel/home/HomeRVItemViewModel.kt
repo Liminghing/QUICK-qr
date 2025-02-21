@@ -4,14 +4,15 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jkweyu.quickqr.Util.HomeRVList
-import com.jkweyu.quickqr.view.home.HomeFragment.Companion.VIEW_TYPE_ADD_MENU
-import com.jkweyu.quickqr.view.home.HomeFragment.Companion.VIEW_TYPE_CREATE_QR
-import com.jkweyu.quickqr.view.home.HomeFragment.Companion.VIEW_TYPE_EMPTY
-import com.jkweyu.quickqr.view.home.HomeFragment.Companion.VIEW_TYPE_MAIN
-import com.jkweyu.quickqr.view.home.HomeFragment.Companion.VIEW_TYPE_SCAN_QR
+import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_ADD_MENU
+import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_CREATE_QR
+import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_EMPTY
+import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_MAIN
+import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_SCAN_QR
 import java.util.Collections
 
-class HomeRVItemViewModel(val list : MutableList<HomeItem>) : ViewModel() {
+class HomeRVItemViewModel() : ViewModel() {
+    private val list : MutableList<HomeItem> = mutableListOf()
     private val _itemList = MutableLiveData<HomeRVList>()
     val itemList: LiveData<HomeRVList> get() = _itemList
 

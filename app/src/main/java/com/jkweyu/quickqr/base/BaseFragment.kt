@@ -25,7 +25,7 @@ abstract class BaseFragment<T: ViewDataBinding>(@LayoutRes val layoutRes: Int)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         //binding.lifecycleOwner = this@BaseFragment
         //11:08분 수정
-        binding.lifecycleOwner = viewLifecycleOwner
+//        binding.lifecycleOwner = viewLifecycleOwner
 
         initView()
         super.onViewCreated(view, savedInstanceState)

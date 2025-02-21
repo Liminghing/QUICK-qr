@@ -10,37 +10,27 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/white"
-        tools:context=".MainActivity"
-        android:clipChildren="false"
-        android:elevation="4dp"
-        >
+        tools:context=".view.MainActivity"
+        android:clipToPadding="false"
+        android:elevation="4dp">
+
+        <Space
+            android:id="@+id/space"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_constraintBottom_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <!-- 프레그먼트 컨텐츠를 표시할 영역 -->
         <FrameLayout
             android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <!-- BottomNavigationView 영역 -->
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/Container_color"
-            app:itemActiveIndicatorStyle="@null"
-            app:itemIconTint="@color/selectable_item_color"
-            app:itemTextColor="@color/selectable_item_color"
-            app:labelVisibilityMode="labeled"
-            app:itemRippleColor="@android:color/transparent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:menu="@menu/bottom_nav_menu"
-            />
+            app:layout_constraintTop_toTopOf="@+id/space" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

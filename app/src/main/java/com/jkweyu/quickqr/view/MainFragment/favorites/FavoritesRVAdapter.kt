@@ -3,15 +3,15 @@ package com.jkweyu.quickqr.view.MainFragment.favorites
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.jkweyu.quickqr.databinding.ItemFavoritesLayoutBinding
-import com.jkweyu.quickqr.model.favorites.FavoritesRVItem
-import com.jkweyu.quickqr.view.MainFragment.favorites.holder.FavoritesItemViewHolder
-import com.jkweyu.quickqr.viewmodel.favorites.FavoritesRVItemViewModel
+import com.jkweyu.quickqr.data.QRCodeItem
+import com.jkweyu.quickqr.databinding.ItemHistoryLayoutBinding
+import com.jkweyu.quickqr.view.MainFragment.history.holder.HistoryItemViewHolder
+import com.jkweyu.quickqr.viewmodel.MainViewModel
 
 
 class FavoritesRVAdapter(
-    private var items : MutableList<FavoritesRVItem>,
-    private val viewModel: FavoritesRVItemViewModel,
+    private var items : MutableList<QRCodeItem>,
+    private val viewModel: MainViewModel,
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     init {
         setHasStableIds(true)
@@ -19,11 +19,11 @@ class FavoritesRVAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val context = parent.context
-        return FavoritesItemViewHolder(ItemFavoritesLayoutBinding.inflate(LayoutInflater.from(context), parent, false),viewModel)
+        return HistoryItemViewHolder(ItemHistoryLayoutBinding.inflate(LayoutInflater.from(context), parent, false),viewModel)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        (holder as FavoritesItemViewHolder).bind(getItem(position))
+        (holder as HistoryItemViewHolder).bind(getItem(position))
     }
 
     // 아이템 타입 반환 메서드
@@ -32,7 +32,7 @@ class FavoritesRVAdapter(
     }
 
     // 아이템 반환 메서드
-    private fun getItem(position: Int): FavoritesRVItem {
+    private fun getItem(position: Int): QRCodeItem {
         return items[position]
     }
 

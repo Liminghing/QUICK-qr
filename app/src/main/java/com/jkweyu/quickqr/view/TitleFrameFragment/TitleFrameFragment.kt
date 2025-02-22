@@ -78,13 +78,13 @@ class TitleFrameFragment: BaseFragment<FragmentTitleFrameBinding>(R.layout.fragm
                     loadFrameLayout(HistoryQrCardFragment())
                 }
                 "QR명함 즐겨찾기" -> {
-                    loadFrameLayout(FavoritesQrCardFragment(favoritesViewModel))
+                    loadFrameLayout(FavoritesQrCardFragment())
                 }
                 "QR페이지 제작 기록" -> {
                     loadFrameLayout(HistoryQrItemFragment())
                 }
                 "QR페이지 즐겨찾기" -> {
-                    loadFrameLayout(FavoritesQrItemFragment(favoritesViewModel))
+                    loadFrameLayout(FavoritesQrItemFragment())
                 }
                 else -> {
 

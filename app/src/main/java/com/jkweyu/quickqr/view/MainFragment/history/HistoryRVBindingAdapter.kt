@@ -27,12 +27,12 @@ object HistoryRVBindingAdapter {
 
         if(recyclerView.adapter == null){
             val list = viewModel.getQRCodeList()
-            Log.d("dfgjkl","HistoryRVBindingAdapter ${list}")
+
 //            val myList = insertItemOnDateChange(setListType(type,list),type)
 
             //
             val myList = setListType(type,list)
-
+            Log.d("asdasdas","HistoryRVBindingAdapter ${myList}")
             val historyAdapter = HistoryMultiRVAdapter(sortListByDateDescending(myList),viewModel)
             recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
             recyclerView.adapter = historyAdapter

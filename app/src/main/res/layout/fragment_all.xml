@@ -49,23 +49,23 @@
                     android:paddingHorizontal="15dp"
                     android:autoSizeTextType="uniform"
                     android:background="@color/white"
-                    android:text="QR 명함"
+                    android:text="QR TEXT"
                     android:textStyle="bold" />
                 <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("QR명함 제작 기록")}'
-                    app:icon="@drawable/ic_all_fragment_qr_card_history"
-                    app:title="QR명함 제작 기록"
-                    app:count="과거 제작했던 QR명함 기록"/>
+                    app:icon="@drawable/ic_all_text_favorites"
+                    app:title="QR TEXT 제작 기록"
+                    app:count="과거 제작했던 QR TEXT 기록"/>
 
                 <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("QR명함 즐겨찾기")}'
-                    app:icon="@drawable/ic_all_fragment_qr_card_favorite"
-                    app:title="QR명함 즐겨찾기"
-                    app:count="QR명함 즐겨찾기 기록">
+                    app:icon="@drawable/ic_all_text_history"
+                    app:title="QR TEXT 즐겨찾기"
+                    app:count="QR TEXT 즐겨찾기 기록">
 
                 </com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem>
 
@@ -77,15 +77,15 @@
                     android:paddingHorizontal="15dp"
                     android:autoSizeTextType="uniform"
                     android:background="@color/white"
-                    android:text="QR 상품"
+                    android:text="QR LINK"
                     android:textStyle="bold" />
                 <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("QR페이지 제작 기록")}'
-                    app:icon="@drawable/ic_all_fragment_qr_item_history"
-                    app:title="QR페이지 제작 기록"
-                    app:count="과거 제작했던 QR페이지 기록">
+                    app:icon="@drawable/ic_all_link_history"
+                    app:title="QR LINK 제작 기록"
+                    app:count="과거 제작했던 QR LINK 기록">
 
 
                 </com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem>
@@ -93,9 +93,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("QR페이지 즐겨찾기")}'
-                    app:icon="@drawable/ic_all_fragment_qr_item_favorite"
-                    app:title="QR페이지 즐겨찾기"
-                    app:count="QR페이지 즐겨찾기 기록"/>
+                    app:icon="@drawable/ic_all_link_favorites"
+                    app:title="QR LINK 즐겨찾기"
+                    app:count="QR LINK 즐겨찾기 기록"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -105,36 +105,36 @@
                     android:paddingHorizontal="15dp"
                     android:autoSizeTextType="uniform"
                     android:background="@color/white"
-                    android:text="설정"
+                    android:text="SETTING"
                     android:textStyle="bold" />
                 <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:icon="@android:drawable/ic_menu_mapmode"
+                    app:icon="@drawable/ic_all_language"
                     app:title="언어"
                     app:count="한국어"/>
                 <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:icon="@android:drawable/ic_lock_silent_mode"
+                    app:icon="@drawable/ic_all_volume"
                     app:title="소리"
                     app:count="무음"/>
                 <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:icon="@drawable/ic_phone_icon"
+                    app:icon="@drawable/ic_all_vibrate"
                     app:title="진동"
                     app:count="꺼짐"/>
                 <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:icon="@drawable/googleg_standard_color_18"
+                    app:icon="@drawable/ic_all_search_engine"
                     app:title="검색엔진"
                     app:count="google"/>
                 <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:icon="@android:drawable/ic_menu_info_details"
+                    app:icon="@drawable/ic_all_policy"
                     app:title="개인정보처리방침"
                     app:count="개인정보처리방침 확인"/>
 

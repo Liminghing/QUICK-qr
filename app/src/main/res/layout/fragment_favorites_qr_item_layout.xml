@@ -5,12 +5,11 @@
     <data>
         <variable
             name="favViewModel"
-            type="com.jkweyu.quickqr.viewmodel.favorites.FavoritesRVItemViewModel" />
+            type="com.jkweyu.quickqr.viewmodel.MainViewModel" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/favorites_all_recyclerView"
             android:layout_width="0dp"

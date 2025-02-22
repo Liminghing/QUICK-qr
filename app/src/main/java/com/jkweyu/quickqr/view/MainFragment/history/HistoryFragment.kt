@@ -55,7 +55,7 @@ class HistoryFragment: BaseFragment<FragmentHistoryBinding>(R.layout.fragment_hi
         super.onHiddenChanged(hidden)
         if(!hidden){
             Log.d("onHiddenChanged","<<<<HistoryFragment>>>> 보여짐")
-            loadFragment(HistoryQrCardFragment())
+            loadFragment(HistoryAllFragment())
         }else{
             Log.d("onHiddenChanged","<<<<HistoryFragment>>>> 가려짐")
         }

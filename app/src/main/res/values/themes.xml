@@ -17,6 +17,9 @@
             true
         </item>
 
+        <!-- 툴바 스타일 적용 -->
+        <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
+
         <item name="colorPrimary">#FFFFFF</item>
         <item name="colorControlNormal">#FFFFFF</item>
         <item name="colorControlHighlight">#FFFFFF</item>
@@ -25,6 +28,12 @@
 
 
     </style>
+
+    <style name="OverflowButtonStyle" parent="@android:style/Widget.Material.ActionButton.Overflow">
+        <!-- 아이콘 색상 변경 -->
+        <item name="android:tint">@color/white</item>
+    </style>
+
 
     <style name="Theme.QuickQRApp" parent="Base.Theme.QuickQRApp" />
 

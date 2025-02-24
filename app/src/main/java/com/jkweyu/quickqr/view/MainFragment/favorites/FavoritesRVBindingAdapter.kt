@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.graphics.Rect
 import android.graphics.Typeface
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -44,7 +45,7 @@ object FavoritesRVBindingAdapter {
         var menuType0List : MutableList<QRCodeItem> = items
 
         if(type != 0){
-            menuType0List = list.filter { it.itemType == type}.toMutableList()
+            menuType0List = list.filter { it.itemType == type && it.favorites == itemFavoritesConstants.TRUE}.toMutableList()
         }else{
             menuType0List = list.filter { it.favorites == itemFavoritesConstants.TRUE}.toMutableList()
         }
@@ -56,8 +57,6 @@ class DateDividerDecoration(
     private val context: Context,
     private val itemList: MutableList<QRCodeItem> // Item은 날짜를 포함한 데이터 클래스
 ) : RecyclerView.ItemDecoration() {
-
-
 
     private val textPaint = Paint().apply {
         color = Color.BLACK
@@ -88,8 +87,34 @@ class DateDividerDecoration(
 
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDraw(c, parent, state)
+
         if(itemList.size == 0){
-            parent.setBackgroundResource(R.drawable.output_4145535885)
+            parent.setBackgroundColor(Color.WHITE) // 배경 색 지정
+
+            val icon = ContextCompat.getDrawable(parent.context, R.drawable.ic_empty_icon)
+            val paint = Paint().apply {
+                color = Color.GRAY
+                textSize = 50f
+                textAlign = Paint.Align.CENTER
+            }
+
+            val centerX = parent.width / 2
+            val centerY = parent.height / 2
+
+            // 이미지 그리기
+            icon?.let {
+                val iconSize = 500 // 이미지 크기
+                val left = centerX - iconSize / 2
+                val top = centerY - iconSize
+                val right = centerX + iconSize / 2
+                val bottom = centerY
+
+                it.setBounds(left, top, right, bottom)
+                it.draw(c)
+            }
+
+            // 텍스트 그리기
+            c.drawText("No Records Available", centerX.toFloat(), centerY + 120f, paint)
         }else{
             parent.setBackgroundResource(R.color.white)
         }

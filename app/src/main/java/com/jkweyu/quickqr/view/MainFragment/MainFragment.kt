@@ -1,6 +1,5 @@
 package com.jkweyu.quickqr.view.MainFragment
 
-import android.content.Context
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
@@ -137,22 +136,7 @@ class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
         requireActivity().onBackPressedDispatcher.addCallback(this, backPressedCallback)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        Log.d("FrameFragmentLife","FrameFrag onAttach")
-//        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
-//        mainViewModel.setDepth(0)
-//        registerOnBackPressedCallback()
-    }
 
-    override fun onDetach() {
-        super.onDetach()
-        Log.d("FrameFragmentLife","FrameFrag onDetach")
-//        if(::backPressedCallback.isInitialized){
-//            Log.d("onHiddenChanged","Main backPressedCallback 해제")
-//            backPressedCallback.remove()
-//        }
-    }
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
         mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
@@ -160,6 +144,7 @@ class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             Log.d("dfgjkl","MainFragment ${mainViewModel.qrCodeList.value} ")
             Log.d("onHiddenChanged","Main backPressedCallback 등록")
             mainViewModel.setDepth(0)
+//            mainViewModel.setFocusItem(null)
             registerOnBackPressedCallback()
         }else{
             if(::backPressedCallback.isInitialized){

@@ -1,5 +1,6 @@
 package com.jkweyu.quickqr.view.FrameFragment
 
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.jkweyu.quickqr.R
 import com.jkweyu.quickqr.base.BaseFragment
@@ -51,23 +52,36 @@ class FrameFragment(private var item : QRCodeItem?): BaseFragment<FragmentFrameB
         frameFragmentViewModel = ViewModelProvider(this@FrameFragment)[FrameFragmentViewModel::class.java]
         mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         if (!hidden){
-            if (mainViewModel.focusItem.value !=  null){
-                loadQrDetailFragment()
-            }else{
-                frameFragmentViewModel?.activityFragment?.observe(this@FrameFragment){fragment ->
-                    when(fragment){
-                        fragmentConstantsFrame.QR_CHOICE -> {
-                            loadQrChoiceFragment()
-                        }
-                        fragmentConstantsFrame.QR_CREATE -> {
-                            loadQrCreateFragment()
-                        }
-                        fragmentConstantsFrame.QR_DETAIL -> {
-                            loadQrDetailFragment()
-                        }
+            if(mainViewModel.focusItem.value != null){
+                frameFragmentViewModel?.changeFragment(fragmentConstantsFrame.QR_DETAIL)
+            }
+            frameFragmentViewModel?.activityFragment?.observe(this@FrameFragment){fragment ->
+                Log.d("focusTag","activityFragment")
+                when(fragment){
+                    fragmentConstantsFrame.QR_CHOICE -> {
+                        loadQrChoiceFragment()
+                    }
+                    fragmentConstantsFrame.QR_CREATE -> {
+                        loadQrCreateFragment()
+                    }
+                    fragmentConstantsFrame.QR_DETAIL -> {
+                        loadQrDetailFragment()
                     }
                 }
             }
+//            if (mainViewModel.focusItem.value !=  null){
+//                if(mainViewModel.focusEditItem.value != null){
+//                    Log.d("focusTag","loadQrCreateFragment")
+//                    loadQrCreateFragment()
+//                }else{
+//                    Log.d("focusTag","loadQrDetailFragment")
+//                    loadQrDetailFragment()
+//                }
+//
+//            }else{
+//                Log.d("focusTag","frameFragmentViewModel")
+//
+//            }
         }else{
             viewModelStore.clear()
             frameFragmentViewModel = null

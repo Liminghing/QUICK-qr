@@ -127,6 +127,20 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         _qrCodeList.value = newList
     }
 
+    // [뷰모델] QR 코드 아이템 제거 함수 (선택 사항)
+    fun updateQRCodeItem(item: QRCodeItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            qrCodeItemDao.update(item)
+        }
+        val currentList = _qrCodeList.value ?: mutableListOf()
+        val newList = currentList.toMutableList()
+        val index = newList.indexOfFirst { it.rid == item.rid }
+        if (index != -1) {
+            newList[index] = item
+        }
+        _qrCodeList.value = newList
+    }
+
     // [DB] DB의 모든 QR 리스트 로드
     suspend fun loadQRList(): Boolean {
         val type2List: MutableList<QRCodeItem>?
@@ -165,17 +179,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         setFocusItem(item)
     }
 
-
     // [DB] DB의 특정 QR 아이템 삭제 (이후 뷰모델 반영)
-    suspend fun deleteItem(item : QRCodeItem) {
-        withContext(Dispatchers.IO) {
-            val result = qrCodeItemDao.delete(item)
-            withContext(Dispatchers.Main) {
-                removeQRCodeItem(item)
-//                setDetailItemId(result)
-            }
+    fun deleteItem(item : QRCodeItem) {
+        viewModelScope.launch(Dispatchers.IO) {
+            qrCodeItemDao.delete(item)
         }
+        removeQRCodeItem(item)
     }
+
 
     //생성 및 선택시
     private val _focusItem = MutableLiveData<QRCodeItem?>(null) // 선택된 아이템 저장
@@ -185,9 +196,12 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         _focusItem.value = item // 클릭된 아이템 전달
     }
 
+    private val _focusEditItem = MutableLiveData<QRCodeItem?>(null) // 선택된 아이템 저장
+    val focusEditItem: LiveData<QRCodeItem?> get() = _focusEditItem
 
-
-
+    fun setFocusEditItem(item: QRCodeItem?) {
+        _focusEditItem.value = item // 클릭된 아이템 전달
+    }
 
     /**
      * _homeRVItemList

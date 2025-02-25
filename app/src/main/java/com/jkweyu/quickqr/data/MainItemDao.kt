@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import java.util.Date
 
 
@@ -31,6 +32,8 @@ interface QRCodeItemDao {
     @Query("DELETE FROM qrcodeitem")
     fun deleteAll()
 
+    @Update
+    fun update(qrCodeItem: QRCodeItem): Int
 
     @Insert
     fun insertItems(mainItem: QRCodeItem) :Long

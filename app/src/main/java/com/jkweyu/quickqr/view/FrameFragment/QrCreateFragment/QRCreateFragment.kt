@@ -59,11 +59,13 @@ class QRCreateFragment: BaseFragment<FragmentQrCreateBinding>(R.layout.fragment_
     override fun onAttach(context: Context) {
         super.onAttach(context)
         mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+
         val frameFragment = requireActivity()
             .supportFragmentManager
             .findFragmentByTag("frame_fragment_tag") as FrameFragment
         frameFragmentViewModel = ViewModelProvider(frameFragment)[FrameFragmentViewModel::class.java]
 
+        Log.d("focusTag","${mainViewModel.focusItem.value}")
         mainViewModel.setDepth(2)
         registerOnBackPressedCallback()
         Log.d("onHiddenChanged","QRCreateFragment onAttach backPressedCallback 등록")
@@ -83,6 +85,10 @@ class QRCreateFragment: BaseFragment<FragmentQrCreateBinding>(R.layout.fragment_
 class QRCreatePagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     val fragments: List<Fragment>
     init {
+
+
+
+
         //fragments = listOf(CardQrFragment(), GeneralQrFragment(), ItemQrFragment())
         fragments = listOf(TextCardFragment(), UrlCardFragment())
     }

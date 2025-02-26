@@ -24,8 +24,9 @@ interface QRCodeItemDao {
             "AND item_content LIKE :content " +
             "AND item_date LIKE :date " +
             "AND item_favorites LIKE :favorites " +
+            "AND item_hPosition LIKE :hPosition " +
             "LIMIT 1")
-    fun findByItem(itemType: Int?, title: String?, subTitle: String?,content: String?,date: Date?,favorites: Int?): QRCodeItem
+    fun findByItem(itemType: Int?, title: String?, subTitle: String?,content: String?,date: Date?,favorites: Int?,hPosition: Int?): QRCodeItem
 
 
     // 기존 아이템을 모두 삭제하는 메서드

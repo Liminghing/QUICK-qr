@@ -9,6 +9,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.jkweyu.quickqr.constants.activityBackgroundConstants
 import com.jkweyu.quickqr.constants.fragmentConstants
+import com.jkweyu.quickqr.constants.itemHomeConstants
 import com.jkweyu.quickqr.data.MainDatabase
 import com.jkweyu.quickqr.data.QRCodeItem
 import com.jkweyu.quickqr.data.QRCodeItemDao
@@ -28,6 +29,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         homeRVDao = db.homeRVItemDao() // 삭제?
         qrCodeItemDao = db.qrCodeItemDao()
     }
+
+
+
+
     /**
      *
      */
@@ -110,6 +115,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         return qrCodeList.value ?: mutableListOf()
     }
 
+    // [뷰모델] 리스트 반환 함수
+    fun gethPositionList() : MutableList<QRCodeItem>{
+        return qrCodeList.value?.filter { it.hPosition == itemHomeConstants.TRUE }?.toMutableList() ?: mutableListOf()
+    }
+
     // [뷰모델] QR 코드 아이템 추가 함수
     fun addQRCodeItem(item: QRCodeItem) {
         val currentList = qrCodeList.value ?: mutableListOf()
@@ -138,6 +148,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         if (index != -1) {
             newList[index] = item
         }
+        Log.d("onHiddenChangedInHomeFrag","ridList 업데이트}")
         _qrCodeList.value = newList
     }
 
@@ -153,7 +164,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
                     subTitle = it.subTitle,
                     content = it.content,
                     date = it.date,
-                    favorites = it.favorites
+                    favorites = it.favorites,
+                    hPosition = it.hPosition
                 )
             }.toMutableList()
             withContext(Dispatchers.Main) {
@@ -176,7 +188,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             qrCodeItemDao.insertItems(item)
         }
         addQRCodeItem(item)
-        setFocusItem(item)
+        setFocusItem(item,"insertItem")
     }
 
     // [DB] DB의 특정 QR 아이템 삭제 (이후 뷰모델 반영)
@@ -189,18 +201,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
 
     //생성 및 선택시
-    private val _focusItem = MutableLiveData<QRCodeItem?>(null) // 선택된 아이템 저장
-    val focusItem: LiveData<QRCodeItem?> get() = _focusItem
+    private val _focusItem = MutableLiveData<Pair<QRCodeItem?, String?>>(null) // 선택된 아이템 저장
+    val focusItem: LiveData<Pair<QRCodeItem?, String?>> get() = _focusItem
 
-    fun setFocusItem(item: QRCodeItem?) {
-        _focusItem.value = item // 클릭된 아이템 전달
+    fun getFocusItem() : QRCodeItem? {
+        return focusItem.value?.first
     }
-
-    private val _focusEditItem = MutableLiveData<QRCodeItem?>(null) // 선택된 아이템 저장
-    val focusEditItem: LiveData<QRCodeItem?> get() = _focusEditItem
-
-    fun setFocusEditItem(item: QRCodeItem?) {
-        _focusEditItem.value = item // 클릭된 아이템 전달
+    fun setFocusItem(item: QRCodeItem?, type: String?) {
+        _focusItem.value = Pair(item,type) // 클릭된 아이템 전달
     }
 
     /**
@@ -242,4 +250,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             homeRVDao.insertItems(items)
         }
     }
+
+
+
+
 }

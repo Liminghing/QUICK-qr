@@ -58,6 +58,15 @@ class HomeRVItemViewModel() : ViewModel() {
         items?.removeAt(itemPosition)
         _itemList.value = items!!
     }
+    private val _selectedHItem = MutableLiveData<Int>(null) // 선택된 아이템 저장
+    val selectedHItem: LiveData<Int> get() = _selectedHItem
+
+    fun onHItemClicked(item: Int) {
+        _selectedHItem.value = item // 클릭된 아이템 전달
+    }
+
+
+
 
     private val _selectedItem = MutableLiveData<HomeItem>(null) // 선택된 아이템 저장
     val selectedItem: LiveData<HomeItem> get() = _selectedItem

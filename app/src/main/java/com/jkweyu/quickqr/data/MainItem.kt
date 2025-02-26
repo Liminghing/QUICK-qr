@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import com.jkweyu.quickqr.constants.itemFavoritesConstants
+import com.jkweyu.quickqr.constants.itemHomeConstants
 import java.util.Date
 import java.util.Objects
 import kotlin.math.absoluteValue
@@ -18,7 +19,8 @@ data class QRCodeItem(
     @ColumnInfo(name = "item_subTitle") var subTitle: String,
     @ColumnInfo(name = "item_content") var content: String,
     @ColumnInfo(name = "item_date") var date: Date,
-    @ColumnInfo(name = "item_favorites") var favorites: Int = itemFavoritesConstants.FALSE
+    @ColumnInfo(name = "item_favorites") var favorites: Int = itemFavoritesConstants.FALSE,
+    @ColumnInfo(name = "item_hPosition") var hPosition: Int = itemHomeConstants.FALSE
 )
 {
     init {

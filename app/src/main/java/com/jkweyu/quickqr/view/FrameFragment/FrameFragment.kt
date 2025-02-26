@@ -52,7 +52,7 @@ class FrameFragment(private var item : QRCodeItem?): BaseFragment<FragmentFrameB
         frameFragmentViewModel = ViewModelProvider(this@FrameFragment)[FrameFragmentViewModel::class.java]
         mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         if (!hidden){
-            if(mainViewModel.focusItem.value != null){
+            if(mainViewModel.focusItem.value?.second != null){
                 frameFragmentViewModel?.changeFragment(fragmentConstantsFrame.QR_DETAIL)
             }
             frameFragmentViewModel?.activityFragment?.observe(this@FrameFragment){fragment ->
@@ -85,7 +85,7 @@ class FrameFragment(private var item : QRCodeItem?): BaseFragment<FragmentFrameB
         }else{
             viewModelStore.clear()
             frameFragmentViewModel = null
-            mainViewModel.setFocusItem(null)
+            mainViewModel.setFocusItem(null,null)
         }
     }
 }

@@ -23,8 +23,8 @@ class QrDetailCodeFragment(private var item : QRCodeItem?): BaseFragment<Fragmen
             mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 //            Log.d("dfgjkl","QrDetailCodeFragment ${mainViewModel.qrCodeList.value} ")
 
-            if(mainViewModel.focusItem.value != null){
-                setView(mainViewModel.focusItem.value!!)
+            if(mainViewModel.getFocusItem() != null){
+                setView(mainViewModel.getFocusItem()!!)
             }
 
             downloadArea.setOnClickListener {

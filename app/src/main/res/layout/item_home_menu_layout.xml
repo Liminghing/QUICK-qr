@@ -9,7 +9,7 @@
 
         <variable
             name="item"
-            type="com.jkweyu.quickqr.viewmodel.home.HomeItem" />
+            type="com.jkweyu.quickqr.data.QRCodeItem" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -31,13 +31,15 @@
             android:layout_height="0dp"
             android:layout_margin="8dp"
             android:elevation="4dp"
-            app:setCardViewResource="@{item.menuType}"
-            android:onLongClick="@{() -> menuViewModel.toggleItemVisibility(item)}"
+            app:setCardViewResource="@{item.itemType}"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
-
+<!--
+android:onLongClick="@{() -> menuViewModel.toggleItemVisibility(item)}"
+-->
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guideline1"
@@ -120,7 +122,7 @@
 
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/title_text"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:autoSizeTextType="uniform"
@@ -158,7 +160,7 @@
                         android:id="@+id/QRImage"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        app:setCardViewQR="@{item.menuType}"
+                        app:setCardViewQR="@{item.itemType}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintEnd_toStartOf="@+id/guideline8"
@@ -168,7 +170,7 @@
                         android:id="@+id/IconImage"
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        app:setCardViewIcon="@{item.menuType}"
+                        app:setCardViewIcon="@{item.itemType}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintDimensionRatio="1:1"
                         app:layout_constraintEnd_toEndOf="parent"

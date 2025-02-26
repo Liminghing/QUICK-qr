@@ -7,8 +7,8 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import com.jkweyu.quickqr.data.QRCodeItem
 import com.jkweyu.quickqr.databinding.ItemHomeMenuLayoutBinding
-import com.jkweyu.quickqr.viewmodel.home.HomeItem
 import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
 
 class HomeMenuViewHolder(
@@ -22,18 +22,19 @@ class HomeMenuViewHolder(
             setDeleteMode(isVisible)
         })
     }
-    fun bind(item: HomeItem) {
+    fun bind(item: QRCodeItem) {
         //아이템 재활용시 수정모드 조회
         setDeleteMode(viewModel.itemVisibility.value!!)
         //아이템 아이디 확인용
-        binding.textView.text = item.itemID.toString()
+        binding.titleText.text = item.title
         binding.deleteButton.setOnClickListener {
-            viewModel.removeItem(adapterPosition)
+
+//            viewModel.removeItem(adapterPosition)
         }
 
         //아이템 클릭
         binding.itemCard.setOnClickListener {
-            viewModel.onItemClicked(item)
+//            viewModel.onItemClicked(item)
         }
         //바인딩 작업 수행
         binding.menuViewModel = viewModel

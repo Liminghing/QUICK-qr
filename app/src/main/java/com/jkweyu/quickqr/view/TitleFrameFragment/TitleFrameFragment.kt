@@ -11,11 +11,10 @@ import com.jkweyu.quickqr.constants.fragmentConstants
 import com.jkweyu.quickqr.databinding.FragmentTitleFrameBinding
 import com.jkweyu.quickqr.view.MainFragment.favorites.subfragment.FavoritesQrCardFragment
 import com.jkweyu.quickqr.view.MainFragment.favorites.subfragment.FavoritesQrItemFragment
+import com.jkweyu.quickqr.view.MainFragment.history.HistoryFragment
 import com.jkweyu.quickqr.view.MainFragment.history.subfragment.HistoryQrCardFragment
 import com.jkweyu.quickqr.view.MainFragment.history.subfragment.HistoryQrItemFragment
 import com.jkweyu.quickqr.viewmodel.MainViewModel
-import com.jkweyu.quickqr.viewmodel.favorites.FavoritesRVItemViewModel
-import com.jkweyu.quickqr.viewmodel.history.HistoryRVItemViewModel
 
 class TitleFrameFragment: BaseFragment<FragmentTitleFrameBinding>(R.layout.fragment_title_frame) {
     private lateinit var mainViewModel: MainViewModel
@@ -67,29 +66,34 @@ class TitleFrameFragment: BaseFragment<FragmentTitleFrameBinding>(R.layout.fragm
         if (!hidden){
             mainViewModel.setDepth(1)
             registerOnBackPressedCallback()
-            val type = mainViewModel.allFragSelectedItem.value
-            binding.type = type
 
-            val historyViewModel = HistoryRVItemViewModel()
-            val favoritesViewModel = FavoritesRVItemViewModel()
+            if(mainViewModel.allFragSelectedItem.value != null){
+                val type = mainViewModel.allFragSelectedItem.value
+                binding.type = type
+                when(type){
+                    "QR명함 제작 기록" -> {
+                        loadFrameLayout(HistoryQrCardFragment())
+                    }
+                    "QR명함 즐겨찾기" -> {
+                        loadFrameLayout(FavoritesQrCardFragment())
+                    }
+                    "QR페이지 제작 기록" -> {
+                        loadFrameLayout(HistoryQrItemFragment())
+                    }
+                    "QR페이지 즐겨찾기" -> {
+                        loadFrameLayout(FavoritesQrItemFragment())
+                    }
+                    else -> {
 
-            when(type){
-                "QR명함 제작 기록" -> {
-                    loadFrameLayout(HistoryQrCardFragment())
+                    }
                 }
-                "QR명함 즐겨찾기" -> {
-                    loadFrameLayout(FavoritesQrCardFragment())
-                }
-                "QR페이지 제작 기록" -> {
-                    loadFrameLayout(HistoryQrItemFragment())
-                }
-                "QR페이지 즐겨찾기" -> {
-                    loadFrameLayout(FavoritesQrItemFragment())
-                }
-                else -> {
-
-                }
+            }else{
+                binding.type = "홈 화면 즐겨찾기 추가"
+                loadFrameLayout(HistoryFragment())
             }
+
+
+
             Log.d("onHiddenChanged","[[[[TitleFrameFragment]]]] show")
         }else{
             Log.d("onHiddenChanged","[[[[TitleFrameFragment]]]] hide")

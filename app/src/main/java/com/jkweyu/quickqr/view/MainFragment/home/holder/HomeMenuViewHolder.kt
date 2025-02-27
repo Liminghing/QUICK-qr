@@ -7,12 +7,15 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
+import com.jkweyu.quickqr.constants.fragmentConstants
+import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 import com.jkweyu.quickqr.databinding.ItemHomeMenuLayoutBinding
-import com.jkweyu.quickqr.viewmodel.home.HomeItem
+import com.jkweyu.quickqr.viewmodel.MainViewModel
 import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
 
 class HomeMenuViewHolder(
     val binding: ItemHomeMenuLayoutBinding,
+    private val mviewModel: MainViewModel,
     private val viewModel: HomeRVItemViewModel,
     private var animatorMap : MutableMap<Long, ObjectAnimator?>
 ) : RecyclerView.ViewHolder(binding.root) {
@@ -22,18 +25,23 @@ class HomeMenuViewHolder(
             setDeleteMode(isVisible)
         })
     }
-    fun bind(item: HomeItem) {
+    fun bind(item: HomeRVItem) {
         //아이템 재활용시 수정모드 조회
         setDeleteMode(viewModel.itemVisibility.value!!)
         //아이템 아이디 확인용
-        binding.textView.text = item.itemID.toString()
+        binding.titleText.text = item.title
         binding.deleteButton.setOnClickListener {
-            viewModel.removeItem(adapterPosition)
+            val index =  mviewModel.vmList.indexOfFirst { it.rid == item.rid }
+            mviewModel.removeItem(index)
+
         }
 
         //아이템 클릭
         binding.itemCard.setOnClickListener {
-            viewModel.onItemClicked(item)
+            if (viewModel.itemVisibility.value == false){
+                mviewModel.findFocusItem(item,"main")
+                mviewModel.changeFragment(fragmentConstants.FRAME)
+            }
         }
         //바인딩 작업 수행
         binding.menuViewModel = viewModel
@@ -41,16 +49,14 @@ class HomeMenuViewHolder(
     }
     //아이템 객체 수정모드 진입 메서드
     private fun setDeleteMode(isVisible : Boolean){
-        if(itemId != -1L){
-            if(isVisible){
-
-                binding.deleteButton.isVisible = true
-                startAnimator(adapterPosition,itemId)
-            }else{
-                Log.d("kokokok","qqqqq222")
-                binding.deleteButton.isVisible = false
-                stopAnimator(adapterPosition,itemId)
-            }
+        if(isVisible){
+            binding.deleteButton.isVisible = true
+            startAnimator(adapterPosition,itemId)
+            Log.d("kokokok","startAnimator")
+        }else{
+            Log.d("kokokok","stopAnimator")
+            binding.deleteButton.isVisible = false
+            stopAnimator(adapterPosition,itemId)
         }
     }
 

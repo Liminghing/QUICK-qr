@@ -10,7 +10,7 @@ import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 import com.jkweyu.quickqr.data.homervdata.HomeRVItemDao
 
 //@Database(entities = [User::class, Post::class], version = 1)
-@Database(entities = [HomeRVItem::class,QRCodeItem::class], version = 2)
+@Database(entities = [HomeRVItem::class,QRCodeItem::class], version = 1)
 @TypeConverters(DateConverters::class)
 abstract class MainDatabase : RoomDatabase() {
     abstract fun homeRVItemDao(): HomeRVItemDao
@@ -29,7 +29,9 @@ abstract class MainDatabase : RoomDatabase() {
                     context.applicationContext,
                     MainDatabase::class.java,
                     "database"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
 
                 // 인스턴스가 null인 경우에만 새로 할당
                 INSTANCE = instance

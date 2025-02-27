@@ -2,8 +2,8 @@ package com.jkweyu.quickqr.view.MainFragment.home.holder
 
 import android.view.ViewTreeObserver
 import androidx.recyclerview.widget.RecyclerView
+import com.jkweyu.quickqr.constants.homeItemTypeConstants
 import com.jkweyu.quickqr.databinding.ItemHomeAddMenuLayoutBinding
-import com.jkweyu.quickqr.viewmodel.home.HomeItem
 import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
 
 
@@ -14,10 +14,10 @@ class HomeAddMenuViewHolder(
     init {
         setItemSize() 
     }
-    fun bind(item: HomeItem) {
+    fun bind() {
         binding.menuViewModel = viewModel
         binding.itemCard.setOnClickListener {
-            viewModel.onItemClicked(item)
+            viewModel.onHItemClicked(homeItemTypeConstants.VIEW_TYPE_ADD_MENU)
         }
 
     }

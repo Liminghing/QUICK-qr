@@ -1,6 +1,7 @@
 package com.jkweyu.quickqr.view
 
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.jkweyu.quickqr.R
@@ -28,22 +29,23 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         )[MainViewModel::class.java]
-
+        Log.d("checkMainViewModel","MainActivity ${mainViewModel}")
+        Log.d("onHiddenChangedInHomeFrag","메인 ${mainViewModel.getQRCodeList()}")
         mainFragment = MainFragment()
         frameFragment = FrameFragment(null)
         titleFrameFragment = TitleFrameFragment()
 
 
-        supportFragmentManager.beginTransaction()
-            .add(R.id.container, mainFragment,"main_fragment_tag").hide(mainFragment)
-            .add(R.id.container, frameFragment, "frame_fragment_tag").hide(frameFragment)
-            .add(R.id.container, titleFrameFragment,"title_frame_fragment_tag").hide(titleFrameFragment)
-            .commit()
+
 
         lifecycleScope.launch {
-            val isLoaded = mainViewModel.loadList()
+            val isLoaded = mainViewModel.loadHomeRVList()
             val isLoaded2 = mainViewModel.loadQRList()
-
+            supportFragmentManager.beginTransaction()
+                .add(R.id.container, mainFragment,"main_fragment_tag").hide(mainFragment)
+                .add(R.id.container, frameFragment, "frame_fragment_tag").hide(frameFragment)
+                .add(R.id.container, titleFrameFragment,"title_frame_fragment_tag").hide(titleFrameFragment)
+                .commit()
             if (isLoaded && isLoaded2) {
                 binding.apply {
 

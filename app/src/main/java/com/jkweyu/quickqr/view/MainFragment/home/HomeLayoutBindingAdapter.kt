@@ -10,9 +10,9 @@ object HomeLayoutBindingAdapter {
     @BindingAdapter("setCardViewIcon")
     fun setCardViewIconResource(imageView: ImageView, type: Int?) {
         val resource = when (type) {
-            1 -> R.drawable.ic_home_cardview_business_card
-            2 -> R.drawable.ic_home_cardview_item_card
-            else -> R.drawable.ic_home_cardview_normal_card
+            1 -> R.drawable.ic_h_position_text
+            else -> R.drawable.ic_h_position_link
+//            else -> R.drawable.ic_home_cardview_normal_card
         }
         imageView.setImageResource(resource)
     }
@@ -22,8 +22,9 @@ object HomeLayoutBindingAdapter {
     fun setCardViewQRResource(imageView: ImageView, type: Int?) {
         val resource = when (type) {
             1 -> R.drawable.ic_home_cardview_qr
-            2 -> R.drawable.ic_home_cardview_item_qr
-            else -> R.drawable.ic_home_cardview_normal_qr
+            else -> R.drawable.ic_home_cardview_qr
+//            2 -> R.drawable.ic_home_cardview_item_qr
+//            else -> R.drawable.ic_home_cardview_normal_qr
         }
         imageView.setImageResource(resource)
     }
@@ -33,8 +34,9 @@ object HomeLayoutBindingAdapter {
     fun setCardViewResource(layout: ConstraintLayout, type: Int?) {
         val resource = when (type) {
             1 -> R.drawable.shape_cardview_profile
-            2 -> R.drawable.shape_cardview_item
-            else -> R.drawable.shape_cardview_normal
+            else -> R.drawable.shape_cardview_profile
+//            2 -> R.drawable.shape_cardview_item
+//            else -> R.drawable.shape_cardview_normal
         }
         layout.setBackgroundResource(resource)
     }

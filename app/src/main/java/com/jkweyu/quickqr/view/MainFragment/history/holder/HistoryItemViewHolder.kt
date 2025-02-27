@@ -14,22 +14,22 @@ class HistoryItemViewHolder(
 
         binding.item = item
         binding.root.setOnClickListener {
-            viewModel.setFocusItem(item)
-            viewModel.changeFragment(fragmentConstants.FRAME)
+
+            when(viewModel.fragmentDepth.value) {
+                0 -> {
+                    // 히스토리에서 클릭한 경우
+                    viewModel.setFocusItem(item, "history")
+                    viewModel.changeFragment(fragmentConstants.FRAME)
+                }
+
+                1 -> {
+                    // all -> 타이틀프레임의 히스토리에서 클릭한 경우
+                    viewModel.setFocusItem(item, null)
+                    viewModel.addVmItem(item)
+                    viewModel.changeFragment(fragmentConstants.MAIN)
+                }
+
+            }
         }
     }
 }
-
-//class HistoryItemViewHolder(
-//    private val binding: ItemHistoryLayoutBinding,
-//    private val viewModel: HistoryRVItemViewModel
-//) : RecyclerView.ViewHolder(binding.root) {
-//    fun bind(item: HistoryRVItem) {
-//
-//        binding.historyViewModel = viewModel
-//        binding.item = item
-//        binding.root.setOnClickListener {
-//            viewModel.onItemClicked(item)
-//        }
-//    }
-//}

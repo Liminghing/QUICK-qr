@@ -18,8 +18,8 @@ class QrDetailContentFragment(private var item : QRCodeItem?): BaseFragment<Frag
 //            qrTypeViewModel = ViewModelProvider(requireActivity())[QrCreateViewModel::class.java]
             mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
 
-            if(mainViewModel.focusItem.value != null){
-                setView(mainViewModel.focusItem.value!!)
+            if(mainViewModel.getFocusItem() != null){
+                setView(mainViewModel.getFocusItem()!!)
             }
             if(item!= null){
 //                setView(item!!)

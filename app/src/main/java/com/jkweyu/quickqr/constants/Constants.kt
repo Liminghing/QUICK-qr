@@ -9,6 +9,19 @@ object itemFavoritesConstants {
     const val FALSE = 0
     const val TRUE = 1
 }
+object homeItemTypeConstants {
+    const val VIEW_TYPE_MAIN = 0
+    const val VIEW_TYPE_CREATE_QR = 1
+    const val VIEW_TYPE_SCAN_QR = 2
+    const val VIEW_TYPE_MENU = 3
+    const val VIEW_TYPE_ADD_MENU = 4
+    const val VIEW_TYPE_EMPTY = 5
+}
+
+object itemHomeConstants {
+    const val FALSE = 0
+    const val TRUE = 1
+}
 object fragmentConstants {
     const val MAIN = 0
     const val TITLE_FRAME = 1

@@ -34,7 +34,7 @@ class QrDetailFragment(private var item : QRCodeItem?): BaseFragment<FragmentQrD
 
         binding.apply {
             menuItem = binding.toolbar.menu.findItem(R.id.star)
-            menuItem.isChecked = mainViewModel.focusItem.value!!.favorites != itemFavoritesConstants.FALSE
+            menuItem.isChecked = mainViewModel.focusItem.value!!.first?.favorites != itemFavoritesConstants.FALSE
 
             setFavoriteIcon()
             // 뷰페이저 기본 설정
@@ -52,7 +52,7 @@ class QrDetailFragment(private var item : QRCodeItem?): BaseFragment<FragmentQrD
                         Log.d("checkClick","변경전 : ${menuItem.isChecked}")
                         menuItem.isChecked = !menuItem.isChecked
                         Log.d("checkClick","변경후 : ${menuItem.isChecked}\n")
-                        val item = mainViewModel.focusItem.value
+                        val item = mainViewModel.focusItem.value?.first
 
                         item!!.favorites = if (menuItem.isChecked) itemFavoritesConstants.TRUE else itemFavoritesConstants.FALSE
                         mainViewModel.updateQRCodeItem(item)
@@ -61,7 +61,7 @@ class QrDetailFragment(private var item : QRCodeItem?): BaseFragment<FragmentQrD
                         true
                     }
                     R.id.delete ->{
-                        val item = mainViewModel.focusItem.value
+                        val item = mainViewModel.focusItem.value?.first
                         mainViewModel.deleteItem(item!!)
                         mainViewModel.changeFragment(fragmentConstants.MAIN)
                         onDetach()
@@ -85,8 +85,8 @@ class QrDetailFragment(private var item : QRCodeItem?): BaseFragment<FragmentQrD
     }
 
     private fun setFavoriteIcon() {
-        Log.d("checkFav","${mainViewModel.focusItem.value?.favorites}")
-        when(mainViewModel.focusItem.value!!.favorites){
+        Log.d("checkFav","${mainViewModel.focusItem.value?.first?.favorites}")
+        when(mainViewModel.focusItem.value?.first?.favorites){
             itemFavoritesConstants.FALSE -> {
                 menuItem.setIcon(R.drawable.ic_toolbar_star_unfill)
             }

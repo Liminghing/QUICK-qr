@@ -7,30 +7,27 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.jkweyu.quickqr.constants.activityBackgroundConstants
+import com.jkweyu.quickqr.Util.AutoIndexedList
 import com.jkweyu.quickqr.constants.fragmentConstants
 import com.jkweyu.quickqr.data.MainDatabase
 import com.jkweyu.quickqr.data.QRCodeItem
 import com.jkweyu.quickqr.data.QRCodeItemDao
 import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 import com.jkweyu.quickqr.data.homervdata.HomeRVItemDao
-import com.jkweyu.quickqr.viewmodel.home.HomeItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class MainViewModel(application: Application) : AndroidViewModel(application) {
     private val db: MainDatabase
-    private val homeRVDao: HomeRVItemDao
     private val qrCodeItemDao: QRCodeItemDao
+    private val homeRVDao: HomeRVItemDao
     init {
         db = MainDatabase.getDatabase(application)
-        homeRVDao = db.homeRVItemDao() // 삭제?
         qrCodeItemDao = db.qrCodeItemDao()
+        homeRVDao = db.homeRVItemDao()
     }
-    /**
-     *
-     */
+    // 이동용 depth
     private val _fragmentDepth = MutableLiveData<Int>(0) // 선택된 아이템 저장
     val fragmentDepth: LiveData<Int> get() = _fragmentDepth
 
@@ -49,34 +46,38 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    /**
-     *
-     */
-    private val _selectedItem = MutableLiveData<QRCodeItem>(null) // 선택된 아이템 저장
-    val selectedItem: LiveData<QRCodeItem> get() = _selectedItem
-
-    fun onItemClicked(item: QRCodeItem) {
-        _selectedItem.value = item // 클릭된 아이템 전달
-    }
 
 
+//
+//    /**
+//     *
+//     */
+//    private val _selectedItem = MutableLiveData<QRCodeItem>(null) // 선택된 아이템 저장
+//    val selectedItem: LiveData<QRCodeItem> get() = _selectedItem
+//
+//    fun onItemClicked(item: QRCodeItem) {
+//        _selectedItem.value = item // 클릭된 아이템 전달
+//    }
 
-    /**
-     * qr 생성 화면에서 생성 버튼 클릭시 전환
-     */
-    private val _createQRType = MutableLiveData<Int>(0)
-    val createQRType: LiveData<Int> get() = _createQRType
 
-    fun checkQRType(type:Int) {
-        _createQRType.value = type
-    }
 
-    private val _activityBackground = MutableLiveData<Int>(activityBackgroundConstants.WHITE)
-    val activityBackground: LiveData<Int> get() = _activityBackground
+//    /**
+//     * qr 생성 화면에서 생성 버튼 클릭시 전환
+//     */
+//    private val _createQRType = MutableLiveData<Int>(0)
+//    val createQRType: LiveData<Int> get() = _createQRType
+//
+//    fun checkQRType(type:Int) {
+//        _createQRType.value = type
+//    }
 
-    fun setActivityBackground(key : Int){
-        _activityBackground.value = key
-    }
+//    private val _activityBackground = MutableLiveData<Int>(activityBackgroundConstants.WHITE)
+//    val activityBackground: LiveData<Int> get() = _activityBackground
+//
+//    fun setActivityBackground(key : Int){
+//        _activityBackground.value = key
+//    }
+
     private val _allFragSelectedItem = MutableLiveData<String>(null) // 선택된 아이템 저장
     val allFragSelectedItem: LiveData<String> get() = _allFragSelectedItem
 
@@ -119,15 +120,19 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         Log.d("dfgjkl","MainViewModel ${qrCodeList.value}")
     }
 
-    // [뷰모델] QR 코드 아이템 제거 함수 (선택 사항)
+    // [뷰모델] QR 코드 아이템 제거 함수
     fun removeQRCodeItem(item: QRCodeItem) {
         val currentList = _qrCodeList.value ?: mutableListOf()
         val newList = currentList.toMutableList()
         newList.remove(item)
         _qrCodeList.value = newList
+
+        val index =  vmList.indexOfFirst { it.rid == item.rid }
+        removeItem(index)
+        updateVmItem()
     }
 
-    // [뷰모델] QR 코드 아이템 제거 함수 (선택 사항)
+    // [뷰모델] QR 코드 아이템 업데이트 함수
     fun updateQRCodeItem(item: QRCodeItem) {
         viewModelScope.launch(Dispatchers.IO) {
             qrCodeItemDao.update(item)
@@ -138,6 +143,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         if (index != -1) {
             newList[index] = item
         }
+        Log.d("onHiddenChangedInHomeFrag","ridList 업데이트}")
         _qrCodeList.value = newList
     }
 
@@ -163,20 +169,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    // [DB] DB의 특정 QR 아이템 반환
-    suspend fun loadItem(id: Long): QRCodeItem {
-        return withContext(Dispatchers.IO) {
-            qrCodeItemDao.loadByIds(id)
-        }
-    }
-
     // [DB] DB의 특정 QR 아이템 추가 (이후 뷰모델 반영)
     fun insertItem(item : QRCodeItem) {
         viewModelScope.launch(Dispatchers.IO) {
             qrCodeItemDao.insertItems(item)
         }
         addQRCodeItem(item)
-        setFocusItem(item)
+        setFocusItem(item,"insertItem")
     }
 
     // [DB] DB의 특정 QR 아이템 삭제 (이후 뷰모델 반영)
@@ -187,59 +186,154 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         removeQRCodeItem(item)
     }
 
-
-    //생성 및 선택시
-    private val _focusItem = MutableLiveData<QRCodeItem?>(null) // 선택된 아이템 저장
-    val focusItem: LiveData<QRCodeItem?> get() = _focusItem
-
-    fun setFocusItem(item: QRCodeItem?) {
-        _focusItem.value = item // 클릭된 아이템 전달
+    // [DB] DB의 특정 QR 아이템 반환
+    suspend fun loadItem(id: Long): QRCodeItem {
+        return withContext(Dispatchers.IO) {
+            qrCodeItemDao.loadByIds(id)
+        }
     }
 
-    private val _focusEditItem = MutableLiveData<QRCodeItem?>(null) // 선택된 아이템 저장
-    val focusEditItem: LiveData<QRCodeItem?> get() = _focusEditItem
+    //생성 및 선택시
+    private val _focusItem = MutableLiveData<Pair<QRCodeItem?, String?>>(null) // 선택된 아이템 저장
+    val focusItem: LiveData<Pair<QRCodeItem?, String?>> get() = _focusItem
 
-    fun setFocusEditItem(item: QRCodeItem?) {
-        _focusEditItem.value = item // 클릭된 아이템 전달
+    fun getFocusItem() : QRCodeItem? {
+        return focusItem.value?.first
+    }
+    fun setFocusItem(item: QRCodeItem?, type: String?) {
+        _focusItem.value = Pair(item,type) // 클릭된 아이템 전달
+    }
+    fun findFocusItem(item: HomeRVItem?, type: String?) {
+        val focusedItem = qrCodeList.value?.find { it.rid == item?.rid }
+        setFocusItem(focusedItem,type)
     }
 
     /**
-     * _homeRVItemList
+     * --------------------------------------------------------------------------------------------
      */
-    private val _homeRVItemList = MediatorLiveData<MutableList<HomeItem>>()
-    val homeRvItemList: LiveData<MutableList<HomeItem>> get() = _homeRVItemList
 
 
-    suspend fun loadList(): Boolean {
-        val type2List: MutableList<HomeItem>?
+    var vmList = AutoIndexedList<HomeRVItem>()
+
+
+
+    // {뷰모델} 아이템 추가 -> DB
+    fun addVmItem(item : QRCodeItem){
+        if(!isItemExist(item.rid)){
+            var newItem = vmList.addAndReturn(item.toHomeRVItem())
+            Log.d("checkNewItem","$newItem")
+            addHomeRvItem(newItem)
+        }
+    }
+
+    fun removeItem(index : Int){
+//        val item = hItems[index]
+//        hItems.removeAt(index)
+        val item = vmList[index]
+        vmList.removeAt(index)
+
+        removeHomeRvItem()
+    }
+
+    // {뷰모델} 아이템 업데이트 -> DB
+    fun updateVmItem(){
+        updateHomeRvItem()
+    }
+
+    private val _homeRVItemList = MediatorLiveData<MutableList<HomeRVItem>>(null)
+    val homeRvItemList: LiveData<MutableList<HomeRVItem>> get() = _homeRVItemList
+
+    // [뷰모델] 뷰모델 리스트 - 세팅 함수
+    fun setHomeVMList(list : MutableList<HomeRVItem>) {
+        vmList.clear()
+        vmList.addAll(list)
+    }
+
+    // [DB] 아이템 추가 로직
+    fun addHomeRvItem(item : HomeRVItem) {
+        _homeRVItemList.value = vmList
+        //DB 업데이트 - insert(item)
+        viewModelScope.launch(Dispatchers.IO) {
+            homeRVDao.insertItem(item)
+        }
+    }
+    // [DB] 아이템 삭제
+    fun removeHomeRvItem() {
+        _homeRVItemList.value = vmList
+    }
+
+    // [DB] 아이템 수정 로직
+    fun updateHomeRvItem() {
+        val iid = vmList
+        iid.let { list ->
+            val filteredList = list.map { item -> "(position=${item.itemPosition}, title=${item.title})" }
+            Log.d("checkHomeRvItemList",filteredList.joinToString(", "))
+        }
+        _homeRVItemList.value = vmList
+        val iid2 = homeRvItemList.value
+        iid2.let { list ->
+            val filteredList = list!!.map { item -> "{position=${item.itemPosition}, title=${item.title}}" }
+            Log.d("checkHomeRvItemList",filteredList.joinToString(", "))
+        }
+
+
+        //DB 업데이트
+        viewModelScope.launch(Dispatchers.IO) {
+            homeRVDao.deleteAll()
+            homeRVDao.insertList(vmList)
+            val iid3 = homeRVDao.getAll()
+            iid3.let { list ->
+                val filteredList = list!!.map { item -> "[position=${item.itemPosition}, title=${item.title}]" }
+                Log.d("checkHomeRvItemList",filteredList.joinToString(", "))
+            }
+        }
+    }
+
+    // [DB] DB의 모든 QR 리스트 로드
+    suspend fun loadHomeRVList(): Boolean {
+        val type2List: MutableList<HomeRVItem>?
         return withContext(Dispatchers.IO) {
             val loadList: List<HomeRVItem> = homeRVDao.getAll()
+            val iid = loadList
+            iid.let { list ->
+                val filteredList = list.map { item -> "[position=${item.itemPosition}, title=${item.title}]" }
+                Log.d("checkHomeRvItemList","불러온 리스트 "+ filteredList.joinToString(", "))
+            }
             type2List = loadList.map {
-                HomeItem(
-                    itemID = it.rid,
+                HomeRVItem(
+                    rid = it.rid,
+                    itemPosition = it.itemPosition,
                     itemType = it.itemType,
-                    menuType = it.menuType,
-                    title = it.title
+                    title = it.title,
+                    subTitle = it.subTitle,
+                    content = it.content,
+                    date = it.date
                 )
             }.toMutableList()
             withContext(Dispatchers.Main) {
                 _homeRVItemList.value = type2List!!
+                setHomeVMList(homeRvItemList.value!!)
+
             }
             true // 데이터를 성공적으로 로드한 경우 true 반환
         }
     }
-    fun saveList() {
-        viewModelScope.launch(Dispatchers.IO) {
-            homeRVDao.deleteAll()
-            val items = homeRvItemList.value?.map {
-                HomeRVItem(
-                    rid = it.itemID,
-                    itemType = it.itemType,
-                    menuType = it.menuType,
-                    title = it.title
-                )
-            } as MutableList<HomeRVItem>
-            homeRVDao.insertItems(items)
-        }
+
+    // (도구) : 아이템 존재 여부 확인
+    fun isItemExist(rid: Long): Boolean {
+        return vmList.any { it.rid == rid }
+    }
+
+    // (도구) : 뷰모델 <-> DB 아이템 변환
+    fun QRCodeItem.toHomeRVItem(): HomeRVItem {
+        return HomeRVItem(
+            rid = this.rid,
+            itemPosition = null,
+            itemType = this.itemType,
+            title = this.title,
+            subTitle = this.subTitle,
+            content = this.content,
+            date = this.date
+        )
     }
 }

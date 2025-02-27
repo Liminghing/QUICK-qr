@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jkweyu.quickqr.Util.HomeRVList
+import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_ADD_MENU
 import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_CREATE_QR
 import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_EMPTY
@@ -68,18 +69,11 @@ class HomeRVItemViewModel() : ViewModel() {
 
 
 
-    private val _selectedItem = MutableLiveData<HomeItem>(null) // 선택된 아이템 저장
-    val selectedItem: LiveData<HomeItem> get() = _selectedItem
-
-    fun onItemClicked(item: HomeItem) {
-        _selectedItem.value = item // 클릭된 아이템 전달
-    }
-
     private val _itemVisibility = MutableLiveData<Boolean>(false)
     val itemVisibility: LiveData<Boolean> get() {
         return _itemVisibility
     }
-    fun toggleItemVisibility(item : HomeItem) : Boolean {
+    fun toggleItemVisibility(item : HomeRVItem) : Boolean {
         if(item.title != null){
             if(itemVisibility.value != true){
                 _itemVisibility.value = true

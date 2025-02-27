@@ -30,6 +30,13 @@ class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
 
         binding.apply {
+            button2.setOnClickListener {
+                val iid = mainViewModel.vmList
+                iid?.let { list ->
+                    val filteredList = list.map { item -> "[position=${item.itemPosition}, title=${item.title}]" }
+                    Log.d("checkHomeRvItemList", filteredList.joinToString(", "))
+                } ?: Log.d("checkHomeRvItemList", "List is null")
+            }
 
             homeFragment = HomeFragment()
             historyFragment = HistoryFragment()
@@ -37,10 +44,10 @@ class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             allFragment = AllFragment()
 
             childFragmentManager.beginTransaction()
-                .add(R.id.container, homeFragment).hide(homeFragment)
-                .add(R.id.container, historyFragment).hide(historyFragment)
-                .add(R.id.container, favoritesFragment).hide(favoritesFragment)
-                .add(R.id.container, allFragment).hide(allFragment)
+                .add(R.id.container, homeFragment,"HomeFragment").hide(homeFragment)
+                .add(R.id.container, historyFragment,"HistoryFragment").hide(historyFragment)
+                .add(R.id.container, favoritesFragment,"FavoritesFragment").hide(favoritesFragment)
+                .add(R.id.container, allFragment,"AllFragment").hide(allFragment)
                 .commit()
 
             childFragmentManager.beginTransaction()

@@ -5,7 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.jkweyu.quickqr.data.QRCodeItem
+import com.jkweyu.quickqr.Util.AutoIndexedList
+import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 import com.jkweyu.quickqr.databinding.ItemHomeAddMenuLayoutBinding
 import com.jkweyu.quickqr.databinding.ItemHomeEmptyLayoutBinding
 import com.jkweyu.quickqr.databinding.ItemHomeMenuLayoutBinding
@@ -20,34 +21,31 @@ import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
 
 
 class NewHomeMultiRVAdapter(
-    mViewModel: MainViewModel,
+    private val lists : AutoIndexedList<HomeRVItem>,
+    private val mViewModel: MainViewModel,
     private val viewModel: HomeRVItemViewModel
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), ItemMoveCallback.ItemTouchHelperContract {
     var animatorMap : MutableMap<Long, ObjectAnimator?> = mutableMapOf()
-    var items: MutableList<QRCodeItem>? = null
     init {
-        items = mViewModel.gethPositionList()
-        Log.d("onHiddenChangedInHomeFrag","items ${items}")
         setHasStableIds(true)
-//        Log.d("updateItemupdateItemupdateItem","init ${items.size}")
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        Log.d("updateItemupdateItemupdateItem","onCreateViewHolder ${items!!.size}")
+        Log.d("onHiddenChangedInHomeFrag","onCreateViewHolder")
         val context = parent.context
         return when (viewType) {
-            VIEW_TYPE_MENU -> HomeMenuViewHolder(ItemHomeMenuLayoutBinding.inflate(LayoutInflater.from(context), parent, false),viewModel,animatorMap)
+            VIEW_TYPE_MENU -> HomeMenuViewHolder(ItemHomeMenuLayoutBinding.inflate(LayoutInflater.from(context), parent, false),mViewModel,viewModel,animatorMap)
             VIEW_TYPE_ADD_MENU -> HomeAddMenuViewHolder(ItemHomeAddMenuLayoutBinding.inflate(LayoutInflater.from(context), parent, false),viewModel)
             VIEW_TYPE_EMPTY -> HomeEmptyViewHolder(ItemHomeEmptyLayoutBinding.inflate(LayoutInflater.from(context), parent, false))
-            else -> throw IllegalArgumentException("Invalid view type ${items!!.size}")
+            else -> throw IllegalArgumentException("Invalid view type")
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        Log.d("updateItemupdateItemupdateItem","onBindViewHolder ${items!!.size}")
+        Log.d("onHiddenChangedInHomeFrag","onBindViewHolder")
         when(holder){
             is HomeMenuViewHolder -> {
-                holder.bind(items!![position])
+                holder.bind(mViewModel.homeRvItemList.value?.get(position)!!)
             }
             is HomeAddMenuViewHolder -> {
                 holder.bind()
@@ -59,6 +57,15 @@ class NewHomeMultiRVAdapter(
         }
     }
 
+    override fun getItemId(position: Int): Long {
+        if(position < lists.size){
+            return lists[position].rid
+        }else if(position == lists.size){
+            return -1L
+        }else{
+            return -1L
+        }
+    }
     // 아이템 타입 반환 메서드
     override fun getItemViewType(position: Int): Int {
         // [1,2,3,4,5][+,Empty]
@@ -71,14 +78,15 @@ class NewHomeMultiRVAdapter(
         // 4 < 5
         // 5 (+) < 5
         // 6 (Empty) < 5
-        if(position < items!!.size){
+        if(position < lists.size){
             return VIEW_TYPE_MENU
-        }else if(position == items!!.size){
+        }else if(position == lists.size){
             return VIEW_TYPE_ADD_MENU
         }else{
             return VIEW_TYPE_EMPTY
         }
     }
+
 
 //    // 아이템 반환 메서드
 //    private fun getItem(position: Int): HomeItem {
@@ -100,36 +108,30 @@ class NewHomeMultiRVAdapter(
 
     //드래그 인터페이스
     override fun onRowMoved(fromPosition: Int, toPosition: Int) {
-//        val fromItem = items[fromPosition] as HomeItem
-//        val fromItemPosition = viewModel.getIndex(fromItem)
-//        val toItem = items[toPosition] as HomeItem
-//        val toItemPosition = viewModel.getIndex(toItem)
-//        if(toItem.itemType == VIEW_TYPE_MENU){
-//            if (fromPosition < toPosition) {
-//                for (i in fromItemPosition until toItemPosition) {
-////                    items.swap(i,i+1)
-//                }
-//            } else {
-//                for (i in fromItemPosition downTo toItemPosition + 1) {
-////                    items.swapList(i,i-1)
-//                }
-//            }
-//            notifyItemMoved(fromPosition, toPosition)
-//        }
+        if(lists.size > toPosition){
+            val fromItem = lists[fromPosition]
+            val fromItemPosition = lists.indexOfFirst { it == fromItem }
+
+            val toItem = lists[toPosition]
+            val toItemPosition = lists.indexOfFirst { it == toItem }
+
+            if (fromPosition < toPosition) {
+                Log.d("onRowMoved","${fromPosition}, ${toPosition}")
+                for (i in fromItemPosition until toItemPosition) {
+                    lists.swap(i,i+1)
+                }
+            } else {
+                Log.d("onRowMoved","${fromPosition}, ${toPosition}")
+                for (i in fromItemPosition downTo toItemPosition + 1) {
+                    lists.swap(i,i-1)
+                }
+            }
+            notifyItemMoved(fromPosition, toPosition)
+        }
     }
 
-    // 아이템 개수 반환 메서
-    override fun getItemCount(): Int = items!!.size + 2
-
-    // 아이템 고유 ID 반환 메서드
-//    override fun getItemId(position: Int): Long {
-//        return items[position].itemID
-////        return if (position in items.indices) {
-////            items[position].hashCode().toLong()
-////        } else {
-////            -1L // 아이디를 찾지 못했을 때 반환되는 기본값
-////        }
-//    }
+    // 아이템 개수 반환 메서드
+    override fun getItemCount(): Int = lists.size + 2
 }
 
 

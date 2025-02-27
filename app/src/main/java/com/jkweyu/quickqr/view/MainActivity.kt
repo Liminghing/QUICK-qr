@@ -29,6 +29,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         )[MainViewModel::class.java]
+        Log.d("checkMainViewModel","MainActivity ${mainViewModel}")
         Log.d("onHiddenChangedInHomeFrag","메인 ${mainViewModel.getQRCodeList()}")
         mainFragment = MainFragment()
         frameFragment = FrameFragment(null)
@@ -38,7 +39,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
 
         lifecycleScope.launch {
-            val isLoaded = mainViewModel.loadList()
+            val isLoaded = mainViewModel.loadHomeRVList()
             val isLoaded2 = mainViewModel.loadQRList()
             supportFragmentManager.beginTransaction()
                 .add(R.id.container, mainFragment,"main_fragment_tag").hide(mainFragment)

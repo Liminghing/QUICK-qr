@@ -17,22 +17,9 @@ object HomeRVBindingAdapter {
                 mViewModel: MainViewModel
     ){
         if(recyclerView.adapter == null){
+            Log.d("checkMainViewModel","HomeRVBindingAdapter ${mViewModel}")
+            val homeAdapter = NewHomeMultiRVAdapter(mViewModel.vmList,mViewModel,viewModel)
 
-            val homeAdapter = NewHomeMultiRVAdapter(mViewModel,viewModel)
-
-//            val gridLayoutManager = GridLayoutManager(recyclerView.context, 6)
-//            gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-//                override fun getSpanSize(position: Int): Int {
-//                    when(homeAdapter.getItemViewType(position)){
-//                        VIEW_TYPE_MAIN -> { return 6}
-//                        VIEW_TYPE_CREATE_QR -> { return 3}
-//                        VIEW_TYPE_SCAN_QR -> { return 3}
-//                        VIEW_TYPE_MENU -> { return 2}
-//                        VIEW_TYPE_ADD_MENU -> { return 2}
-//                        else -> { return 6}
-//                    }
-//                }
-//            }
             val gridLayoutManager = GridLayoutManager(recyclerView.context, 3)
             recyclerView.layoutManager = gridLayoutManager
 

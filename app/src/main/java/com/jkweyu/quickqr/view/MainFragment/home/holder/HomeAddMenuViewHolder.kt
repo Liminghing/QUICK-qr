@@ -17,7 +17,6 @@ class HomeAddMenuViewHolder(
     fun bind() {
         binding.menuViewModel = viewModel
         binding.itemCard.setOnClickListener {
-
             viewModel.onHItemClicked(homeItemTypeConstants.VIEW_TYPE_ADD_MENU)
         }
 

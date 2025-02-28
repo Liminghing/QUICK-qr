@@ -1,9 +1,7 @@
 package com.jkweyu.quickqr.view
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import com.jkweyu.quickqr.R
 import com.jkweyu.quickqr.base.BaseActivity
 import com.jkweyu.quickqr.constants.fragmentConstants
@@ -12,7 +10,6 @@ import com.jkweyu.quickqr.view.FrameFragment.FrameFragment
 import com.jkweyu.quickqr.view.MainFragment.MainFragment
 import com.jkweyu.quickqr.view.TitleFrameFragment.TitleFrameFragment
 import com.jkweyu.quickqr.viewmodel.MainViewModel
-import kotlinx.coroutines.launch
 
 class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     private lateinit var mainViewModel: MainViewModel
@@ -29,53 +26,43 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             this,
             ViewModelProvider.AndroidViewModelFactory.getInstance(application)
         )[MainViewModel::class.java]
-        Log.d("checkMainViewModel","MainActivity ${mainViewModel}")
-        Log.d("onHiddenChangedInHomeFrag","메인 ${mainViewModel.getQRCodeList()}")
+        
+
         mainFragment = MainFragment()
         frameFragment = FrameFragment(null)
         titleFrameFragment = TitleFrameFragment()
 
-
-
-
-        lifecycleScope.launch {
-            val isLoaded = mainViewModel.loadHomeRVList()
-            val isLoaded2 = mainViewModel.loadQRList()
-            supportFragmentManager.beginTransaction()
-                .add(R.id.container, mainFragment,"main_fragment_tag").hide(mainFragment)
-                .add(R.id.container, frameFragment, "frame_fragment_tag").hide(frameFragment)
-                .add(R.id.container, titleFrameFragment,"title_frame_fragment_tag").hide(titleFrameFragment)
-                .commit()
-            if (isLoaded && isLoaded2) {
-                binding.apply {
-
-                    mainViewModel.activityFragment.observe(this@MainActivity) { fragment ->
-                        when (fragment) {
-                            fragmentConstants.MAIN -> {
-                                supportFragmentManager.beginTransaction()
-                                    .show(mainFragment)
-                                    .hide(frameFragment)
-                                    .hide(titleFrameFragment)
-                                    .commit()
+        supportFragmentManager.beginTransaction()
+            .add(R.id.container, mainFragment,"main_fragment_tag").hide(mainFragment)
+            .add(R.id.container, frameFragment, "frame_fragment_tag").hide(frameFragment)
+            .add(R.id.container, titleFrameFragment,"title_frame_fragment_tag").hide(titleFrameFragment)
+            .commit()
+        binding.apply {
+            mainViewModel.activityFragment.observe(this@MainActivity) { fragment ->
+                when (fragment) {
+                    fragmentConstants.MAIN -> {
+                        supportFragmentManager.beginTransaction()
+                            .show(mainFragment)
+                            .hide(frameFragment)
+                            .hide(titleFrameFragment)
+                            .commit()
 //                                loadMainFragment()
-                            }
-                            fragmentConstants.FRAME -> {
-                                supportFragmentManager.beginTransaction()
-                                    .show(frameFragment)
-                                    .hide(mainFragment)
-                                    .hide(titleFrameFragment)
-                                    .commit()
+                    }
+                    fragmentConstants.FRAME -> {
+                        supportFragmentManager.beginTransaction()
+                            .show(frameFragment)
+                            .hide(mainFragment)
+                            .hide(titleFrameFragment)
+                            .commit()
 //                                loadFrameFragment()
-                            }
-                            fragmentConstants.TITLE_FRAME -> {
-                                supportFragmentManager.beginTransaction()
-                                    .show(titleFrameFragment)
-                                    .hide(mainFragment)
-                                    .hide(frameFragment)
-                                    .commit()
+                    }
+                    fragmentConstants.TITLE_FRAME -> {
+                        supportFragmentManager.beginTransaction()
+                            .show(titleFrameFragment)
+                            .hide(mainFragment)
+                            .hide(frameFragment)
+                            .commit()
 //                                loadTitleFrameFragment()
-                            }
-                        }
                     }
                 }
             }

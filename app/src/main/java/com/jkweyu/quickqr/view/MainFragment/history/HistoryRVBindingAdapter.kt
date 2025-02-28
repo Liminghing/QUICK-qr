@@ -26,18 +26,15 @@ object HistoryRVBindingAdapter {
                 viewModel: MainViewModel,
                 type: Int
     ){
-
+        val list = viewModel.getQRCodeList()
+        val myList = setListType(type,list)
         if(recyclerView.adapter == null){
-            val list = viewModel.getQRCodeList()
-
-//            val myList = insertItemOnDateChange(setListType(type,list),type)
-
-            //
-            val myList = setListType(type,list)
-            Log.d("asdasdas","HistoryRVBindingAdapter ${myList}")
+            Log.d("onDraw","HistoryRVBindingAdapter")
             val historyAdapter = HistoryMultiRVAdapter(sortListByDateDescending(myList),viewModel)
             recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
             recyclerView.adapter = historyAdapter
+
+        }else{
             recyclerView.addItemDecoration(DateDividerDecoration(recyclerView.context,sortListByDateDescending(myList)))
         }
     }
@@ -90,7 +87,6 @@ class DateDividerDecoration(
     }
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDraw(c, parent, state)
-
         if(itemList.size == 0){
             parent.setBackgroundColor(Color.WHITE) // 배경 색 지정
 

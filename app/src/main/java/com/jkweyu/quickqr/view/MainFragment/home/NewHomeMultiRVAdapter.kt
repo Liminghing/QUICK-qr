@@ -10,12 +10,14 @@ import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 import com.jkweyu.quickqr.databinding.ItemHomeAddMenuLayoutBinding
 import com.jkweyu.quickqr.databinding.ItemHomeEmptyLayoutBinding
 import com.jkweyu.quickqr.databinding.ItemHomeMenuLayoutBinding
+import com.jkweyu.quickqr.databinding.ItemHomeMenuShimmerLayoutBinding
 import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_ADD_MENU
 import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_EMPTY
 import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_MENU
 import com.jkweyu.quickqr.view.MainFragment.home.holder.HomeAddMenuViewHolder
 import com.jkweyu.quickqr.view.MainFragment.home.holder.HomeEmptyViewHolder
 import com.jkweyu.quickqr.view.MainFragment.home.holder.HomeMenuViewHolder
+import com.jkweyu.quickqr.view.MainFragment.home.holder.HomeShimmerViewHolder
 import com.jkweyu.quickqr.viewmodel.MainViewModel
 import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
 
@@ -26,14 +28,15 @@ class NewHomeMultiRVAdapter(
     private val viewModel: HomeRVItemViewModel
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(), ItemMoveCallback.ItemTouchHelperContract {
     var animatorMap : MutableMap<Long, ObjectAnimator?> = mutableMapOf()
+
     init {
         setHasStableIds(true)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        Log.d("onHiddenChangedInHomeFrag","onCreateViewHolder")
         val context = parent.context
         return when (viewType) {
+            0 -> HomeShimmerViewHolder(ItemHomeMenuShimmerLayoutBinding.inflate(LayoutInflater.from(context), parent, false))
             VIEW_TYPE_MENU -> HomeMenuViewHolder(ItemHomeMenuLayoutBinding.inflate(LayoutInflater.from(context), parent, false),mViewModel,viewModel,animatorMap)
             VIEW_TYPE_ADD_MENU -> HomeAddMenuViewHolder(ItemHomeAddMenuLayoutBinding.inflate(LayoutInflater.from(context), parent, false),viewModel)
             VIEW_TYPE_EMPTY -> HomeEmptyViewHolder(ItemHomeEmptyLayoutBinding.inflate(LayoutInflater.from(context), parent, false))
@@ -42,29 +45,42 @@ class NewHomeMultiRVAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        Log.d("onHiddenChangedInHomeFrag","onBindViewHolder")
-        when(holder){
-            is HomeMenuViewHolder -> {
-                holder.bind(mViewModel.homeRvItemList.value?.get(position)!!)
-            }
-            is HomeAddMenuViewHolder -> {
-                holder.bind()
+        if(!mViewModel.isLoaded2.value!!){
+            when(holder){
+                is HomeShimmerViewHolder -> {
+                    holder.bind()
                 }
-            is HomeEmptyViewHolder -> {
-                holder.bind()
             }
-
+        }else{
+            when(holder){
+                is HomeMenuViewHolder -> {
+                    holder.bind(mViewModel.homeRvItemList.value?.get(position)!!)
+                }
+                is HomeAddMenuViewHolder -> {
+                    holder.bind()
+                }
+                is HomeEmptyViewHolder -> {
+                    holder.bind()
+                }
+            }
         }
+
+
     }
 
     override fun getItemId(position: Int): Long {
-        if(position < lists.size){
-            return lists[position].rid
-        }else if(position == lists.size){
-            return -1L
+        if(!mViewModel.isLoaded2.value!!){
+            return 1L
         }else{
-            return -1L
+            if(position < lists.size){
+                return lists[position].rid
+            }else if(position == lists.size){
+                return -1L
+            }else{
+                return -1L
+            }
         }
+
     }
     // 아이템 타입 반환 메서드
     override fun getItemViewType(position: Int): Int {
@@ -78,13 +94,26 @@ class NewHomeMultiRVAdapter(
         // 4 < 5
         // 5 (+) < 5
         // 6 (Empty) < 5
-        if(position < lists.size){
-            return VIEW_TYPE_MENU
-        }else if(position == lists.size){
-            return VIEW_TYPE_ADD_MENU
+
+        if(!mViewModel.isLoaded2.value!!){
+            return 0
         }else{
-            return VIEW_TYPE_EMPTY
+            if(position < lists.size){
+                return VIEW_TYPE_MENU
+            }else if(position == lists.size){
+                return VIEW_TYPE_ADD_MENU
+            }else{
+                return VIEW_TYPE_EMPTY
+            }
         }
+
+//        if(position < lists.size){
+//            return VIEW_TYPE_MENU
+//        }else if(position == lists.size){
+//            return VIEW_TYPE_ADD_MENU
+//        }else{
+//            return VIEW_TYPE_EMPTY
+//        }
     }
 
 
@@ -131,7 +160,13 @@ class NewHomeMultiRVAdapter(
     }
 
     // 아이템 개수 반환 메서드
-    override fun getItemCount(): Int = lists.size + 2
+    override fun getItemCount(): Int {
+        if(!mViewModel.isLoaded2.value!!){
+            return 3
+        }else{
+            return lists.size + 2
+        }
+    }
 }
 
 

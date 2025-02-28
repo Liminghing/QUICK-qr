@@ -17,27 +17,21 @@ class UrlContentFragment(private val item : QRCodeItem): BaseFragment<FragmentUr
     override fun initView() {
         binding.apply {
             lifecycleScope.launch {
-                Log.d("parseOGMeta", "${item.content}")
                 val ogData = OGMetaParser.parseOGMeta(item.content)
-                ogData?.let { metadata ->
-                    // 썸네일 이미지 URL
-                    Log.d("parseOGMeta", "image ${metadata.image}")
-                    Log.d("parseOGMeta", "title ${metadata.title}")
-                    Log.d("parseOGMeta", "description ${metadata.description}")
-                    val thumbnailUrl = metadata.image
-                    ogTitle.text = metadata.title
-                    ogDescription.text = metadata.description
-
-
-                    Log.d("parseOGMeta", "$thumbnailUrl")
-
-
+                if (ogData != null) {
+                    val thumbnailUrl = ogData.image
+                    ogTitle.text = ogData.title ?: item.title
+                    ogDescription.text = ogData.description ?: item.content
                     // Glide나 Coil 등을 사용하여 이미지 로드
                     Glide.with(ogImage.context)
-                        .load(thumbnailUrl)
+                        .load(thumbnailUrl ?:R.drawable.ic_unload_og_img)
                         .centerCrop()
                         .error(R.color.unselected_color)
                         .into(ogImage)
+                }else{
+                    ogTitle.text = item.title
+                    ogDescription.text = item.content
+                    ogImage.setImageResource(R.drawable.ic_unload_og_img)
                 }
             }
             ConstraintLayout.setOnClickListener {

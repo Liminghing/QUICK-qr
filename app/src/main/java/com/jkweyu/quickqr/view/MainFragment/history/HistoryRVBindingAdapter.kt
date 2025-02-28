@@ -29,13 +29,13 @@ object HistoryRVBindingAdapter {
         val list = viewModel.getQRCodeList()
         val myList = setListType(type,list)
         if(recyclerView.adapter == null){
-            Log.d("onDraw","HistoryRVBindingAdapter")
-            val historyAdapter = HistoryMultiRVAdapter(sortListByDateDescending(myList),viewModel)
-            recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
-            recyclerView.adapter = historyAdapter
-
-        }else{
-            recyclerView.addItemDecoration(DateDividerDecoration(recyclerView.context,sortListByDateDescending(myList)))
+            if(viewModel.isLoaded2.value!!){
+                Log.d("onDraw","HistoryRVBindingAdapter")
+                val historyAdapter = HistoryMultiRVAdapter(sortListByDateDescending(myList),viewModel)
+                recyclerView.layoutManager = LinearLayoutManager(recyclerView.context)
+                recyclerView.adapter = historyAdapter
+                recyclerView.addItemDecoration(DateDividerDecoration(recyclerView.context,sortListByDateDescending(myList)))
+            }
         }
     }
 

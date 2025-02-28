@@ -30,9 +30,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.QuickQRApp"
         tools:targetApi="34">
-        <activity
-            android:name=".view.SplashActivity"
-            android:exported="false" />
         <!-- qr코드 공유용 프로바이더 -->
         <provider
             android:name="androidx.core.content.FileProvider"

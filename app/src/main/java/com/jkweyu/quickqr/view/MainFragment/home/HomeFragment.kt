@@ -6,6 +6,7 @@ import android.util.Log
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 import com.jkweyu.quickqr.R
@@ -17,6 +18,8 @@ import com.jkweyu.quickqr.constants.homeItemTypeConstants
 import com.jkweyu.quickqr.databinding.FragmentHomeBinding
 import com.jkweyu.quickqr.viewmodel.MainViewModel
 import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home), BarcodeResultListener {
@@ -31,7 +34,6 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home), B
     private lateinit var mainViewModel: MainViewModel
     private lateinit var homeViewModel: HomeRVItemViewModel
     private lateinit var scanner: GmsBarcodeScanner
-
     override fun initView() {
 
         scanner = GmsBarcodeScanning.getClient(requireContext())
@@ -40,8 +42,21 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home), B
         homeViewModel = ViewModelProvider(this@HomeFragment)[HomeRVItemViewModel::class.java]
 
         binding.apply {
+
+
             hViewModel = homeViewModel
             mViewModel = mainViewModel
+            lifecycleScope.launch {
+                val item = mainViewModel.loadHomeRVList()
+                mainViewModel.loadQRList()
+                delay(500)
+                if (item){
+                    mainViewModel.loadStatus()
+                    homeRecyclerview.adapter?.notifyDataSetChanged()
+                }
+            }
+
+
 
             qrCreateArea.setOnClickListener {
                 mainViewModel.changeFragment(fragmentConstants.FRAME)

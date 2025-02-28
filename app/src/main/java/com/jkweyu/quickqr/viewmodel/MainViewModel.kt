@@ -27,6 +27,11 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         qrCodeItemDao = db.qrCodeItemDao()
         homeRVDao = db.homeRVItemDao()
     }
+
+
+
+
+
     // 이동용 depth
     private val _fragmentDepth = MutableLiveData<Int>(0) // 선택된 아이템 저장
     val fragmentDepth: LiveData<Int> get() = _fragmentDepth
@@ -103,6 +108,14 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     /**
      * QR 아이템 리스트
      */
+
+    private val _isLoaded1 = MutableLiveData<Boolean>(false) // 선택된 아이템 저장
+    val isLoaded1: LiveData<Boolean> get() = _isLoaded1
+
+    fun loadStatus1(){
+        _isLoaded1.value = true
+    }
+
     private val _qrCodeList = MediatorLiveData<MutableList<QRCodeItem>>()
     val qrCodeList: LiveData<MutableList<QRCodeItem>> get() = _qrCodeList
 
@@ -213,9 +226,15 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
      */
 
 
+    private val _isLoaded2 = MutableLiveData<Boolean>(false) // 선택된 아이템 저장
+    val isLoaded2: LiveData<Boolean> get() = _isLoaded2
+
+    fun loadStatus(){
+        _isLoaded2.value = true
+    }
+
+
     var vmList = AutoIndexedList<HomeRVItem>()
-
-
 
     // {뷰모델} 아이템 추가 -> DB
     fun addVmItem(item : QRCodeItem){

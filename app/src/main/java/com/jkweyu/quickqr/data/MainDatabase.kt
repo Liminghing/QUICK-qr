@@ -10,7 +10,7 @@ import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 import com.jkweyu.quickqr.data.homervdata.HomeRVItemDao
 
 //@Database(entities = [User::class, Post::class], version = 1)
-@Database(entities = [HomeRVItem::class,QRCodeItem::class], version = 1)
+@Database(entities = [HomeRVItem::class,QRCodeItem::class], version = 2)
 @TypeConverters(DateConverters::class)
 abstract class MainDatabase : RoomDatabase() {
     abstract fun homeRVItemDao(): HomeRVItemDao

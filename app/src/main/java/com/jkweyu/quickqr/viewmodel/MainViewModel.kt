@@ -141,7 +141,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         _qrCodeList.value = newList
 
         val index =  vmList.indexOfFirst { it.rid == item.rid }
-        removeItem(index)
+
+
+
+        removeItem(item)
         updateVmItem()
     }
 
@@ -244,7 +247,13 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             addHomeRvItem(newItem)
         }
     }
-
+    fun removeItem(item : QRCodeItem){
+        val index =  vmList.indexOfFirst { it.rid == item.rid }
+        if(index != -1){
+            vmList.removeAt(index)
+            removeHomeRvItem()
+        }
+    }
     fun removeItem(index : Int){
 //        val item = hItems[index]
 //        hItems.removeAt(index)

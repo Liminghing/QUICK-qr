@@ -5,7 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.jkweyu.quickqr.Util.AutoIndexedList
+import com.jkweyu.quickqr.util.AutoIndexedList
 import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 import com.jkweyu.quickqr.databinding.ItemHomeAddMenuLayoutBinding
 import com.jkweyu.quickqr.databinding.ItemHomeEmptyLayoutBinding

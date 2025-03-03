@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.jkweyu.quickqr.R
-import com.jkweyu.quickqr.Util.OGMetaParser
+import com.jkweyu.quickqr.util.OGMetaParser
 import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.data.QRCodeItem
 import com.jkweyu.quickqr.databinding.FragmentUrlContentBinding

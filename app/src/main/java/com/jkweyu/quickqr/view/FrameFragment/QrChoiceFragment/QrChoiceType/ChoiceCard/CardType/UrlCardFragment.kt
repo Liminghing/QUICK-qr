@@ -58,12 +58,12 @@ class UrlCardFragment(): BaseFragment<FragmentUrlCardBinding>(R.layout.fragment_
                             )
                         }
                     } else {
-                        Toast.makeText(requireActivity(), "Invalid URL", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(requireActivity(), R.string.qr_create_url_notify_invalid, Toast.LENGTH_SHORT).show()
                     }
 
 
                 }else{
-                    Toast.makeText(requireActivity(), "모든 입력란을 채워주세요!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(), R.string.qr_create_url_notify_all, Toast.LENGTH_SHORT).show()
 
                 }
             }

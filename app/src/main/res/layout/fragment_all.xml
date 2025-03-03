@@ -18,7 +18,7 @@
             android:layout_height="60dp"
             android:autoSizeTextType="uniform"
             android:padding="15dp"
-            android:text="전체"
+            android:text="@string/all_title"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -49,25 +49,24 @@
                     android:paddingHorizontal="15dp"
                     android:autoSizeTextType="uniform"
                     android:background="@color/white"
-                    android:text="QR TEXT"
+                    android:text="@string/all_qr_type_text_title"
                     android:textStyle="bold" />
-                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
+
+                <com.jkweyu.quickqr.util.AllFragmentItemView
+                    android:id="@+id/qr_type_text_history"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("QR명함 제작 기록")}'
                     app:icon="@drawable/ic_all_text_favorites"
-                    app:title="QR TEXT 제작 기록"
-                    app:count="과거 제작했던 QR TEXT 기록"/>
+                    app:title="@string/all_qr_type_text_history_title"
+                    app:count="@string/all_qr_type_text_history_hint"/>
 
-                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
+                <com.jkweyu.quickqr.util.AllFragmentItemView
+                    android:id="@+id/qr_type_text_favorites"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("QR명함 즐겨찾기")}'
                     app:icon="@drawable/ic_all_text_history"
-                    app:title="QR TEXT 즐겨찾기"
-                    app:count="QR TEXT 즐겨찾기 기록">
-
-                </com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem>
+                    app:title="@string/all_qr_type_text_favorites_title"
+                    app:count="@string/all_qr_type_text_favorites_hint"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -77,66 +76,57 @@
                     android:paddingHorizontal="15dp"
                     android:autoSizeTextType="uniform"
                     android:background="@color/white"
-                    android:text="QR LINK"
+                    android:text="@string/all_qr_type_link_title"
                     android:textStyle="bold" />
-                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
+
+                <com.jkweyu.quickqr.util.AllFragmentItemView
+                    android:id="@+id/qr_type_link_history"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("QR페이지 제작 기록")}'
                     app:icon="@drawable/ic_all_link_history"
-                    app:title="QR LINK 제작 기록"
-                    app:count="과거 제작했던 QR LINK 기록">
+                    app:title="@string/all_qr_type_link_history_title"
+                    app:count="@string/all_qr_type_link_history_hint"/>
 
 
-                </com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem>
-                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
+                <com.jkweyu.quickqr.util.AllFragmentItemView
+                    android:id="@+id/qr_type_link_favorites"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick='@{() -> mainActViewModel.onAllFragItemClicked("QR페이지 즐겨찾기")}'
                     app:icon="@drawable/ic_all_link_favorites"
-                    app:title="QR LINK 즐겨찾기"
-                    app:count="QR LINK 즐겨찾기 기록"/>
+                    app:title="@string/all_qr_type_link_favorites_title"
+                    app:count="@string/all_qr_type_link_favorites_hint"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:layout_marginTop="10dp"
-                    android:paddingVertical="10dp"
-                    android:paddingHorizontal="15dp"
-                    android:autoSizeTextType="uniform"
-                    android:background="@color/white"
-                    android:text="SETTING"
-                    android:textStyle="bold" />
-                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/ic_all_language"
-                    app:title="언어"
-                    app:count="한국어"/>
-                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/ic_all_volume"
-                    app:title="소리"
-                    app:count="무음"/>
-                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/ic_all_vibrate"
-                    app:title="진동"
-                    app:count="꺼짐"/>
-                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/ic_all_search_engine"
-                    app:title="검색엔진"
-                    app:count="google"/>
-                <com.jkweyu.quickqr.view.MainFragment.all.customview.AllFragmentItem
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/ic_all_policy"
-                    app:title="개인정보처리방침"
-                    app:count="개인정보처리방침 확인"/>
+<!--                <TextView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="40dp"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:paddingVertical="10dp"-->
+<!--                    android:paddingHorizontal="15dp"-->
+<!--                    android:autoSizeTextType="uniform"-->
+<!--                    android:background="@color/white"-->
+<!--                    android:text="@string/all_setting_title"-->
+<!--                    android:textStyle="bold" />-->
+<!--                <com.jkweyu.quickqr.util.AllFragmentItemView-->
+<!--                    android:id="@+id/language_bt"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:icon="@drawable/ic_all_language"-->
+<!--                    app:title="@string/all_setting_language"-->
+<!--                    app:count="한국어"/>-->
+
+<!--                <com.jkweyu.quickqr.util.AllFragmentItemView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:count="google"-->
+<!--                    app:icon="@drawable/ic_all_search_engine"-->
+<!--                    app:title="@string/all_setting_search_type" />-->
+
+<!--                <com.jkweyu.quickqr.util.AllFragmentItemView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    app:icon="@drawable/ic_all_policy"-->
+<!--                    app:title="@string/all_setting_pp_title"-->
+<!--                    app:count="@string/all_setting_pp_hint"/>-->
 
                 <!--
                                 <TextView

@@ -9,12 +9,13 @@ import android.graphics.Typeface
 import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getString
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jkweyu.quickqr.R
-import com.jkweyu.quickqr.Util.DateTextUtil.toItemString
-import com.jkweyu.quickqr.Util.DateTextUtil.toSimpleString
+import com.jkweyu.quickqr.util.DateTextUtil.toItemString
+import com.jkweyu.quickqr.util.DateTextUtil.toSimpleString
 import com.jkweyu.quickqr.data.QRCodeItem
 import com.jkweyu.quickqr.viewmodel.MainViewModel
 
@@ -113,7 +114,7 @@ class DateDividerDecoration(
             }
 
             // 텍스트 그리기
-            c.drawText("No Records Available", centerX.toFloat(), centerY + 120f, paint)
+            c.drawText(getString(context,R.string.history_rv_no_records), centerX.toFloat(), centerY + 120f, paint)
         }else{
             parent.setBackgroundResource(R.color.white)
         }

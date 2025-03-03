@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 베트남어 -->
+<resources>
+    <string name="app_name">QuickQRApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Xin chào fragment trống</string>
+
+    <string name="transition_name">appLogo</string>
+    <!-- MainFragment -->
+    <string name="btn_home_item">Trang chủ</string>
+    <string name="btn_history_item">Lịch sử</string>
+    <string name="btn_favorites_item">Yêu thích</string>
+    <string name="btn_all_item">Tất cả</string>
+
+    <!-- HomeFragment -->
+    <string name="qr_generate_bt">Tạo QR</string>
+    <string name="qr_scan_bt">Quét QR</string>
+    <string name="home_menu_add_bt">Thêm Menu</string>
+    <string name="home_bottom_bt_add">THÊM</string>
+    <string name="home_bottom_bt_done">XONG</string>
+
+    <!-- HistoryFragment -->
+    <string name="history_title">Lịch sử</string>
+    <string name="history_tab_all_item">Tất cả</string>
+    <string name="history_tab_text_item">Văn bản</string>
+    <string name="history_tab_link_item">Liên kết</string>
+    <string name="history_rv_no_records">Không có bản ghi nào</string>
+
+    <!-- FavoritesFragment -->
+    <string name="favorites_title">Yêu thích</string>
+    <string name="favorites_tab_all_item">Tất cả</string>
+    <string name="favorites_tab_text_item">Văn bản</string>
+    <string name="favorites_tab_link_item">Liên kết</string>
+    <string name="favorites_rv_no_records">Không có bản ghi nào</string>
+
+    <!-- AllFragment -->
+    <string name="all_title">Tất cả</string>
+
+    <string name="all_qr_type_text_title">Văn bản QR</string>
+    <string name="all_qr_type_text_history_title">Lịch sử Văn bản QR</string>
+    <string name="all_qr_type_text_history_hint">Các bản ghi trước đây của Văn bản QR đã tạo</string>
+    <string name="all_qr_type_text_favorites_title">Văn bản QR yêu thích</string>
+    <string name="all_qr_type_text_favorites_hint">Bản ghi Văn bản QR yêu thích</string>
+
+    <string name="all_qr_type_link_title">Liên kết QR</string>
+    <string name="all_qr_type_link_history_title">Lịch sử Liên kết QR</string>
+    <string name="all_qr_type_link_history_hint">Các bản ghi trước đây của Liên kết QR đã tạo</string>
+    <string name="all_qr_type_link_favorites_title">Liên kết QR yêu thích</string>
+    <string name="all_qr_type_link_favorites_hint">Bản ghi Liên kết QR yêu thích</string>
+
+    <string name="all_setting_title">Cài đặt</string>
+    <string name="all_setting_language">Ngôn ngữ</string>
+    <string name="all_setting_search_type">Công cụ tìm kiếm</string>
+    <string name="all_setting_pp_title">Chính sách Bảo mật</string>
+    <string name="all_setting_pp_hint">Kiểm tra chính sách bảo mật</string>
+
+    <!-- QRChoiceFragment -->
+    <string name="qr_choice_toolbar_title">Tạo QR</string>
+    <string name="qr_choice_card_title">Tạo mã QR</string>
+    <string name="qr_choice_card_content">Hãy thử Danh thiếp QR, một cách hiện đại để chia sẻ thông tin liên lạc của bạn tức thì chỉ với một lần quét đơn giản!</string>
+    <string name="qr_choice_card_text_string">Thêm giới thiệu ngắn về bản thân</string>
+    <string name="qr_choice_card_link_string">Đăng ký thông tin liên lạc của bạn</string>
+    <string name="qr_choice_card_create_bt">Tạo</string>
+
+    <!-- QRCreateFragment -->
+    <string name="qr_create_toolbar_title">Tạo QR</string>
+    <!-- text type -->
+    <string name="qr_create_text_et_title">Nhập Tiêu đề</string>
+    <string name="qr_create_text_et_subtitle">Nhập Phụ đề</string>
+    <string name="qr_create_text_et_content">Viết văn bản của bạn ở đây!</string>
+    <string name="qr_create_text_create_bt">Tạo</string>
+    <string name="qr_create_text_notify_all">Vui lòng điền vào tất cả các trường</string>
+    <!-- url type -->
+    <string name="qr_create_url_et_title">Nhập Tiêu đề</string>
+    <string name="qr_create_url_et_subtitle">Nhập Phụ đề</string>
+    <string name="qr_create_url_create_bt">Tạo</string>
+    <string name="qr_create_url_notify_all">Vui lòng điền vào tất cả các trường</string>
+    <string name="qr_create_url_notify_invalid">URL không hợp lệ</string>
+
+    <!-- QRDetailFragment -->
+    <string name="qr_detail_down">Tải xuống mã QR</string>
+    <string name="qr_detail_down_notify_true">Mã QR đã được lưu.</string>
+    <string name="qr_detail_down_notify_false">Không thể lưu mã QR.</string>
+    <string name="qr_detail_share">Chia sẻ mã QR</string>
+    <string name="qr_detail_share_notify_true">Đang chia sẻ mã QR.</string>
+    <string name="qr_detail_share_notify_false">Không thể chia sẻ mã QR.</string>
+
+    <!-- TitleFrameFragment -->
+    <string name="qr_tff_text_history_toolbar_title">Lịch sử Tạo Văn bản QR</string>
+    <string name="qr_tff_text_favorites_toolbar_title">Văn bản QR Yêu thích</string>
+    <string name="qr_tff_link_history_toolbar_title">Lịch sử Tạo Liên kết QR</string>
+    <string name="qr_tff_link_favorites_toolbar_title">Liên kết QR Yêu thích</string>
+    <string name="qr_tff_add_menu_toolbar_title">Thêm vào Màn hình chính</string>
+</resources>

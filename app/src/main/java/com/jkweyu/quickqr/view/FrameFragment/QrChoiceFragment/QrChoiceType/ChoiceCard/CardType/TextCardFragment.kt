@@ -41,7 +41,7 @@ class TextCardFragment(): BaseFragment<FragmentTextCardBinding>(R.layout.fragmen
                         )
                     )
                 }else{
-                    Toast.makeText(requireActivity(), "모든 입력란을 채워주세요!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireActivity(), R.string.qr_create_text_notify_all, Toast.LENGTH_SHORT).show()
                 }
             }
         }

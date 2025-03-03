@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 포르투갈어 -->
+<resources>
+    <string name="app_name">QuickQRApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Olá fragmento vazio</string>
+
+    <string name="transition_name">appLogo</string>
+    <!-- MainFragment -->
+    <string name="btn_home_item">Início</string>
+    <string name="btn_history_item">Histórico</string>
+    <string name="btn_favorites_item">Favoritos</string>
+    <string name="btn_all_item">Todos</string>
+
+    <!-- HomeFragment -->
+    <string name="qr_generate_bt">Gerar QR</string>
+    <string name="qr_scan_bt">Escanear QR</string>
+    <string name="home_menu_add_bt">Adicionar Menu</string>
+    <string name="home_bottom_bt_add">ADICIONAR</string>
+    <string name="home_bottom_bt_done">CONCLUÍDO</string>
+
+    <!-- HistoryFragment -->
+    <string name="history_title">Histórico</string>
+    <string name="history_tab_all_item">Todos</string>
+    <string name="history_tab_text_item">Texto</string>
+    <string name="history_tab_link_item">Link</string>
+    <string name="history_rv_no_records">Nenhum registro disponível</string>
+
+    <!-- FavoritesFragment -->
+    <string name="favorites_title">Favoritos</string>
+    <string name="favorites_tab_all_item">Todos</string>
+    <string name="favorites_tab_text_item">Texto</string>
+    <string name="favorites_tab_link_item">Link</string>
+    <string name="favorites_rv_no_records">Nenhum registro disponível</string>
+
+    <!-- AllFragment -->
+    <string name="all_title">Todos</string>
+
+    <string name="all_qr_type_text_title">Texto QR</string>
+    <string name="all_qr_type_text_history_title">Histórico de Texto QR</string>
+    <string name="all_qr_type_text_history_hint">Registros anteriores de Textos QR criados</string>
+    <string name="all_qr_type_text_favorites_title">Textos QR favoritos</string>
+    <string name="all_qr_type_text_favorites_hint">Registros de Textos QR favoritos</string>
+
+    <string name="all_qr_type_link_title">Link QR</string>
+    <string name="all_qr_type_link_history_title">Histórico de Links QR</string>
+    <string name="all_qr_type_link_history_hint">Registros anteriores de Links QR criados</string>
+    <string name="all_qr_type_link_favorites_title">Links QR favoritos</string>
+    <string name="all_qr_type_link_favorites_hint">Registros de Links QR favoritos</string>
+
+    <string name="all_setting_title">Configurações</string>
+    <string name="all_setting_language">Idioma</string>
+    <string name="all_setting_search_type">Motor de busca</string>
+    <string name="all_setting_pp_title">Política de Privacidade</string>
+    <string name="all_setting_pp_hint">Verificar a política de privacidade</string>
+
+    <!-- QRChoiceFragment -->
+    <string name="qr_choice_toolbar_title">Gerar QR</string>
+    <string name="qr_choice_card_title">Criar Código QR</string>
+    <string name="qr_choice_card_content">Experimente o Cartão de Visita QR, uma forma moderna de compartilhar suas informações de contato instantaneamente com uma simples leitura!</string>
+    <string name="qr_choice_card_text_string">Adicionar uma breve apresentação</string>
+    <string name="qr_choice_card_link_string">Registrar suas informações de contato</string>
+    <string name="qr_choice_card_create_bt">Gerar</string>
+
+    <!-- QRCreateFragment -->
+    <string name="qr_create_toolbar_title">Gerar QR</string>
+    <!-- text type -->
+    <string name="qr_create_text_et_title">Inserir Título</string>
+    <string name="qr_create_text_et_subtitle">Inserir Subtítulo</string>
+    <string name="qr_create_text_et_content">Escreva seu texto aqui!</string>
+    <string name="qr_create_text_create_bt">Gerar</string>
+    <string name="qr_create_text_notify_all">Por favor, preencha todos os campos</string>
+    <!-- url type -->
+    <string name="qr_create_url_et_title">Inserir Título</string>
+    <string name="qr_create_url_et_subtitle">Inserir Subtítulo</string>
+    <string name="qr_create_url_create_bt">Gerar</string>
+    <string name="qr_create_url_notify_all">Por favor, preencha todos os campos</string>
+    <string name="qr_create_url_notify_invalid">URL inválida</string>
+
+    <!-- QRDetailFragment -->
+    <string name="qr_detail_down">Baixar código QR</string>
+    <string name="qr_detail_down_notify_true">O código QR foi salvo.</string>
+    <string name="qr_detail_down_notify_false">Falha ao salvar o código QR.</string>
+    <string name="qr_detail_share">Compartilhar código QR</string>
+    <string name="qr_detail_share_notify_true">Compartilhando código QR.</string>
+    <string name="qr_detail_share_notify_false">Falha ao compartilhar o código QR.</string>
+
+    <!-- TitleFrameFragment -->
+    <string name="qr_tff_text_history_toolbar_title">Histórico de Criação de Texto QR</string>
+    <string name="qr_tff_text_favorites_toolbar_title">Textos QR Favoritos</string>
+    <string name="qr_tff_link_history_toolbar_title">Histórico de Criação de Links QR</string>
+    <string name="qr_tff_link_favorites_toolbar_title">Links QR Favoritos</string>
+    <string name="qr_tff_add_menu_toolbar_title">Adicionar à Tela Inicial</string>
+</resources>

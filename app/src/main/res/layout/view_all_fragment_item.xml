@@ -50,7 +50,7 @@
             android:layout_weight="1"
             android:autoSizeTextType="uniform"
             android:gravity="center|left"
-
+            android:text="knasdkn"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/Guideline8h"
             app:layout_constraintStart_toEndOf="@+id/item_icon"

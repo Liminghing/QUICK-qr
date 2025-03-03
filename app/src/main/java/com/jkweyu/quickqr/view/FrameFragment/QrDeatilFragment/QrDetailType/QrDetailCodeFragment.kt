@@ -4,7 +4,7 @@ import android.graphics.Bitmap
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.jkweyu.quickqr.R
-import com.jkweyu.quickqr.Util.QrCodeUtil
+import com.jkweyu.quickqr.util.QrCodeUtil
 import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.constants.itemTypeConstants
 import com.jkweyu.quickqr.data.QRCodeItem
@@ -30,9 +30,9 @@ class QrDetailCodeFragment(private var item : QRCodeItem?): BaseFragment<Fragmen
             downloadArea.setOnClickListener {
                 try {
                     qrBitmap?.let { QrCodeUtil(requireActivity()).saveBitmapToGallery(it, "quickQR_${System.currentTimeMillis()}.jpg") }
-                    Toast.makeText(requireContext(),"QR코드가 저장되었습니다.",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),R.string.qr_detail_down_notify_true,Toast.LENGTH_SHORT).show()
                 } catch (e: Exception){
-
+                    Toast.makeText(requireContext(),R.string.qr_detail_down_notify_false,Toast.LENGTH_SHORT).show()
                 }
             }
             shareArea.setOnClickListener {
@@ -40,7 +40,7 @@ class QrDetailCodeFragment(private var item : QRCodeItem?): BaseFragment<Fragmen
                 try {
                     QrCodeUtil(requireActivity()).shareQRCode(qrBitmap!!,"quickQR_${System.currentTimeMillis()}.jpg")
                 } catch (e: Exception){
-                    Toast.makeText(requireContext(),"QR코드를 공유할 수 없습니다.",Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(),R.string.qr_detail_share_notify_false,Toast.LENGTH_SHORT).show()
                 }
 
             }

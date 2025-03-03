@@ -3,12 +3,12 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/ic_home_selector"
-        android:title="Home"/>
+        android:title="@string/btn_home_item"/>
 
     <item
         android:id="@+id/navigation_history"
         android:icon="@drawable/ic_history_selector"
-        android:title="History"/>
+        android:title="@string/btn_history_item"/>
     <!--
     <item
         android:id="@+id/navigation_payment"
@@ -18,11 +18,11 @@
     <item
         android:id="@+id/navigation_favorites"
         android:icon="@drawable/ic_favorite_selector"
-        android:title="Favorites"/>
+        android:title="@string/btn_favorites_item"/>
 
     <item
         android:id="@+id/navigation_all"
         android:icon="@drawable/ic_menu_selector"
-        android:title="All"/>
+        android:title="@string/btn_all_item"/>
 
 </menu>

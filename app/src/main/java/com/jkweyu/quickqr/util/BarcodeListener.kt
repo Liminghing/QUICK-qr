@@ -1,4 +1,4 @@
-package com.jkweyu.quickqr.Util
+package com.jkweyu.quickqr.util
 
 import android.content.ClipData
 import android.content.Intent

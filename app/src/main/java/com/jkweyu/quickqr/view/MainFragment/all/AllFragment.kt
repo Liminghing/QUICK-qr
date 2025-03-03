@@ -19,12 +19,27 @@ class AllFragment: BaseFragment<FragmentAllBinding>(R.layout.fragment_all) {
             mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
             mainActViewModel = mainViewModel
 
+            qrTypeTextHistory.setOnClickListener {
+                mainViewModel.onAllFragItemClicked(0)
+            }
+            qrTypeTextFavorites.setOnClickListener {
+                mainViewModel.onAllFragItemClicked(1)
+            }
+            qrTypeLinkHistory.setOnClickListener {
+                mainViewModel.onAllFragItemClicked(2)
+            }
+            qrTypeLinkFavorites.setOnClickListener {
+                mainViewModel.onAllFragItemClicked(3)
+            }
+//            languageBt.setOnClickListener {
+//                mainViewModel.onAllFragItemClicked(4)
+//            }
+
+
+
             mainViewModel.allFragSelectedItem.observe(this@AllFragment, Observer {
                 if (it != null){
                     mainViewModel.changeFragment(fragmentConstants.TITLE_FRAME)
-//                    val intent = Intent(this@AllFragment.context, TitleFrameActivity::class.java)
-//                    intent.putExtra("type",it)
-//                    startActivity(intent)
                 }
             })
         }

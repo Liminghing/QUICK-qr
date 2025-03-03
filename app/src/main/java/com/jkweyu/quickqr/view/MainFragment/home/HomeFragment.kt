@@ -10,8 +10,8 @@ import androidx.lifecycle.lifecycleScope
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanner
 import com.google.mlkit.vision.codescanner.GmsBarcodeScanning
 import com.jkweyu.quickqr.R
-import com.jkweyu.quickqr.Util.BarcodeAnalysis
-import com.jkweyu.quickqr.Util.BarcodeResultListener
+import com.jkweyu.quickqr.util.BarcodeAnalysis
+import com.jkweyu.quickqr.util.BarcodeResultListener
 import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.constants.fragmentConstants
 import com.jkweyu.quickqr.constants.homeItemTypeConstants

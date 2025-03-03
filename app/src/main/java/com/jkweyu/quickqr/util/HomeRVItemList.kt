@@ -1,4 +1,4 @@
-package com.jkweyu.quickqr.Util
+package com.jkweyu.quickqr.util
 
 import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 

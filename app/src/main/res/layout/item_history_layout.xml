@@ -7,7 +7,7 @@
             name="item"
             type="com.jkweyu.quickqr.data.QRCodeItem" />
 
-        <import type="com.jkweyu.quickqr.Util.DateTextUtil" />
+        <import type="com.jkweyu.quickqr.util.DateTextUtil" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

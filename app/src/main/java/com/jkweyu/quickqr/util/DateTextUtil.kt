@@ -1,4 +1,4 @@
-package com.jkweyu.quickqr.Util
+package com.jkweyu.quickqr.util
 
 import java.text.SimpleDateFormat
 import java.time.LocalDateTime

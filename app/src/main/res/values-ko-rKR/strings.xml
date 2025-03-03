@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">QuickQRApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="transition_name">appLogo</string>
+    <!-- MainFragment -->
+    <string name="btn_home_item">홈</string>
+    <string name="btn_history_item">기록</string>
+    <string name="btn_favorites_item">즐겨찾기</string>
+    <string name="btn_all_item">전체</string>
+
+    <!-- HomeFragment -->
+    <string name="qr_generate_bt">QR 생성</string>
+    <string name="qr_scan_bt">QR 스캔</string>
+    <string name="home_menu_add_bt">메뉴 추가</string>
+    <string name="home_bottom_bt_add">추가</string>
+    <string name="home_bottom_bt_done">완료</string>
+
+    <!-- Date Type -->
+    <!--    <string name="month">3월</string>-->
+    <!--    <string name="date">2일</string>-->
+
+    <!-- HistoryFragment -->
+    <string name="history_title">기록</string>
+    <string name="history_tab_all_item">전체</string>
+    <string name="history_tab_text_item">텍스트</string>
+    <string name="history_tab_link_item">링크</string>
+    <string name="history_rv_no_records">등록된 기록이 없습니다.</string>
+
+    <!-- FavoritesFragment -->
+    <string name="favorites_title">즐겨찾기</string>
+    <string name="favorites_tab_all_item">전체</string>
+    <string name="favorites_tab_text_item">텍스트</string>
+    <string name="favorites_tab_link_item">링크</string>
+    <string name="favorites_rv_no_records">즐겨찾기 항목이 없습니다.</string>
+
+    <!-- AllFragment -->
+    <string name="all_title">전체</string>
+
+    <string name="all_qr_type_text_title">QR 텍스트</string>
+    <string name="all_qr_type_text_history_title">QR 텍스트 기록</string>
+    <string name="all_qr_type_text_history_hint">생성된 QR 텍스트의 과거 기록</string>
+    <string name="all_qr_type_text_favorites_title">QR 텍스트 즐겨찾기</string>
+    <string name="all_qr_type_text_favorites_hint">즐겨찾기한 QR 텍스트 기록</string>
+
+    <string name="all_qr_type_link_title">QR 링크</string>
+    <string name="all_qr_type_link_history_title">QR 링크 기록</string>
+    <string name="all_qr_type_link_history_hint">생성된 QR 링크의 과거 기록</string>
+    <string name="all_qr_type_link_favorites_title">QR 링크 즐겨찾기</string>
+    <string name="all_qr_type_link_favorites_hint">즐겨찾기한 QR 링크 기록</string>
+
+    <string name="all_setting_title">설정</string>
+    <string name="all_setting_language">언어</string>
+    <string name="all_setting_search_type">검색 엔진</string>
+    <string name="all_setting_pp_title">개인정보 처리방침</string>
+    <string name="all_setting_pp_hint">개인정보 처리방침을 확인하세요</string>
+
+    <!-- QRChoiceFragment -->
+    <string name="qr_choice_toolbar_title">QR 생성</string>
+    <string name="qr_choice_card_title">QR 코드 생성</string>
+    <string name="qr_choice_card_content">QR 명함을 사용해보세요. 간단한 스캔으로 연락처를 빠르게 공유할 수 있는 현대적인 방법입니다!</string>
+    <string name="qr_choice_card_text_string">간단한 자기소개를 추가하세요</string>
+    <string name="qr_choice_card_link_string">연락처 정보를 등록하세요</string>
+    <string name="qr_choice_card_create_bt">생성</string>
+
+    <!-- QRCreateFragment -->
+    <string name="qr_create_toolbar_title">QR 생성</string>
+    <!-- text type -->
+    <string name="qr_create_text_et_title">제목 입력</string>
+    <string name="qr_create_text_et_subtitle">부제목 입력</string>
+    <string name="qr_create_text_et_content">여기에 텍스트를 입력하세요!</string>
+    <string name="qr_create_text_create_bt">생성</string>
+    <string name="qr_create_text_notify_all">모든 항목을 입력해주세요</string>
+    <!-- url type -->
+    <string name="qr_create_url_et_title">제목 입력</string>
+    <string name="qr_create_url_et_subtitle">부제목 입력</string>
+    <string name="qr_create_url_create_bt">생성</string>
+    <string name="qr_create_url_notify_all">모든 항목을 입력해주세요</string>
+    <string name="qr_create_url_notify_invalid">잘못된 URL입니다</string>
+
+    <!-- QRDetailFragment -->
+    <string name="qr_detail_down">QR 코드 다운로드</string>
+    <string name="qr_detail_down_notify_true">QR 코드가 저장되었습니다.</string>
+    <string name="qr_detail_down_notify_false">QR 코드 저장에 실패했습니다.</string>
+    <string name="qr_detail_share">QR 코드 공유</string>
+    <string name="qr_detail_share_notify_true">QR 코드가 공유되었습니다.</string>
+    <string name="qr_detail_share_notify_false">QR 코드 공유에 실패했습니다.</string>
+
+    <!-- TitleFrameFragment -->
+    <string name="qr_tff_text_history_toolbar_title">QR 텍스트 생성 기록</string>
+    <string name="qr_tff_text_favorites_toolbar_title">QR 텍스트 즐겨찾기</string>
+    <string name="qr_tff_link_history_toolbar_title">QR 링크 생성 기록</string>
+    <string name="qr_tff_link_favorites_toolbar_title">QR 링크 즐겨찾기</string>
+    <string name="qr_tff_add_menu_toolbar_title">홈 화면에 추가</string>
+</resources>

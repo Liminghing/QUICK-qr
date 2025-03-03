@@ -3,7 +3,7 @@ package com.jkweyu.quickqr.viewmodel.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.jkweyu.quickqr.Util.HomeRVList
+import com.jkweyu.quickqr.util.HomeRVList
 import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_ADD_MENU
 import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_CREATE_QR

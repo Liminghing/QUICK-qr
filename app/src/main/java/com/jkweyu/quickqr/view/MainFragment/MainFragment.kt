@@ -30,13 +30,6 @@ class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
 
         binding.apply {
-            button2.setOnClickListener {
-                val iid = mainViewModel.vmList
-                iid?.let { list ->
-                    val filteredList = list.map { item -> "[position=${item.itemPosition}, title=${item.title}]" }
-                    Log.d("checkHomeRvItemList", filteredList.joinToString(", "))
-                } ?: Log.d("checkHomeRvItemList", "List is null")
-            }
 
             homeFragment = HomeFragment()
             historyFragment = HistoryFragment()

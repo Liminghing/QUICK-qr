@@ -1,4 +1,4 @@
-package com.jkweyu.quickqr.Util
+package com.jkweyu.quickqr.util
 
 import androidx.room.TypeConverter
 import java.util.Date

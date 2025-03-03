@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.jkweyu.quickqr.Util.DateConverters
+import com.jkweyu.quickqr.util.DateConverters
 import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 import com.jkweyu.quickqr.data.homervdata.HomeRVItemDao
 

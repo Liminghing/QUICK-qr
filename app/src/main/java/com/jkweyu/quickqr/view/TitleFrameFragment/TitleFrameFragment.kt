@@ -21,7 +21,8 @@ class TitleFrameFragment: BaseFragment<FragmentTitleFrameBinding>(R.layout.fragm
 
     private lateinit var backPressedCallback: OnBackPressedCallback
     override fun initView() {
-        Log.d("onHiddenChanged","[[[[TitleFrameFragment]]]] initView")
+
+        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         binding.apply {
 
             val activity = requireActivity() as AppCompatActivity
@@ -61,34 +62,40 @@ class TitleFrameFragment: BaseFragment<FragmentTitleFrameBinding>(R.layout.fragm
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
 
-        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+
 
         if (!hidden){
             mainViewModel.setDepth(1)
             registerOnBackPressedCallback()
 
             if(mainViewModel.allFragSelectedItem.value != null){
-                val type = mainViewModel.allFragSelectedItem.value
-                binding.type = type
-                when(type){
-                    "QR명함 제작 기록" -> {
+                when(mainViewModel.allFragSelectedItem.value){
+                    0 -> {
+                        binding.type = getString(R.string.qr_tff_text_history_toolbar_title)
                         loadFrameLayout(HistoryQrCardFragment())
                     }
-                    "QR명함 즐겨찾기" -> {
+                    1 -> {
+                        binding.type = getString(R.string.qr_tff_text_favorites_toolbar_title)
                         loadFrameLayout(FavoritesQrCardFragment())
                     }
-                    "QR페이지 제작 기록" -> {
+                    2 -> {
+                        binding.type = getString(R.string.qr_tff_link_history_toolbar_title)
                         loadFrameLayout(HistoryQrItemFragment())
                     }
-                    "QR페이지 즐겨찾기" -> {
+                    3 -> {
+                        binding.type = getString(R.string.qr_tff_link_favorites_toolbar_title)
                         loadFrameLayout(FavoritesQrItemFragment())
                     }
+//                    4 -> {
+//                        binding.type = "언어 설정"
+//                        loadFrameLayout(LanguageFragment())
+//                    }
                     else -> {
 
                     }
                 }
             }else{
-                binding.type = "홈 화면 즐겨찾기 추가"
+                binding.type = getString(R.string.qr_tff_add_menu_toolbar_title)
                 loadFrameLayout(HistoryFragment())
             }
 

@@ -7,13 +7,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.jkweyu.quickqr.Util.AutoIndexedList
 import com.jkweyu.quickqr.constants.fragmentConstants
 import com.jkweyu.quickqr.data.MainDatabase
 import com.jkweyu.quickqr.data.QRCodeItem
 import com.jkweyu.quickqr.data.QRCodeItemDao
 import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 import com.jkweyu.quickqr.data.homervdata.HomeRVItemDao
+import com.jkweyu.quickqr.util.AutoIndexedList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -83,10 +83,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 //        _activityBackground.value = key
 //    }
 
-    private val _allFragSelectedItem = MutableLiveData<String>(null) // 선택된 아이템 저장
-    val allFragSelectedItem: LiveData<String> get() = _allFragSelectedItem
+    private val _allFragSelectedItem = MutableLiveData<Int>(null) // 선택된 아이템 저장
+    val allFragSelectedItem: LiveData<Int> get() = _allFragSelectedItem
 
-    fun onAllFragItemClicked(type: String) {
+    fun onAllFragItemClicked(type: Int) {
         _allFragSelectedItem.value = type // 클릭된 아이템 전달
     }
 

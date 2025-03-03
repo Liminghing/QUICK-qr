@@ -81,7 +81,7 @@
                             android:layout_weight="1"
                             android:autoSizeTextType="uniform"
                             android:gravity="center"
-                            android:text="QR생성"
+                            android:text="@string/qr_generate_bt"
                             android:textColor="@color/white" />
 
                         <Space
@@ -122,7 +122,7 @@
                             android:layout_weight="1"
                             android:autoSizeTextType="uniform"
                             android:gravity="center"
-                            android:text="QR스캔"
+                            android:text="@string/qr_scan_bt"
                             android:textColor="@color/white" />
 
                         <Space
@@ -176,7 +176,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"
-                    android:text="ADD"
+                    android:text="@string/home_bottom_bt_add"
                     android:gravity="center"
                     android:textColor="#999999"
                     android:background="@drawable/shape_button_outline"
@@ -193,7 +193,7 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="DONE"
+                    android:text="@string/home_bottom_bt_done"
                     android:textColor="#ffffff"
                     android:background="@drawable/shape_button_fill"
                     app:layout_constraintBottom_toBottomOf="parent" />

@@ -172,7 +172,7 @@
                 android:gravity="center_vertical|end"
                 android:ellipsize="end"
                 android:singleLine="true"
-                android:text="@{item.date.toString()}"
+                android:text="@{DateTextUtil.formatTime(item.date)}"
                 app:layout_constraintBottom_toTopOf="@+id/guideline75h"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

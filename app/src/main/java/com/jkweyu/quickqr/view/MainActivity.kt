@@ -29,7 +29,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
         
 
         mainFragment = MainFragment()
-        frameFragment = FrameFragment(null)
+        frameFragment = FrameFragment()
         titleFrameFragment = TitleFrameFragment()
 
         supportFragmentManager.beginTransaction()
@@ -75,7 +75,7 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
     }
     private fun loadFrameFragment(){
         supportFragmentManager.beginTransaction()
-            .replace(R.id.container, FrameFragment(null), "frame_fragment_tag")
+            .replace(R.id.container, FrameFragment(), "frame_fragment_tag")
             .commit()
     }
     private fun loadTitleFrameFragment(){

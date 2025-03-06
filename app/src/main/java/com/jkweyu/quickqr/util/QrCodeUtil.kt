@@ -39,6 +39,7 @@ class QrCodeUtil(private val context: Context) {
         )
 
         // URI를 통해 출력 스트림을 열어 비트맵 데이터 쓰기
+        
         imageUri?.let { uri ->
             context.contentResolver.openOutputStream(uri)?.use { outputStream ->
                 // 비트맵을 JPEG 형식으로 압축하여 저장

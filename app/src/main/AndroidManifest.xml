@@ -42,10 +42,6 @@
         </provider>
 
         <activity
-            android:name=".view.TitleFrameActivity"
-            android:exported="false"
-            android:parentActivityName=".view.MainActivity" />
-        <activity
             android:name=".view.MainActivity"
             android:exported="true">
             <intent-filter>

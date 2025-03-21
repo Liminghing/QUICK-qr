@@ -65,6 +65,7 @@ class TitleFrameFragment: BaseFragment<FragmentTitleFrameBinding>(R.layout.fragm
 
 
         if (!hidden){
+            Log.d("ajdjd","TitleFrameFragment 보여짐")
             mainViewModel.setDepth(1)
             registerOnBackPressedCallback()
 

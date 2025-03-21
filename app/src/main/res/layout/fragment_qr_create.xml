@@ -8,7 +8,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#867EFF"
+        android:background="@color/qr_type01_color"
         android:paddingTop="?attr/actionBarSize">
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -53,7 +53,7 @@
             android:id="@+id/textView15"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:background="#EFF2F4"
+            android:background="@color/base_deep_color"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

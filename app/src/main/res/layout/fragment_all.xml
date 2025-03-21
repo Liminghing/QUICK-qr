@@ -31,7 +31,7 @@
             android:layout_height="0dp"
             android:clipToPadding="false"
             android:scrollbars="none"
-            android:background="#F7F7F8"
+            android:background="@color/all_fragment_line"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,7 +48,7 @@
                     android:paddingVertical="10dp"
                     android:paddingHorizontal="15dp"
                     android:autoSizeTextType="uniform"
-                    android:background="@color/white"
+                    android:background="@color/base_color"
                     android:text="@string/all_qr_type_text_title"
                     android:textStyle="bold" />
 
@@ -75,7 +75,7 @@
                     android:paddingVertical="10dp"
                     android:paddingHorizontal="15dp"
                     android:autoSizeTextType="uniform"
-                    android:background="@color/white"
+                    android:background="@color/base_color"
                     android:text="@string/all_qr_type_link_title"
                     android:textStyle="bold" />
 

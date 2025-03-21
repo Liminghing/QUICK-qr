@@ -45,20 +45,19 @@
             app:layout_constraintGuide_percent="0.6" />
 
 
-
         <View
             android:id="@+id/cardView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/shape_payment_card_bottom"
-            android:backgroundTint="#867EFF"
+            android:backgroundTint="@color/type_01_base_csssolor"
             android:padding="20dp"
             app:cardElevation="0dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline15h"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0" />
         <ImageView
             android:id="@+id/appLogoImage"

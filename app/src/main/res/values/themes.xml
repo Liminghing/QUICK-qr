@@ -39,7 +39,7 @@
 
 
     <style name="Theme.QuickQRApp" parent="Base.Theme.QuickQRApp" >
-        <item name="android:windowSplashScreenBackground" tools:targetApi="S">@color/white</item>
+        <item name="android:windowSplashScreenBackground" tools:targetApi="S">@color/base_color</item>
         <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="S">@drawable/ic_splash_icon</item>
 <!--        <item name="android:windowSplashScreenIconBackgroundColor" tools:targetApi="S">@color/color</item>-->
 <!--        <item name="android:windowSplashScreenAnimationDuration" tools:targetApi="S">duration_int</item>-->

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#F8F8F8" /> <!-- 배경색 설정 -->
+    <solid android:color="@color/base_color" /> <!-- 배경색 설정 -->
     <corners
         android:topLeftRadius="20dp"
         android:topRightRadius="20dp"

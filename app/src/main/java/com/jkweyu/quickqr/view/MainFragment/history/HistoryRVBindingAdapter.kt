@@ -14,9 +14,9 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.jkweyu.quickqr.R
+import com.jkweyu.quickqr.data.QRCodeItem
 import com.jkweyu.quickqr.util.DateTextUtil.toItemString
 import com.jkweyu.quickqr.util.DateTextUtil.toSimpleString
-import com.jkweyu.quickqr.data.QRCodeItem
 import com.jkweyu.quickqr.viewmodel.MainViewModel
 
 
@@ -61,7 +61,7 @@ class DateDividerDecoration(
 
 
     private val textPaint = Paint().apply {
-        color = Color.BLACK
+        color = Color.GRAY
         textSize = 40f
         typeface = Typeface.DEFAULT_BOLD
     }
@@ -89,7 +89,7 @@ class DateDividerDecoration(
     override fun onDraw(c: Canvas, parent: RecyclerView, state: RecyclerView.State) {
         super.onDraw(c, parent, state)
         if(itemList.size == 0){
-            parent.setBackgroundColor(Color.WHITE) // 배경 색 지정
+            parent.setBackgroundColor(Color.TRANSPARENT) // 배경 색 지정
 
             val icon = ContextCompat.getDrawable(parent.context, R.drawable.ic_empty_icon)
             val paint = Paint().apply {
@@ -116,7 +116,7 @@ class DateDividerDecoration(
             // 텍스트 그리기
             c.drawText(getString(context,R.string.history_rv_no_records), centerX.toFloat(), centerY + 120f, paint)
         }else{
-            parent.setBackgroundResource(R.color.white)
+            parent.setBackgroundResource(R.color.transparent)
         }
     }
     override fun onDrawOver(

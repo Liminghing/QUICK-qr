@@ -14,6 +14,7 @@ room = "2.6.1"
 lifecycle = "2.8.7"
 qrcode = "16.1.0"
 zxing = "4.3.0"
+playServicesMlkitBarcodeScanning = "18.3.1"
 
 
 [libraries]
@@ -32,6 +33,7 @@ androidx-room-testing = { group = "androidx.room", name = "room-testing", versio
 androidx-lifecycle = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
 com-google-android-gms = { group = "com.google.android.gms", name = "play-services-code-scanner", version.ref = "qrcode" }
 com-journeyapps = {group = "com.journeyapps", name = "zxing-android-embedded",version.ref = "zxing"}
+play-services-mlkit-barcode-scanning = { group = "com.google.android.gms", name = "play-services-mlkit-barcode-scanning", version.ref = "playServicesMlkitBarcodeScanning" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

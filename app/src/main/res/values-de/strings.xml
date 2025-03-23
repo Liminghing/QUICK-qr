@@ -55,6 +55,11 @@
     <string name="all_setting_pp_hint">Datenschutzrichtlinie überprüfen</string>
 
     <!-- QRChoiceFragment -->
+    <string name="qr_choice_card_example_title">Titel</string>
+    <string name="qr_choice_card_example_subtitle">Untertitel</string>
+    <string name="qr_choice_card_example_time">08:14</string>
+
+
     <string name="qr_choice_toolbar_title">QR erstellen</string>
     <string name="qr_choice_card_title">QR-Code erstellen</string>
     <string name="qr_choice_card_content">Probieren Sie die QR-Visitenkarte aus, eine moderne Möglichkeit, Ihre Kontaktdaten durch einfaches Scannen sofort zu teilen!</string>

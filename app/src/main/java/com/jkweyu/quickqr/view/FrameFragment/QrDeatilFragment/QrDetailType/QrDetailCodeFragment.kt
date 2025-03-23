@@ -1,14 +1,15 @@
 package com.jkweyu.quickqr.view.FrameFragment.QrDeatilFragment.QrDetailType
 
 import android.graphics.Bitmap
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.jkweyu.quickqr.R
-import com.jkweyu.quickqr.util.QrCodeUtil
 import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.constants.itemTypeConstants
 import com.jkweyu.quickqr.data.QRCodeItem
 import com.jkweyu.quickqr.databinding.FragmentQrDetailCodeBinding
+import com.jkweyu.quickqr.util.QrCodeUtil
 import com.jkweyu.quickqr.viewmodel.MainViewModel
 
 class QrDetailCodeFragment(private var item : QRCodeItem?): BaseFragment<FragmentQrDetailCodeBinding>(R.layout.fragment_qr_detail_code) {
@@ -47,6 +48,7 @@ class QrDetailCodeFragment(private var item : QRCodeItem?): BaseFragment<Fragmen
         }
     }
     private fun setView(item : QRCodeItem){
+        Log.d("asjkdijsi","item is ${item.content}")
         _qrBitmap = QrCodeUtil(requireActivity()).generateQRCode(item.content)
         binding.qrCodeImage.setImageBitmap(qrBitmap)
         binding.tileText.text = item.title

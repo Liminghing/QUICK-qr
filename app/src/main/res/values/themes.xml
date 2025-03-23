@@ -20,10 +20,10 @@
         <!-- 툴바 스타일 적용 -->
         <item name="actionOverflowButtonStyle">@style/OverflowButtonStyle</item>
 
-        <item name="colorPrimary">#FFFFFF</item>
-        <item name="colorControlNormal">#FFFFFF</item>
-        <item name="colorControlHighlight">#FFFFFF</item>
-        <item name="colorAccent">#FFFFFF</item>
+        <item name="colorPrimary">@android:color/transparent</item>
+        <item name="colorControlNormal">@android:color/transparent</item>
+        <item name="colorControlHighlight">@android:color/transparent</item>
+        <item name="colorAccent">@android:color/transparent</item>
 
         <!-- 스플래시 -->
 
@@ -31,6 +31,9 @@
 
 
     </style>
+
+
+
 
     <style name="OverflowButtonStyle" parent="@android:style/Widget.Material.ActionButton.Overflow">
         <!-- 아이콘 색상 변경 -->

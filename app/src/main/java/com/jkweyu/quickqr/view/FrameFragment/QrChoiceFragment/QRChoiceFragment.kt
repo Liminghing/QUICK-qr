@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -37,6 +38,7 @@ class QRChoiceFragment(): BaseFragment<FragmentQrChoiceBinding>(R.layout.fragmen
                 setDisplayShowTitleEnabled(false) // 타이틀 숨기기
                 setDisplayHomeAsUpEnabled(true)   // 뒤로 가기 버튼 활성화
             }
+            toolbar.navigationIcon?.setTint(ContextCompat.getColor(requireContext(), R.color.white))
             toolbar.setNavigationOnClickListener{
                 mainViewModel.changeFragment(fragmentConstants.MAIN)
                 onDetach()

@@ -4,6 +4,9 @@
     <color name="primary_color_02">#766DFF</color>
 
     <color name="base_color">#FFFFFF</color>
+    <color name="reverse_base_color">#353535</color>
+    <color name="reverse_base_deep_color">#292929</color>
+    <color name="reverse_base_light_color">#424242</color>
     <color name="base_deep_color">#F1F1F1</color>
     <color name="base_light_color">#F7F9FB</color>
 
@@ -17,13 +20,13 @@
     <color name="qr_type03_base_color">#5937BCFF</color>
     <color name="qr_type_add_base_color">#59EEEEEE</color>
 
-    <color name="qr_type01_color">#928BFF</color>
+    <color name="qr_type01_color">#877FFF</color>
     <color name="qr_type02_color">#FFA76D</color>
     <color name="qr_type03_color">#37BCFF</color>
 
-    <color name="qr_type01_deep_color">#805C56C5</color>
-    <color name="qr_type02_deep_color">#80DB8C57</color>
-    <color name="qr_type03_deep_color">#802894CA</color>
+    <color name="qr_type01_deep_color">#6A61EF</color>
+    <color name="qr_type02_deep_color">#EB8F54</color>
+    <color name="qr_type03_deep_color">#2FABE7</color>
 
     <color name="qr_type01_button_color">#CC766DFF</color>
     <color name="qr_type02_button_color">#CCFF9A5D</color>

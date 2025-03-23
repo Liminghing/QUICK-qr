@@ -58,6 +58,10 @@
     <string name="all_setting_pp_hint">Check the privacy policy</string>
 
     <!-- QRChoiceFragment -->
+    <string name="qr_choice_card_example_title">Title</string>
+    <string name="qr_choice_card_example_subtitle">SubTitle</string>
+    <string name="qr_choice_card_example_time">08:14</string>
+
     <string name="qr_choice_toolbar_title">QR Generate</string>
     <string name="qr_choice_card_title">Create QR Code</string>
     <string name="qr_choice_card_content">Try out the QR Business Card, a modern way to share your contact info instantly with a simple scan!</string>

@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.MarginPageTransformer
 import com.jkweyu.quickqr.R
 import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.constants.fragmentConstantsFrame
@@ -32,7 +31,15 @@ class QRCreateFragment: BaseFragment<FragmentQrCreateBinding>(R.layout.fragment_
             viewpager.adapter = QRCreatePagerAdapter(this@QRCreateFragment)
             // 옆 페이지도 보이도록 설정
             viewpager.offscreenPageLimit = 1
-            viewpager.setPageTransformer(MarginPageTransformer(20))
+            val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.margin_08)
+            val screenWidth = resources.displayMetrics.widthPixels
+            val pagerWidth = screenWidth - resources.getDimensionPixelOffset(R.dimen.margin_32)
+            val offsetPx = screenWidth - pageMarginPx - pagerWidth
+
+            viewpager.setPageTransformer { page, position ->
+                page.translationX = position * -offsetPx
+            }
+
 
             val activity = requireActivity() as AppCompatActivity
             activity.setSupportActionBar(toolbar)

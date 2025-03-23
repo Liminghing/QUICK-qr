@@ -4,6 +4,9 @@
     <color name="primary_color_02">#B3766DFF</color>
 
     <color name="base_color">#353535</color>
+    <color name="reverse_base_color">#FFFFFF</color>
+    <color name="reverse_base_deep_color">#F1F1F1</color>
+    <color name="reverse_base_light_color">#F7F9FB</color>
     <color name="base_deep_color">#292929</color>
     <color name="base_light_color">#424242</color>
 
@@ -25,9 +28,9 @@
     <color name="qr_type02_deep_color">#80DB8C57</color>
     <color name="qr_type03_deep_color">#802894CA</color>
 
-    <color name="qr_type01_button_color">#CC766DFF</color>
-    <color name="qr_type02_button_color">#CCFF9A5D</color>
-    <color name="qr_type03_button_color">#CC2EB6FF</color>
+    <color name="qr_type01_button_color">#80766DFF</color>
+    <color name="qr_type02_button_color">#80FF9A5D</color>
+    <color name="qr_type03_button_color">#802EB6FF</color>
 
     <color name="type_01_base_csssolor">#40867EFF</color>
 

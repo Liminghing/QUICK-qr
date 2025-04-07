@@ -52,39 +52,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
             if (it > 0) it - 1 else 0
         }
     }
-
-
-
-//
-//    /**
-//     *
-//     */
-//    private val _selectedItem = MutableLiveData<QRCodeItem>(null) // 선택된 아이템 저장
-//    val selectedItem: LiveData<QRCodeItem> get() = _selectedItem
-//
-//    fun onItemClicked(item: QRCodeItem) {
-//        _selectedItem.value = item // 클릭된 아이템 전달
-//    }
-
-
-
-//    /**
-//     * qr 생성 화면에서 생성 버튼 클릭시 전환
-//     */
-//    private val _createQRType = MutableLiveData<Int>(0)
-//    val createQRType: LiveData<Int> get() = _createQRType
-//
-//    fun checkQRType(type:Int) {
-//        _createQRType.value = type
-//    }
-
-//    private val _activityBackground = MutableLiveData<Int>(activityBackgroundConstants.WHITE)
-//    val activityBackground: LiveData<Int> get() = _activityBackground
-//
-//    fun setActivityBackground(key : Int){
-//        _activityBackground.value = key
-//    }
-
+    
     private val _allFragSelectedItem = MutableLiveData<Int>(null) // 선택된 아이템 저장
     val allFragSelectedItem: LiveData<Int> get() = _allFragSelectedItem
 

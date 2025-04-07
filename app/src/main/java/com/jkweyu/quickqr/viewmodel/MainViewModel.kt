@@ -27,13 +27,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         qrCodeItemDao = db.qrCodeItemDao()
         homeRVDao = db.homeRVItemDao()
     }
-
-
-
-
-
-
-
+    
     // 이동용 depth
     private val _fragmentDepth = MutableLiveData<Int>(0) // 선택된 아이템 저장
     val fragmentDepth: LiveData<Int> get() = _fragmentDepth
@@ -53,10 +47,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
     
-    private val _allFragSelectedItem = MutableLiveData<Int>(null) // 선택된 아이템 저장
-    val allFragSelectedItem: LiveData<Int> get() = _allFragSelectedItem
+    private val _allFragSelectedItem = MutableLiveData<Int?>(null) // 선택된 아이템 저장
+    val allFragSelectedItem: LiveData<Int?> get() = _allFragSelectedItem
 
-    fun onAllFragItemClicked(type: Int) {
+    fun onAllFragItemClicked(type: Int?) {
         _allFragSelectedItem.value = type // 클릭된 아이템 전달
     }
 

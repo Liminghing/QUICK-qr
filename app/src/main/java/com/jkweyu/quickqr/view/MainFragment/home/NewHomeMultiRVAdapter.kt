@@ -5,12 +5,12 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.jkweyu.quickqr.util.AutoIndexedList
 import com.jkweyu.quickqr.data.homervdata.HomeRVItem
 import com.jkweyu.quickqr.databinding.ItemHomeAddMenuLayoutBinding
 import com.jkweyu.quickqr.databinding.ItemHomeEmptyLayoutBinding
 import com.jkweyu.quickqr.databinding.ItemHomeMenuLayoutBinding
 import com.jkweyu.quickqr.databinding.ItemHomeMenuShimmerLayoutBinding
+import com.jkweyu.quickqr.util.AutoIndexedList
 import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_ADD_MENU
 import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_EMPTY
 import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment.Companion.VIEW_TYPE_MENU
@@ -38,7 +38,7 @@ class NewHomeMultiRVAdapter(
         return when (viewType) {
             0 -> HomeShimmerViewHolder(ItemHomeMenuShimmerLayoutBinding.inflate(LayoutInflater.from(context), parent, false))
             VIEW_TYPE_MENU -> HomeMenuViewHolder(ItemHomeMenuLayoutBinding.inflate(LayoutInflater.from(context), parent, false),mViewModel,viewModel,animatorMap)
-            VIEW_TYPE_ADD_MENU -> HomeAddMenuViewHolder(ItemHomeAddMenuLayoutBinding.inflate(LayoutInflater.from(context), parent, false),viewModel)
+            VIEW_TYPE_ADD_MENU -> HomeAddMenuViewHolder(ItemHomeAddMenuLayoutBinding.inflate(LayoutInflater.from(context), parent, false),mViewModel,viewModel)
             VIEW_TYPE_EMPTY -> HomeEmptyViewHolder(ItemHomeEmptyLayoutBinding.inflate(LayoutInflater.from(context), parent, false))
             else -> throw IllegalArgumentException("Invalid view type")
         }

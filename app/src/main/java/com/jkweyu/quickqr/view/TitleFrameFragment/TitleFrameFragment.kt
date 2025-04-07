@@ -21,6 +21,7 @@ class TitleFrameFragment: BaseFragment<FragmentTitleFrameBinding>(R.layout.fragm
 
     private lateinit var backPressedCallback: OnBackPressedCallback
     override fun initView() {
+        Log.d("checkView","initView() 호출")
 
         mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         binding.apply {
@@ -34,16 +35,8 @@ class TitleFrameFragment: BaseFragment<FragmentTitleFrameBinding>(R.layout.fragm
             toolbar.setNavigationOnClickListener{
                 mainViewModel.changeFragment(fragmentConstants.MAIN)
             }
-//
-//            val type = mainViewModel.allFragSelectedItem.value
-//            binding.type = type
-
-//
-
         }
     }
-
-
 
     fun loadFrameLayout(fragment: Fragment): Boolean {
         childFragmentManager.beginTransaction()
@@ -59,18 +52,16 @@ class TitleFrameFragment: BaseFragment<FragmentTitleFrameBinding>(R.layout.fragm
         }
         requireActivity().onBackPressedDispatcher.addCallback(this, backPressedCallback)
     }
+
     override fun onHiddenChanged(hidden: Boolean) {
         super.onHiddenChanged(hidden)
 
-
-
         if (!hidden){
-            Log.d("ajdjd","TitleFrameFragment 보여짐")
-
             registerOnBackPressedCallback()
 
             if(mainViewModel.allFragSelectedItem.value != null){
                 mainViewModel.setDepth(1)
+                binding.appBarLayout.setExpanded(true, false)
                 when(mainViewModel.allFragSelectedItem.value){
                     0 -> {
                         binding.type = getString(R.string.qr_tff_text_history_toolbar_title)
@@ -88,39 +79,22 @@ class TitleFrameFragment: BaseFragment<FragmentTitleFrameBinding>(R.layout.fragm
                         binding.type = getString(R.string.qr_tff_link_favorites_toolbar_title)
                         loadFrameLayout(FavoritesQrItemFragment())
                     }
-//                    4 -> {
-//                        binding.type = "언어 설정"
-//                        loadFrameLayout(LanguageFragment())
-//                    }
+
                     else -> {
 
                     }
                 }
             }else{
                 mainViewModel.setDepth(2)
+                binding.appBarLayout.setExpanded(true, false)
                 binding.type = getString(R.string.qr_tff_add_menu_toolbar_title)
                 loadFrameLayout(HistoryFragment())
             }
-
-
-
-            Log.d("onHiddenChanged","[[[[TitleFrameFragment]]]] show")
         }else{
-            Log.d("onHiddenChanged","[[[[TitleFrameFragment]]]] hide")
+            Log.d("checkView","onHiddenChanged(is hidden) 호출")
             if(::backPressedCallback.isInitialized){
-                Log.d("onHiddenChanged","QRChoiceFragment onDetach backPressedCallback 해제")
                 backPressedCallback.remove()
             }
         }
     }
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return if(item.itemId == android.R.id.home){
-//            onBackPressedDispatcher.onBackPressed()
-//            true
-//        }else{
-//            super.onOptionsItemSelected(item)
-//        }
-//    }
-
 }

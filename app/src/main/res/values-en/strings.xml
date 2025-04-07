@@ -13,8 +13,8 @@
     <string name="btn_all_item">All</string>
 
     <!-- HomeFragment -->
-    <string name="qr_generate_bt">QR Generate</string>
-    <string name="qr_scan_bt">QR Scan</string>
+    <string name="qr_generate_bt">Generate</string>
+    <string name="qr_scan_bt">Scan</string>
     <string name="home_menu_add_bt">Add Menu</string>
     <string name="home_bottom_bt_add">ADD</string>
     <string name="home_bottom_bt_done">DONE</string>
@@ -60,6 +60,10 @@
     <string name="all_setting_pp_hint">Check the privacy policy</string>
 
     <!-- QRChoiceFragment -->
+    <string name="qr_choice_card_example_title">Title</string>
+    <string name="qr_choice_card_example_subtitle">Subtitle</string>
+    <string name="qr_choice_card_example_time">08:14</string>
+
     <string name="qr_choice_toolbar_title">QR Generate</string>
     <string name="qr_choice_card_title">Create QR Code</string>
     <string name="qr_choice_card_content">Try out the QR Business Card, a modern way to share your contact info instantly with a simple scan!</string>

@@ -28,6 +28,11 @@ class HistoryItemViewHolder(
                     viewModel.addVmItem(item)
                     viewModel.changeFragment(fragmentConstants.MAIN)
                 }
+                2 -> {
+                    viewModel.setFocusItem(item, null)
+                    viewModel.addVmItem(item)
+                    viewModel.changeFragment(fragmentConstants.MAIN)
+                }
 
             }
         }

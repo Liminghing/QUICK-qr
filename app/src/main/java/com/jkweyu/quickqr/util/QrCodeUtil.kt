@@ -5,16 +5,19 @@ import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.os.Build
 import android.provider.MediaStore
 import android.util.Log
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getString
 import androidx.core.content.FileProvider
 import com.google.zxing.BarcodeFormat
+import com.google.zxing.EncodeHintType
+import com.google.zxing.MultiFormatWriter
 import com.google.zxing.WriterException
 import com.google.zxing.common.BitMatrix
 import com.jkweyu.quickqr.R
-import com.journeyapps.barcodescanner.BarcodeEncoder
 import java.io.File
 import java.io.FileOutputStream
 
@@ -92,11 +95,36 @@ class QrCodeUtil(private val context: Context) {
         context.startActivity(Intent.createChooser(shareIntent, "QR코드 공유"))
     }
 
-    fun generateQRCode(text: String, size: Int = 500): Bitmap? {
+
+    fun generateQRCode(
+        text: String,
+        size: Int = 500,
+        foregroundColor: Int = ContextCompat.getColor(context,R.color.reverse_base_deep_color),
+        backgroundColor: Int = Color.TRANSPARENT
+    ): Bitmap? {
         return try {
-            val barcodeEncoder = BarcodeEncoder()
-            val bitMatrix: BitMatrix = barcodeEncoder.encode(text, BarcodeFormat.QR_CODE, size, size)
-            barcodeEncoder.createBitmap(bitMatrix)
+            val hints = mapOf(
+                EncodeHintType.CHARACTER_SET to "UTF-8",
+                EncodeHintType.MARGIN to 1 // 여백 최소화 (선택사항)
+            )
+            val bitMatrix: BitMatrix = MultiFormatWriter().encode(
+                text,
+                BarcodeFormat.QR_CODE,
+                size,
+                size,
+                hints
+            )
+            val width = bitMatrix.width
+            val height = bitMatrix.height
+            val pixels = IntArray(width * height)
+            for (y in 0 until height) {
+                for (x in 0 until width) {
+                    pixels[y * width + x] = if (bitMatrix[x, y]) foregroundColor else backgroundColor
+                }
+            }
+            Bitmap.createBitmap(pixels, width, height, Bitmap.Config.ARGB_8888)
+//            val barcodeEncoder = BarcodeEncoder()
+//            barcodeEncoder.createBitmap(bitMatrix)
         } catch (e: WriterException) {
             e.printStackTrace()
             null

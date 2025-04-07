@@ -12,8 +12,8 @@
     <string name="btn_all_item">전체</string>
 
     <!-- HomeFragment -->
-    <string name="qr_generate_bt">QR 생성</string>
-    <string name="qr_scan_bt">QR 스캔</string>
+    <string name="qr_generate_bt">생성</string>
+    <string name="qr_scan_bt">스캔</string>
     <string name="home_menu_add_bt">메뉴 추가</string>
     <string name="home_bottom_bt_add">추가</string>
     <string name="home_bottom_bt_done">완료</string>
@@ -58,6 +58,11 @@
     <string name="all_setting_pp_hint">개인정보 처리방침을 확인하세요</string>
 
     <!-- QRChoiceFragment -->
+    <string name="qr_choice_card_example_title">제목</string>
+    <string name="qr_choice_card_example_subtitle">부제목</string>
+    <string name="qr_choice_card_example_time">08:14</string>
+
+
     <string name="qr_choice_toolbar_title">QR 생성</string>
     <string name="qr_choice_card_title">QR 코드 생성</string>
     <string name="qr_choice_card_content">QR 명함을 사용해보세요. 간단한 스캔으로 연락처를 빠르게 공유할 수 있는 현대적인 방법입니다!</string>

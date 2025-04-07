@@ -19,7 +19,7 @@ class FavoritesFragment: BaseFragment<FragmentFavoritesBinding>(R.layout.fragmen
             favoritesViewModel = FavoritesRVItemViewModel()
             fViewModel = favoritesViewModel
             lifecycleOwner = this@FavoritesFragment
-
+            
 
             tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
                 override fun onTabSelected(tab: TabLayout.Tab?) {

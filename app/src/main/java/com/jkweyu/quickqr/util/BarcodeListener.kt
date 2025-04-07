@@ -16,13 +16,15 @@ import com.google.mlkit.vision.barcode.common.Barcode
 class BarcodeAnalysis(private val listener: BarcodeResultListener) {
     fun startScanning(barcode: Barcode) {
         if (barcode.rawValue != null && isUPIUrl(barcode.rawValue.toString())) {
+            Log.d("checkQrCode","t")
             handleUPIResult(barcode)
         }else{
+            Log.d("checkQrCode","f")
             handleBarcodeResult(barcode)
         }
     }
 
-    private fun handleUPIResult(barcode: Barcode) : Intent? {
+    private fun handleUPIResult(barcode: Barcode) : Intent {
         return Intent(Intent.ACTION_VIEW).apply {
             data = Uri.parse(barcode.rawValue)
         }
@@ -35,6 +37,7 @@ class BarcodeAnalysis(private val listener: BarcodeResultListener) {
                 url?.let {
                     // 웹 브라우저로 URL 열기
                     listener.onBarcodeIntentDetected(Intent(Intent.ACTION_VIEW, Uri.parse(it)))
+                    Log.d("QR_SCAN", "일반 QR 코드 사이트 열기")
                 }
             }
             Barcode.TYPE_WIFI -> {
@@ -72,8 +75,8 @@ class BarcodeAnalysis(private val listener: BarcodeResultListener) {
                 })
             }
             Barcode.TYPE_TEXT -> {
-                val text = barcode.displayValue
-                Log.d("QR_SCAN", "텍스트 QR 코드 감지: $text")
+                val text = barcode.displayValue ?: ""
+                Log.d("QR_SCAN", "디코딩된 텍스트: $text")
                 listener.onBarcodeClipBoardDetected(ClipData.newPlainText("QR Code Text", text))
             }
 

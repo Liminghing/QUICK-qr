@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <!-- 필요한 변수 선언 -->
+    </data>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/dp_16"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+        <ImageView
+            android:id="@+id/iconType"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_80"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:src="@drawable/ic_icon_link"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout9"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_payment_card_bottom"
+            android:elevation="10dp"
+            android:padding="@dimen/dp_16"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline1h" >
+
+            <EditText
+                android:id="@+id/editTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:hint="@string/qr_create_url_et_title"
+                android:textCursorDrawable="@drawable/text_cursor"
+                android:textStyle="bold"
+                android:inputType="text"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:hint="@string/qr_create_url_et_subtitle"
+                android:textCursorDrawable="@drawable/text_cursor"
+                android:inputType="text"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTitle" />
+
+            <EditText
+                android:id="@+id/editUrlContent"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_cardview_profile"
+                android:backgroundTint="@color/base_light_color"
+                android:gravity="start|center_vertical"
+                android:hint="https://"
+                android:inputType="textUri"
+                android:maxLines="1"
+                android:layout_marginVertical="@dimen/dp_16"
+                android:padding="16dp"
+                android:textCursorDrawable="@drawable/text_cursor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editSubtitle" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:autoSizeTextType="uniform"
+                android:background="@drawable/shape_cardview_profile"
+                android:backgroundTint="@color/qr_type02_button_color"
+                android:padding="@dimen/dp_04"
+                android:textColor="@color/white"
+                android:text="@string/qr_create_url_create_bt"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+
+
+</layout>

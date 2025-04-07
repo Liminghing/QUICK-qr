@@ -13,8 +13,8 @@
     <string name="btn_all_item">Tất cả</string>
 
     <!-- HomeFragment -->
-    <string name="qr_generate_bt">Tạo QR</string>
-    <string name="qr_scan_bt">Quét QR</string>
+    <string name="qr_generate_bt">Tạo</string>
+    <string name="qr_scan_bt">Quét</string>
     <string name="home_menu_add_bt">Thêm Menu</string>
     <string name="home_bottom_bt_add">THÊM</string>
     <string name="home_bottom_bt_done">XONG</string>
@@ -55,6 +55,11 @@
     <string name="all_setting_pp_hint">Kiểm tra chính sách bảo mật</string>
 
     <!-- QRChoiceFragment -->
+    <string name="qr_choice_card_example_title">Tiêu đề</string>
+    <string name="qr_choice_card_example_subtitle">Phụ đề</string>
+    <string name="qr_choice_card_example_time">08:14</string>
+
+
     <string name="qr_choice_toolbar_title">Tạo QR</string>
     <string name="qr_choice_card_title">Tạo mã QR</string>
     <string name="qr_choice_card_content">Hãy thử Danh thiếp QR, một cách hiện đại để chia sẻ thông tin liên lạc của bạn tức thì chỉ với một lần quét đơn giản!</string>

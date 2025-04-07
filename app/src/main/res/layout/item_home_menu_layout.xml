@@ -16,9 +16,9 @@
         android:layout_height="0dp">
         <ImageView
             android:id="@+id/deleteButton"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:elevation="5dp"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="@dimen/dp_24"
+            android:elevation="@dimen/dp_10"
             android:src="@drawable/ic_home_cardview_delete_button"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
@@ -29,7 +29,8 @@
             android:id="@+id/item_card"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="8dp"
+            android:layout_margin="@dimen/dp_06"
+            android:padding="@dimen/dp_08"
             android:elevation="4dp"
             app:setCardViewResource="@{item.itemType}"
             android:onLongClick="@{() -> menuViewModel.toggleItemVisibility(item)}"
@@ -38,149 +39,46 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline1"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.08" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline2"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.92" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.08" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline4"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.92" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintBottom_toBottomOf="@+id/guideline2"
-                app:layout_constraintEnd_toStartOf="@+id/guideline4"
-                app:layout_constraintStart_toStartOf="@+id/guideline3"
-                app:layout_constraintTop_toTopOf="@+id/guideline1">
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent">
 
                 <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/guideline03h"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="horizontal"
                     app:layout_constraintGuide_percent="0.3" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline5_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.55" />
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.6" />
-
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline5_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.15" />
-
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline6_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.55" />
-
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline6_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:layout_constraintGuide_percent="0.85" />
 
 
                 <TextView
                     android:id="@+id/title_text"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:autoSizeTextType="uniform"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:textSize="16sp"
+
+                    android:maxLength="10"
                     android:ellipsize="end"
-                    android:singleLine="true"
-                    app:layout_constraintBottom_toBottomOf="@+id/guideline5"
+                    android:maxLines="1"
+                    android:gravity="top|start"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/linearLayout"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                <ImageView
+                    android:id="@+id/IconImage"
+                    android:layout_width="@dimen/dp_26"
+                    android:layout_height="@dimen/dp_26"
+                    app:setCardViewIcon="@{item.itemType}"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/guideline6">
+                    app:layout_constraintEnd_toEndOf="parent"/>
 
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.3" />
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_percent="0.6" />
-
-                    <ImageView
-                        android:id="@+id/QRImage"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        app:setCardViewQR="@{item.itemType}"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintEnd_toStartOf="@+id/guideline8"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/IconImage"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        app:setCardViewIcon="@{item.itemType}"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintDimensionRatio="1:1"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="@+id/guideline7" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

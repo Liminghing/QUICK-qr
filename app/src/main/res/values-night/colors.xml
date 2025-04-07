@@ -4,18 +4,22 @@
     <color name="primary_color_02">#B3766DFF</color>
 
     <color name="base_color">#353535</color>
+    <color name="reverse_base_color">#FFFFFF</color>
+    <color name="reverse_base_deep_color">#F1F1F1</color>
+    <color name="reverse_base_light_color">#F7F9FB</color>
     <color name="base_deep_color">#292929</color>
     <color name="base_light_color">#424242</color>
+    <color name="base_medium_color">#303030</color>
 
     <color name="qr_type01_primary_color">#928BFF</color>
-    <color name="qr_type02_primary_color">#FFA76D</color>
+    <color name="qr_type02_primary_color">#DE9A6C</color>
     <color name="qr_type03_primary_color">#37BCFF</color>
     <color name="qr_type_add_primary_color">#B8B8B8</color>
 
-    <color name="qr_type01_base_color">#59D8D6FF</color>
+    <color name="qr_type01_base_color">#6E6D7C</color>
     <color name="qr_type02_base_color">#59FFA76D</color>
     <color name="qr_type03_base_color">#5937BCFF</color>
-    <color name="qr_type_add_base_color">#59EEEEEE</color>
+    <color name="qr_type_add_base_color">#767676</color>
 
     <color name="qr_type01_color">#59928BFF</color>
     <color name="qr_type02_color">#59FFA76D</color>
@@ -25,9 +29,9 @@
     <color name="qr_type02_deep_color">#80DB8C57</color>
     <color name="qr_type03_deep_color">#802894CA</color>
 
-    <color name="qr_type01_button_color">#CC766DFF</color>
-    <color name="qr_type02_button_color">#CCFF9A5D</color>
-    <color name="qr_type03_button_color">#CC2EB6FF</color>
+    <color name="qr_type01_button_color">#474474</color>
+    <color name="qr_type02_button_color">#FF9A5D</color>
+    <color name="qr_type03_button_color">#2EB6FF</color>
 
     <color name="type_01_base_csssolor">#40867EFF</color>
 

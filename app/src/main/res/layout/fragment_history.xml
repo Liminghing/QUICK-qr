@@ -14,8 +14,14 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:padding="15dp"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/dp_08"
+        android:layout_marginHorizontal="@dimen/dp_08"
+
+        android:paddingHorizontal="@dimen/dp_06"
+        android:paddingTop="@dimen/dp_06"
+
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -23,10 +29,16 @@
         <TextView
             android:id="@+id/textView4"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:autoSizeTextType="uniform"
-            android:text="@string/history_title"
+            android:textSize="28sp"
+
+            android:maxLength="10"
+            android:maxLines="1"
+
             android:textStyle="bold"
+
+            android:text="@string/history_title"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,7 +47,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="@dimen/dp_46"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
 
@@ -47,8 +59,10 @@
             android:elevation="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0"
             app:tabIndicator="@drawable/shape_history_tab_layout_indicator"
             app:tabIndicatorAnimationDuration="0"
             app:tabIndicatorColor="#766DFF"
@@ -88,15 +102,15 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
+        android:layout_marginHorizontal="@dimen/dp_08"
         android:id="@+id/FrameLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout3"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

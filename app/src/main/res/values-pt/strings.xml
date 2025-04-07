@@ -13,8 +13,8 @@
     <string name="btn_all_item">Todos</string>
 
     <!-- HomeFragment -->
-    <string name="qr_generate_bt">Gerar QR</string>
-    <string name="qr_scan_bt">Escanear QR</string>
+    <string name="qr_generate_bt">Gerar</string>
+    <string name="qr_scan_bt">Escanear</string>
     <string name="home_menu_add_bt">Adicionar Menu</string>
     <string name="home_bottom_bt_add">ADICIONAR</string>
     <string name="home_bottom_bt_done">CONCLUÍDO</string>
@@ -55,6 +55,10 @@
     <string name="all_setting_pp_hint">Verificar a política de privacidade</string>
 
     <!-- QRChoiceFragment -->
+    <string name="qr_choice_card_example_title">Título</string>
+    <string name="qr_choice_card_example_subtitle">Subtítulo</string>
+    <string name="qr_choice_card_example_time">08:14</string>
+
     <string name="qr_choice_toolbar_title">Gerar QR</string>
     <string name="qr_choice_card_title">Criar Código QR</string>
     <string name="qr_choice_card_content">Experimente o Cartão de Visita QR, uma forma moderna de compartilhar suas informações de contato instantaneamente com uma simples leitura!</string>

@@ -32,6 +32,8 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
 
 
+
+
     // 이동용 depth
     private val _fragmentDepth = MutableLiveData<Int>(0) // 선택된 아이템 저장
     val fragmentDepth: LiveData<Int> get() = _fragmentDepth

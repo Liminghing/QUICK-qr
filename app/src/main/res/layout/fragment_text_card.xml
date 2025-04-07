@@ -8,12 +8,14 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingHorizontal="@dimen/dp_16"
+        android:clipToPadding="false"
         android:orientation="vertical">
         <ImageView
             android:id="@+id/iconType"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_marginBottom="16dp"
+            android:layout_height="@dimen/dp_80"
+            android:layout_marginBottom="@dimen/dp_16"
             android:src="@drawable/ic_icon_text"/>
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,7 +23,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/shape_payment_card_bottom"
-            android:padding="16dp"
+
+            android:elevation="10dp"
+            android:padding="@dimen/dp_16"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,9 +39,8 @@
                 android:gravity="center"
                 android:hint="@string/qr_create_text_et_title"
                 android:textCursorDrawable="@drawable/text_cursor"
-                android:textColor="#000000"
-                android:textStyle="normal"
                 android:inputType="text"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -50,7 +53,6 @@
                 android:gravity="center"
                 android:hint="@string/qr_create_text_et_subtitle"
                 android:textCursorDrawable="@drawable/text_cursor"
-                android:textColor="#000000"
                 android:inputType="text"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -61,8 +63,9 @@
                 android:id="@+id/editTextContent"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginVertical="16dp"
+                android:layout_marginVertical="@dimen/dp_16"
                 android:background="@drawable/shape_cardview_profile"
+                android:backgroundTint="@color/base_light_color"
                 android:ems="10"
                 android:gravity="start|top"
                 android:hint="@string/qr_create_text_et_content"

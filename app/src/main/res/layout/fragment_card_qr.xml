@@ -8,180 +8,111 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingHorizontal="2dp"
+        android:paddingHorizontal="@dimen/dp_16"
+        android:paddingBottom="@dimen/dp_16"
+        android:clipToPadding="false"
         android:background="@color/transparent">
-
         <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline5h"
+            android:id="@+id/guideline"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.05" />
+            app:layout_constraintGuide_percent="0.25" />
 
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline15h"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.15" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline20h"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.2" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline35h"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.35" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline6h"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.6" />
-
-
-        <View
-            android:id="@+id/cardView"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout10"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:background="@drawable/shape_payment_card_bottom"
-            android:backgroundTint="@color/type_01_base_csssolor"
-            android:padding="20dp"
-            app:cardElevation="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0" />
-        <ImageView
-            android:id="@+id/appLogoImage"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text="QR card"
+                android:textColor="@color/white"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:text="Share your contact info instantly with a quick scan!"
+                android:textColor="@color/white"
+                android:layout_marginHorizontal="@dimen/dp_04"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.cardview.widget.CardView
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:src="@drawable/ic_past_logo"
-            app:layout_constraintBottom_toTopOf="@+id/guideline20h"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline5h" />
 
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:autoSizeTextType="uniform"
-            android:backgroundTint="#655BFF"
-            android:text="@string/qr_choice_card_create_bt"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView16"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:autoSizeTextType="uniform"
-            android:gravity="center"
-            android:text="@string/qr_choice_card_title"
-            android:layout_margin="16dp"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/guideline35h"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline20h" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_margin="16dp"
-            android:autoSizeTextType="uniform"
-            android:gravity="center"
-            android:padding="20dp"
-            android:text="@string/qr_choice_card_content"
-            android:textColor="@color/white"
-            app:layout_constraintBottom_toTopOf="@+id/guideline6h"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline35h" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:elevation="4dp"
             android:orientation="vertical"
-            android:layout_margin="16dp"
-            app:layout_constraintBottom_toTopOf="@+id/button"
+            app:cardBackgroundColor="@color/base_color"
+            app:cardCornerRadius="12dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/guideline6h">
+            app:layout_constraintTop_toTopOf="@+id/guideline">
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:padding="8dp">
-
-                <ImageView
-                    android:id="@+id/imageView7"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_text_icon"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:padding="@dimen/dp_16">
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_marginStart="8dp"
-                    android:autoSizeTextType="uniform"
-                    android:gravity="center|left"
-                    android:padding="2dp"
-                    android:text="@string/qr_choice_card_text_string"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView7"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:padding="8dp">
-
-                <ImageView
-                    android:id="@+id/imageView71"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/ic_link_icon"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintDimensionRatio="1:1"
+                    android:layout_height="wrap_content"
+                    android:text="Text to QR"
+                    android:textColor="@color/reverse_base_color"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView10"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
+
+                <ImageView
+                    android:id="@+id/imageView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/dp_02"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/img_type_01_01"
+                    app:layout_constraintBottom_toBottomOf="@+id/button"
+                    app:layout_constraintEnd_toEndOf="@+id/button"
+                    app:layout_constraintStart_toStartOf="@+id/button" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:autoSizeTextType="uniform"
-                    android:gravity="center|left"
-                    android:padding="2dp"
-                    android:text="@string/qr_choice_card_link_string"
+                    android:background="@drawable/shape_cardview_profile"
+                    android:backgroundTint="@color/qr_type01_button_color"
+                    android:elevation="0dp"
+                    android:padding="@dimen/dp_04"
+                    android:text="@string/qr_choice_card_create_bt"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView71"
-                    app:layout_constraintTop_toTopOf="parent" />
-
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </LinearLayout>
-
-
+        </androidx.cardview.widget.CardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

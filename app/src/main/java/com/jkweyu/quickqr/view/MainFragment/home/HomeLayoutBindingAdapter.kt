@@ -17,24 +17,24 @@ object HomeLayoutBindingAdapter {
         imageView.setImageResource(resource)
     }
 
-    @JvmStatic
-    @BindingAdapter("setCardViewQR")
-    fun setCardViewQRResource(imageView: ImageView, type: Int?) {
-        val resource = when (type) {
-            1 -> R.drawable.ic_home_cardview_qr
-            else -> R.drawable.ic_home_cardview_qr
-//            2 -> R.drawable.ic_home_cardview_item_qr
-//            else -> R.drawable.ic_home_cardview_normal_qr
-        }
-        imageView.setImageResource(resource)
-    }
+//    @JvmStatic
+//    @BindingAdapter("setCardViewQR")
+//    fun setCardViewQRResource(imageView: ImageView, type: Int?) {
+//        val resource = when (type) {
+//            1 -> R.drawable.ic_home_cardview_qr
+//            else -> R.drawable.ic_home_cardview_qr
+////            2 -> R.drawable.ic_home_cardview_item_qr
+////            else -> R.drawable.ic_home_cardview_normal_qr
+//        }
+//        imageView.setImageResource(resource)
+//    }
 
     @JvmStatic
     @BindingAdapter("setCardViewResource")
     fun setCardViewResource(layout: ConstraintLayout, type: Int?) {
         val resource = when (type) {
             1 -> R.drawable.shape_cardview_profile
-            else -> R.drawable.shape_cardview_profile
+            else -> R.drawable.shape_cardview_item
 //            2 -> R.drawable.shape_cardview_item
 //            else -> R.drawable.shape_cardview_normal
         }

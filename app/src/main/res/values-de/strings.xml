@@ -13,8 +13,8 @@
     <string name="btn_all_item">Alle</string>
 
     <!-- HomeFragment -->
-    <string name="qr_generate_bt">QR erstellen</string>
-    <string name="qr_scan_bt">QR scannen</string>
+    <string name="qr_generate_bt">erstellen</string>
+    <string name="qr_scan_bt">scannen</string>
     <string name="home_menu_add_bt">Menü hinzufügen</string>
     <string name="home_bottom_bt_add">HINZUFÜGEN</string>
     <string name="home_bottom_bt_done">FERTIG</string>
@@ -55,6 +55,11 @@
     <string name="all_setting_pp_hint">Datenschutzrichtlinie überprüfen</string>
 
     <!-- QRChoiceFragment -->
+    <string name="qr_choice_card_example_title">Titel</string>
+    <string name="qr_choice_card_example_subtitle">Untertitel</string>
+    <string name="qr_choice_card_example_time">08:14</string>
+
+
     <string name="qr_choice_toolbar_title">QR erstellen</string>
     <string name="qr_choice_card_title">QR-Code erstellen</string>
     <string name="qr_choice_card_content">Probieren Sie die QR-Visitenkarte aus, eine moderne Möglichkeit, Ihre Kontaktdaten durch einfaches Scannen sofort zu teilen!</string>

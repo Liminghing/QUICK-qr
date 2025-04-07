@@ -11,8 +11,8 @@ object HistoryRVItemBindingAdapter {
     @JvmStatic
     fun setCardViewIconResource(imageView: ImageView, type: Int?) {
         val resource = when (type) {
-            itemTypeConstants.QR_TYPE_TEXT -> R.drawable.ic_icon_text
-            else -> R.drawable.ic_icon_link //itemTypeConstants.QR_TYPE_LINK
+            itemTypeConstants.QR_TYPE_TEXT -> R.drawable.ic_icon_text_primary
+            else -> R.drawable.ic_icon_link_primary //itemTypeConstants.QR_TYPE_LINK
         }
         imageView.setImageResource(resource)
     }

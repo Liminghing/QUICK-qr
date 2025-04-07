@@ -4,19 +4,22 @@ import android.view.ViewTreeObserver
 import androidx.recyclerview.widget.RecyclerView
 import com.jkweyu.quickqr.constants.homeItemTypeConstants
 import com.jkweyu.quickqr.databinding.ItemHomeAddMenuLayoutBinding
+import com.jkweyu.quickqr.viewmodel.MainViewModel
 import com.jkweyu.quickqr.viewmodel.home.HomeRVItemViewModel
 
 
 class HomeAddMenuViewHolder(
     val binding: ItemHomeAddMenuLayoutBinding,
-    private val viewModel: HomeRVItemViewModel,
+    private val mainViewModel: MainViewModel,
+    private val viewModel: HomeRVItemViewModel
 ) : RecyclerView.ViewHolder(binding.root) {
     init {
-        setItemSize() 
+        setItemSize()
     }
     fun bind() {
         binding.menuViewModel = viewModel
         binding.itemCard.setOnClickListener {
+            mainViewModel.onAllFragItemClicked(null)
             viewModel.onHItemClicked(homeItemTypeConstants.VIEW_TYPE_ADD_MENU)
         }
 

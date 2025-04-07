@@ -1,5 +1,6 @@
 package com.jkweyu.quickqr.view.MainFragment.history.holder
 
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import com.jkweyu.quickqr.constants.fragmentConstants
 import com.jkweyu.quickqr.data.QRCodeItem
@@ -24,11 +25,11 @@ class HistoryItemViewHolder(
 
                 1 -> {
                     // all -> 타이틀프레임의 히스토리에서 클릭한 경우
-                    viewModel.setFocusItem(item, null)
-                    viewModel.addVmItem(item)
-                    viewModel.changeFragment(fragmentConstants.MAIN)
+
+
                 }
                 2 -> {
+                    Log.d("checkItem","fragmentDepth : 2")
                     viewModel.setFocusItem(item, null)
                     viewModel.addVmItem(item)
                     viewModel.changeFragment(fragmentConstants.MAIN)

@@ -31,11 +31,6 @@ class AllFragment: BaseFragment<FragmentAllBinding>(R.layout.fragment_all) {
             qrTypeLinkFavorites.setOnClickListener {
                 mainViewModel.onAllFragItemClicked(3)
             }
-//            languageBt.setOnClickListener {
-//                mainViewModel.onAllFragItemClicked(4)
-//            }
-
-
 
             mainViewModel.allFragSelectedItem.observe(this@AllFragment, Observer {
                 if (it != null){

@@ -1,4 +1,4 @@
-package com.jkweyu.quickqr.view.FrameFragment.QrCreateFragment
+package com.jkweyu.quickqr.view.FrameFragment.QrCreate
 
 import android.content.Context
 import android.util.Log
@@ -13,8 +13,8 @@ import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.constants.fragmentConstantsFrame
 import com.jkweyu.quickqr.databinding.FragmentQrCreateBinding
 import com.jkweyu.quickqr.view.FrameFragment.FrameFragment
-import com.jkweyu.quickqr.view.FrameFragment.QrChoiceFragment.QrChoiceType.ChoiceCard.CardType.TextCardFragment
-import com.jkweyu.quickqr.view.FrameFragment.QrChoiceFragment.QrChoiceType.ChoiceCard.CardType.UrlCardFragment
+import com.jkweyu.quickqr.view.FrameFragment.QrCreate.Type.CreateLinkFragment
+import com.jkweyu.quickqr.view.FrameFragment.QrCreate.Type.CreateTextFragment
 import com.jkweyu.quickqr.viewmodel.FrameFragmentViewModel
 import com.jkweyu.quickqr.viewmodel.MainViewModel
 
@@ -22,23 +22,31 @@ import com.jkweyu.quickqr.viewmodel.MainViewModel
 class QRCreateFragment: BaseFragment<FragmentQrCreateBinding>(R.layout.fragment_qr_create) {
     private lateinit var mainViewModel: MainViewModel
     private lateinit var frameFragmentViewModel: FrameFragmentViewModel
+    private lateinit var fragment: Fragment
 
     private lateinit var backPressedCallback: OnBackPressedCallback
     override fun initView() {
 
         binding.apply {
 
-            viewpager.adapter = QRCreatePagerAdapter(this@QRCreateFragment)
-            // 옆 페이지도 보이도록 설정
-            viewpager.offscreenPageLimit = 1
-            val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.margin_08)
-            val screenWidth = resources.displayMetrics.widthPixels
-            val pagerWidth = screenWidth - resources.getDimensionPixelOffset(R.dimen.margin_32)
-            val offsetPx = screenWidth - pageMarginPx - pagerWidth
 
-            viewpager.setPageTransformer { page, position ->
-                page.translationX = position * -offsetPx
+
+
+
+            when(frameFragmentViewModel.createType.value){
+                0 -> {
+                    fragment = CreateTextFragment()
+                    root.background = ContextCompat.getDrawable(requireContext(), R.color.qr_type01_color)
+                }
+                else -> {
+                    fragment = CreateLinkFragment()
+                    root.background = ContextCompat.getDrawable(requireContext(), R.color.qr_type02_color)
+                }
+
             }
+            childFragmentManager.beginTransaction()
+                .replace(R.id.fragment_view,fragment)
+                .commit()
 
 
             val activity = requireActivity() as AppCompatActivity
@@ -97,7 +105,7 @@ class QRCreatePagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) 
 
 
         //fragments = listOf(CardQrFragment(), GeneralQrFragment(), ItemQrFragment())
-        fragments = listOf(TextCardFragment(), UrlCardFragment())
+        fragments = listOf(CreateTextFragment(), CreateLinkFragment())
     }
     override fun getItemCount(): Int = fragments.size // 페이지 개수
 

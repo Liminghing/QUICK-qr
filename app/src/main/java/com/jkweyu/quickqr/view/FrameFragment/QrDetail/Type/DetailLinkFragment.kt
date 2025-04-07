@@ -1,4 +1,4 @@
-package com.jkweyu.quickqr.view.FrameFragment.QrDeatilFragment.QrDetailType.DetailCard
+package com.jkweyu.quickqr.view.FrameFragment.QrDetail.Type
 
 import android.content.Intent
 import android.net.Uri
@@ -6,14 +6,14 @@ import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.jkweyu.quickqr.R
-import com.jkweyu.quickqr.util.OGMetaParser
 import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.data.QRCodeItem
 import com.jkweyu.quickqr.databinding.FragmentUrlContentBinding
+import com.jkweyu.quickqr.util.OGMetaParser
 import kotlinx.coroutines.launch
 
 
-class UrlContentFragment(private val item : QRCodeItem): BaseFragment<FragmentUrlContentBinding>(R.layout.fragment_url_content) {
+class DetailLinkFragment(private val item : QRCodeItem): BaseFragment<FragmentUrlContentBinding>(R.layout.fragment_url_content) {
     override fun initView() {
         binding.apply {
             lifecycleScope.launch {

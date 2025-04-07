@@ -5,4 +5,7 @@
         <attr name="title" format="string|reference"/>
         <attr name="count" format="string|reference"/>
     </declare-styleable>
+    <declare-styleable name="MyTextView">
+        <attr name="bezier_lineHeight" format="dimension"/>
+    </declare-styleable>
 </resources>

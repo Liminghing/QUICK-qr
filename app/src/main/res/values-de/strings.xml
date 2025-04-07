@@ -13,8 +13,8 @@
     <string name="btn_all_item">Alle</string>
 
     <!-- HomeFragment -->
-    <string name="qr_generate_bt">QR erstellen</string>
-    <string name="qr_scan_bt">QR scannen</string>
+    <string name="qr_generate_bt">erstellen</string>
+    <string name="qr_scan_bt">scannen</string>
     <string name="home_menu_add_bt">Menü hinzufügen</string>
     <string name="home_bottom_bt_add">HINZUFÜGEN</string>
     <string name="home_bottom_bt_done">FERTIG</string>

@@ -30,9 +30,9 @@ class AllFragmentItemView @JvmOverloads constructor(
 
             val content = typedArray.getString(R.styleable.AllFragmentItemView_count) // 여기 오타 수정 (title -> content)
             if (content == null) {
-                binding.paymentImage.visibility = VISIBLE
+//                binding.paymentImage.visibility = VISIBLE
             } else {
-                binding.paymentImage.visibility = GONE
+//                binding.paymentImage.visibility = GONE
                 binding.itemContent.text = content
             }
 
@@ -46,7 +46,7 @@ class AllFragmentItemView @JvmOverloads constructor(
             binding.itemTitle.text = "샘플 제목"
             binding.itemContent.text = "샘플 내용"
             binding.itemIcon.setImageResource(android.R.drawable.ic_menu_info_details)
-            binding.paymentImage.visibility = GONE
+//            binding.paymentImage.visibility = GONE
         }
     }
 }

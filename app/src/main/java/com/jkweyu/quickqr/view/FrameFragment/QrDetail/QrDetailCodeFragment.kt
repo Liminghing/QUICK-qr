@@ -1,4 +1,4 @@
-package com.jkweyu.quickqr.view.FrameFragment.QrDeatilFragment.QrDetailType
+package com.jkweyu.quickqr.view.FrameFragment.QrDetail
 
 import android.graphics.Bitmap
 import android.util.Log

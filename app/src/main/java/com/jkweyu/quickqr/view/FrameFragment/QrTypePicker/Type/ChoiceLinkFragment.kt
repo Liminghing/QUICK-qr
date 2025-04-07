@@ -1,14 +1,15 @@
-package com.jkweyu.quickqr.view.FrameFragment.QrChoiceFragment.QrChoiceType.ChoiceCard
+package com.jkweyu.quickqr.view.FrameFragment.QrTypePicker.Type
 
 import androidx.lifecycle.ViewModelProvider
 import com.jkweyu.quickqr.R
 import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.constants.fragmentConstantsFrame
-import com.jkweyu.quickqr.databinding.FragmentCardQrBinding
+import com.jkweyu.quickqr.databinding.FragmentChoiceLinkBinding
 import com.jkweyu.quickqr.view.FrameFragment.FrameFragment
 import com.jkweyu.quickqr.viewmodel.FrameFragmentViewModel
 
-class CardQrFragment(): BaseFragment<FragmentCardQrBinding>(R.layout.fragment_card_qr) {
+
+class ChoiceLinkFragment(): BaseFragment<FragmentChoiceLinkBinding>(R.layout.fragment_choice_link) {
     private lateinit var frameFragmentViewModel: FrameFragmentViewModel
     override fun initView() {
         binding.apply {
@@ -22,6 +23,7 @@ class CardQrFragment(): BaseFragment<FragmentCardQrBinding>(R.layout.fragment_ca
 
             button.setOnClickListener {
                 frameFragmentViewModel.changeFragment(fragmentConstantsFrame.QR_CREATE)
+                frameFragmentViewModel.setType(1)
             }
         }
     }

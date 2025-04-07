@@ -1,4 +1,4 @@
-package com.jkweyu.quickqr.view.FrameFragment.QrDeatilFragment
+package com.jkweyu.quickqr.view.FrameFragment.QrDetail
 
 import android.content.Context
 import android.util.Log
@@ -14,11 +14,10 @@ import com.jkweyu.quickqr.R
 import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.constants.fragmentConstants
 import com.jkweyu.quickqr.constants.itemFavoritesConstants
+import com.jkweyu.quickqr.constants.itemTypeConstants
 import com.jkweyu.quickqr.data.QRCodeItem
 import com.jkweyu.quickqr.databinding.FragmentQrDetailBinding
 import com.jkweyu.quickqr.view.FrameFragment.FrameFragment
-import com.jkweyu.quickqr.view.FrameFragment.QrDeatilFragment.QrDetailType.QrDetailCodeFragment
-import com.jkweyu.quickqr.view.FrameFragment.QrDeatilFragment.QrDetailType.QrDetailContentFragment
 import com.jkweyu.quickqr.viewmodel.FrameFragmentViewModel
 import com.jkweyu.quickqr.viewmodel.MainViewModel
 
@@ -37,6 +36,7 @@ class QrDetailFragment(private var item : QRCodeItem?): BaseFragment<FragmentQrD
             menuItem.isChecked = mainViewModel.focusItem.value!!.first?.favorites != itemFavoritesConstants.FALSE
 
             setFavoriteIcon()
+            setView(mainViewModel.getFocusItem()!!)
             // 뷰페이저 기본 설정
             viewpager.adapter = DetailFragmentAdapter(requireActivity(),item)
             viewpager.offscreenPageLimit = 1
@@ -124,6 +124,18 @@ class QrDetailFragment(private var item : QRCodeItem?): BaseFragment<FragmentQrD
         if(::backPressedCallback.isInitialized){
             Log.d("onHiddenChanged","QrDetailFragment onDetach backPressedCallback 해제")
             backPressedCallback.remove()
+        }
+    }
+    private fun setView(item : QRCodeItem){
+
+
+        when(item.itemType){
+            itemTypeConstants.QR_TYPE_TEXT -> {
+                binding.root.background = ContextCompat.getDrawable(requireContext(),R.color.qr_type01_color)
+            }
+            itemTypeConstants.QR_TYPE_LINK -> {
+                binding.root.background = ContextCompat.getDrawable(requireContext(),R.color.qr_type02_color)
+            }
         }
     }
 }

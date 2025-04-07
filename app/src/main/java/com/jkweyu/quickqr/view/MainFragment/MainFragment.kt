@@ -14,6 +14,38 @@ import com.jkweyu.quickqr.view.MainFragment.history.HistoryFragment
 import com.jkweyu.quickqr.view.MainFragment.home.HomeFragment
 import com.jkweyu.quickqr.viewmodel.MainViewModel
 
+/**
+ * 텍스트 및 패딩,마진 -> 리소스화 (리소스화 + 크기 동적 대응)
+ *
+ * 생성 -> 선택 -> 결과
+ * 1. 생성
+ * 2. 선택
+ * 3. 결과
+ *
+ * 히스토리 | 즐겨찾기 | 전체
+ * 1. 히스토리
+ *  1) 히스토리
+ *  2) 아이템
+ * 2. 즐겨찾기
+ *  1) 즐겨찾기
+ *  2) 아이템
+ * 3. 전체
+ *  1) 전체
+ *  2) 아이템
+ *
+ *  프래그먼트
+ *  1. 메인
+ *  2. 프레임
+ *  3. 타이틀+프레임
+ *
+ *  -------
+ *  새로운 종류의 qr 생성법
+ *  새로운 종류를 웹에서 볼수 있도록 구현
+ *
+ *  ------
+ *  페이지의 형태대로 이미지 다운로드
+ */
+
 
 class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
     private lateinit var mainViewModel: MainViewModel

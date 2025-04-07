@@ -12,188 +12,88 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginVertical="5dp"
-        android:layout_marginHorizontal="10dp">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_06">
+
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guideline15v"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.2" />
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline55v"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintGuide_percent="0.55" />
+            app:layout_constraintGuide_percent="0.65" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout4"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/dp_52"
+            android:layout_height="@dimen/dp_52"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/guideline15v"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline_15h"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.15" />
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline_85h"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.85" />
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline_15v"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.15" />
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline_85v"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                app:layout_constraintGuide_percent="0.85" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:setHistoryItemIcon="@{item.itemType}" />
 
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                app:layout_constraintBottom_toTopOf="@+id/guideline_85h"
-                app:layout_constraintEnd_toStartOf="@+id/guideline_85v"
-                app:layout_constraintStart_toStartOf="@+id/guideline_15v"
-                app:layout_constraintTop_toTopOf="@+id/guideline_15h"
-                app:setHistoryItemIcon="@{item.itemType}" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout2"
+        <TextView
+            android:id="@+id/textView2"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_08"
+
+            android:ellipsize="end"
+
+            android:gravity="center_vertical|start"
+            android:maxLength="10"
+            android:maxLines="1"
+
+            android:text="@{item.subTitle, default=`Title`}"
+
+            android:textSize="20sp"
+
+            android:textStyle="bold"
+
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/guideline55v"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="@+id/guideline15v"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintEnd_toStartOf="@+id/guideline15v"
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline30h"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.35" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline70h"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.65" />
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:autoSizeTextType="uniform"
-                android:gravity="start|center_vertical"
-                android:text="@{item.title}"
-                android:textStyle="bold"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:includeFontPadding="false"
-                app:layout_constraintBottom_toTopOf="@+id/guideline70h"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline30h" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/linearLayout3"
+        <TextView
+            android:id="@+id/textView20"
             android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:orientation="vertical"
+            android:layout_height="wrap_content"
+
+
+            android:ellipsize="end"
+
+            android:gravity="center_vertical|end"
+            android:maxLength="10"
+            android:maxLines="1"
+
+            android:text="@{item.subTitle, default=`subTitle`}"
+
+            android:textSize="18sp"
+
+            app:layout_constraintBottom_toTopOf="@+id/textView19"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/guideline15v"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView19"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:ellipsize="end"
+
+            android:gravity="center_vertical|end"
+            android:maxLength="10"
+            android:maxLines="1"
+
+            android:text="@{DateTextUtil.formatTime(item.date), default=`08:14`}"
+
+            android:textSize="14sp"
+
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/guideline55v"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline25h"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.25" />
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline55h"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.55" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline75h"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                app:layout_constraintGuide_percent="0.75" />
-
-
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:autoSizeTextType="uniform"
-                android:gravity="center_vertical|end"
-                android:text="@{item.subTitle}"
-                android:ellipsize="end"
-                android:singleLine="true"
-                app:layout_constraintBottom_toTopOf="@+id/guideline55h"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline25h" />
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:autoSizeTextType="uniform"
-                android:gravity="center_vertical|end"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:text="@{DateTextUtil.formatTime(item.date)}"
-                app:layout_constraintBottom_toTopOf="@+id/guideline75h"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline55h" />
-            <!--
-                        <TextView
-                android:id="@+id/textView3"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:autoSizeTextType="uniform"
-                android:gravity="center_vertical|end"
-
-                android:text="@{DateTextUtil.formatTime(item.date)}"
-                app:layout_constraintBottom_toTopOf="@+id/guideline75h"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/guideline55h" />
-            -->
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            app:layout_constraintStart_toStartOf="@+id/guideline15v"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

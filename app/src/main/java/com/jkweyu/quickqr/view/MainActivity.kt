@@ -68,19 +68,4 @@ class MainActivity: BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
             }
         }
     }
-    private fun loadMainFragment(){
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, MainFragment(), "main_fragment_tag")
-            .commit()
-    }
-    private fun loadFrameFragment(){
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, FrameFragment(), "frame_fragment_tag")
-            .commit()
-    }
-    private fun loadTitleFrameFragment(){
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.container, TitleFrameFragment(), "title_frame_fragment_tag")
-            .commit()
-    }
 }

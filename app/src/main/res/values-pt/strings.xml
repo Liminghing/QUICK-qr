@@ -13,8 +13,8 @@
     <string name="btn_all_item">Todos</string>
 
     <!-- HomeFragment -->
-    <string name="qr_generate_bt">Gerar QR</string>
-    <string name="qr_scan_bt">Escanear QR</string>
+    <string name="qr_generate_bt">Gerar</string>
+    <string name="qr_scan_bt">Escanear</string>
     <string name="home_menu_add_bt">Adicionar Menu</string>
     <string name="home_bottom_bt_add">ADICIONAR</string>
     <string name="home_bottom_bt_done">CONCLUÍDO</string>

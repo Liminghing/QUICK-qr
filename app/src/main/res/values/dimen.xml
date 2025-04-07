@@ -38,4 +38,40 @@
     <dimen name="padding_56">56dp</dimen>
     <dimen name="padding_60">60dp</dimen>
     <dimen name="padding_64">64dp</dimen>
+
+    <dimen name="text_02">2sp</dimen>
+    <dimen name="text_04">4sp</dimen>
+    <dimen name="text_06">6sp</dimen>
+    <dimen name="text_08">8sp</dimen>
+    <dimen name="text_10">10sp</dimen>
+    <dimen name="text_12">12sp</dimen>
+    <dimen name="text_14">14sp</dimen>
+    <dimen name="text_16">16sp</dimen>
+    <dimen name="text_18">18sp</dimen>
+    <dimen name="text_20">20sp</dimen>
+    <dimen name="text_22">22sp</dimen>
+    <dimen name="text_24">24sp</dimen>
+    <dimen name="text_26">26sp</dimen>
+    <dimen name="text_28">28sp</dimen>
+    <dimen name="text_30">30sp</dimen>
+    <dimen name="text_32">32sp</dimen>
+    <dimen name="text_34">34sp</dimen>
+    <dimen name="text_36">36sp</dimen>
+    <dimen name="text_38">38sp</dimen>
+    <dimen name="text_40">40sp</dimen>
+    <dimen name="text_42">42sp</dimen>
+    <dimen name="text_44">44sp</dimen>
+    <dimen name="text_46">46sp</dimen>
+    <dimen name="text_48">48sp</dimen>
+    <dimen name="text_50">50sp</dimen>
+    <dimen name="text_52">52sp</dimen>
+    <dimen name="text_54">54sp</dimen>
+    <dimen name="text_56">56sp</dimen>
+    <dimen name="text_58">58sp</dimen>
+    <dimen name="text_60">60sp</dimen>
+    <dimen name="text_62">62sp</dimen>
+    <dimen name="text_64">64sp</dimen>
+
 </resources>
+
+

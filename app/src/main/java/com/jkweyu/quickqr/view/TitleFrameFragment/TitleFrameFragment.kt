@@ -66,10 +66,11 @@ class TitleFrameFragment: BaseFragment<FragmentTitleFrameBinding>(R.layout.fragm
 
         if (!hidden){
             Log.d("ajdjd","TitleFrameFragment 보여짐")
-            mainViewModel.setDepth(1)
+
             registerOnBackPressedCallback()
 
             if(mainViewModel.allFragSelectedItem.value != null){
+                mainViewModel.setDepth(1)
                 when(mainViewModel.allFragSelectedItem.value){
                     0 -> {
                         binding.type = getString(R.string.qr_tff_text_history_toolbar_title)
@@ -96,6 +97,7 @@ class TitleFrameFragment: BaseFragment<FragmentTitleFrameBinding>(R.layout.fragm
                     }
                 }
             }else{
+                mainViewModel.setDepth(2)
                 binding.type = getString(R.string.qr_tff_add_menu_toolbar_title)
                 loadFrameLayout(HistoryFragment())
             }

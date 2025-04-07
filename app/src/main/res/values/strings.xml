@@ -11,16 +11,16 @@
     <string name="btn_all_item">All</string>
 
     <!-- HomeFragment -->
-    <string name="qr_generate_bt">QR Generate</string>
-    <string name="qr_scan_bt">QR Scan</string>
+    <string name="qr_generate_bt">Generate</string>
+    <string name="qr_scan_bt">Scan</string>
     <string name="home_menu_add_bt">Add Menu</string>
     <string name="home_bottom_bt_add">ADD</string>
     <string name="home_bottom_bt_done">DONE</string>
 
 
     <!-- Date Type -->
-<!--    <string name="month">March</string>-->
-<!--    <string name="date">2nd</string>-->
+    <!--    <string name="month">March</string>-->
+    <!--    <string name="date">2nd</string>-->
 
     <!-- HistoryFragment -->
     <string name="history_title">History</string>

@@ -1,4 +1,4 @@
-package com.jkweyu.quickqr.view.FrameFragment.QrChoiceFragment.QrChoiceType.ChoiceCard.CardType
+package com.jkweyu.quickqr.view.FrameFragment.QrCreate.Type
 
 import android.widget.EditText
 import android.widget.Toast
@@ -8,14 +8,14 @@ import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.constants.fragmentConstantsFrame
 import com.jkweyu.quickqr.constants.itemTypeConstants
 import com.jkweyu.quickqr.data.QRCodeItem
-import com.jkweyu.quickqr.databinding.FragmentTextCardBinding
+import com.jkweyu.quickqr.databinding.FragmentCreateTextBinding
 import com.jkweyu.quickqr.view.FrameFragment.FrameFragment
 import com.jkweyu.quickqr.viewmodel.FrameFragmentViewModel
 import com.jkweyu.quickqr.viewmodel.MainViewModel
 import java.util.Date
 
 
-class TextCardFragment(): BaseFragment<FragmentTextCardBinding>(R.layout.fragment_text_card) {
+class CreateTextFragment(): BaseFragment<FragmentCreateTextBinding>(R.layout.fragment_create_text) {
     private lateinit var mainViewModel : MainViewModel
     private lateinit var frameFragmentViewModel: FrameFragmentViewModel
     override fun initView() {

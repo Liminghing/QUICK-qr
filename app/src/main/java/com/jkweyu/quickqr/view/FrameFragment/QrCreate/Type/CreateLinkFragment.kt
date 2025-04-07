@@ -1,4 +1,4 @@
-package com.jkweyu.quickqr.view.FrameFragment.QrChoiceFragment.QrChoiceType.ChoiceCard.CardType
+package com.jkweyu.quickqr.view.FrameFragment.QrCreate.Type
 
 import android.util.Log
 import android.widget.EditText
@@ -10,7 +10,7 @@ import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.constants.fragmentConstantsFrame
 import com.jkweyu.quickqr.constants.itemTypeConstants
 import com.jkweyu.quickqr.data.QRCodeItem
-import com.jkweyu.quickqr.databinding.FragmentUrlCardBinding
+import com.jkweyu.quickqr.databinding.FragmentCreateLinkBinding
 import com.jkweyu.quickqr.view.FrameFragment.FrameFragment
 import com.jkweyu.quickqr.viewmodel.FrameFragmentViewModel
 import com.jkweyu.quickqr.viewmodel.MainViewModel
@@ -21,8 +21,8 @@ import java.net.URL
 import java.util.Date
 
 
-class UrlCardFragment(): BaseFragment<FragmentUrlCardBinding>(R.layout.fragment_url_card) {
-//    private lateinit var qrTypeViewModel : QrCreateViewModel
+class CreateLinkFragment(): BaseFragment<FragmentCreateLinkBinding>(R.layout.fragment_create_link) {
+    //    private lateinit var qrTypeViewModel : QrCreateViewModel
     private lateinit var mainViewModel : MainViewModel
     private lateinit var frameFragmentViewModel: FrameFragmentViewModel
     override fun initView() {

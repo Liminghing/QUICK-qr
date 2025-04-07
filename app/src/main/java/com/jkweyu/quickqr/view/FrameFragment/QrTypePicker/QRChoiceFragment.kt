@@ -1,4 +1,4 @@
-package com.jkweyu.quickqr.view.FrameFragment.QrChoiceFragment
+package com.jkweyu.quickqr.view.FrameFragment.QrTypePicker
 
 import android.content.Context
 import android.util.Log
@@ -8,17 +8,17 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.MarginPageTransformer
+import androidx.viewpager2.widget.ViewPager2
 import com.jkweyu.quickqr.R
 import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.constants.fragmentConstants
 import com.jkweyu.quickqr.databinding.FragmentQrChoiceBinding
-import com.jkweyu.quickqr.view.FrameFragment.QrChoiceFragment.QrChoiceType.ChoiceCard.CardQrFragment
+import com.jkweyu.quickqr.view.FrameFragment.QrTypePicker.Type.ChoiceLinkFragment
+import com.jkweyu.quickqr.view.FrameFragment.QrTypePicker.Type.ChoiceTextFragment
 import com.jkweyu.quickqr.viewmodel.MainViewModel
 
 class QRChoiceFragment(): BaseFragment<FragmentQrChoiceBinding>(R.layout.fragment_qr_choice) {
     private lateinit var mainViewModel: MainViewModel
-
 
     private lateinit var backPressedCallback: OnBackPressedCallback
 
@@ -30,7 +30,34 @@ class QRChoiceFragment(): BaseFragment<FragmentQrChoiceBinding>(R.layout.fragmen
             viewpager.adapter = QRChoicePagerAdapter(this@QRChoiceFragment)
             // 옆 페이지도 보이도록 설정
             viewpager.offscreenPageLimit = 1
-            viewpager.setPageTransformer(MarginPageTransformer(20))
+            //android:padding="@dimen/dp_16"
+
+            val pageMarginPx = resources.getDimensionPixelOffset(R.dimen.margin_04)
+            val screenWidth = resources.displayMetrics.widthPixels
+            val pagerWidth = screenWidth - resources.getDimensionPixelOffset(R.dimen.margin_32)
+            val offsetPx = screenWidth - pageMarginPx - pagerWidth
+
+            viewpager.setPageTransformer { page, position ->
+                page.translationX = position * -offsetPx
+            }
+
+
+
+
+
+            viewpager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    when(position){
+                        0 ->
+                            root.background = ContextCompat.getDrawable(requireContext(), R.color.qr_type01_color)
+                        1 ->
+                            root.background = ContextCompat.getDrawable(requireContext(), R.color.qr_type02_color)
+                    }
+
+                    Log.d("ViewPager", "현재 페이지: $position")
+                }
+            })
 
             val activity = requireActivity() as AppCompatActivity
             activity.setSupportActionBar(toolbar)
@@ -78,7 +105,8 @@ class QRChoicePagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) 
     val fragments: List<Fragment>
     init {
         //fragments = listOf(CardQrFragment(), GeneralQrFragment(), ItemQrFragment())
-        fragments = listOf(CardQrFragment())
+//        fragments = listOf(CardQrFragment())
+        fragments = listOf(ChoiceTextFragment(),ChoiceLinkFragment())
     }
     override fun getItemCount(): Int = fragments.size// 페이지 개수
 

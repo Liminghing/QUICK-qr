@@ -6,9 +6,9 @@ import com.jkweyu.quickqr.R
 import com.jkweyu.quickqr.base.BaseFragment
 import com.jkweyu.quickqr.constants.fragmentConstantsFrame
 import com.jkweyu.quickqr.databinding.FragmentFrameBinding
-import com.jkweyu.quickqr.view.FrameFragment.QrChoiceFragment.QRChoiceFragment
-import com.jkweyu.quickqr.view.FrameFragment.QrCreateFragment.QRCreateFragment
-import com.jkweyu.quickqr.view.FrameFragment.QrDeatilFragment.QrDetailFragment
+import com.jkweyu.quickqr.view.FrameFragment.QrCreate.QRCreateFragment
+import com.jkweyu.quickqr.view.FrameFragment.QrDetail.QrDetailFragment
+import com.jkweyu.quickqr.view.FrameFragment.QrTypePicker.QRChoiceFragment
 import com.jkweyu.quickqr.viewmodel.FrameFragmentViewModel
 import com.jkweyu.quickqr.viewmodel.MainViewModel
 

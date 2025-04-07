@@ -14,10 +14,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+
         <androidx.coordinatorlayout.widget.CoordinatorLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipChildren="false"
+            android:paddingHorizontal="@dimen/dp_08"
+            android:paddingTop="@dimen/dp_08"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,111 +29,154 @@
 
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:background="@color/base_color"
+                android:backgroundTint="@color/base_color">
                 <androidx.appcompat.widget.Toolbar
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize"
-                    android:padding="16dp"
                     android:background="@color/base_color"
+                    android:padding="@dimen/dp_06"
                     app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:adjustViewBounds="true"
                         android:src="@drawable/ic_app_title" />
-
+                    <TextView
+                        android:id="@+id/status_dpi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="default"/>
                 </androidx.appcompat.widget.Toolbar>
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
-                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
                     android:background="@color/base_color"
-                    android:paddingHorizontal="4dp"
                     app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
 
-                    <LinearLayout
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/qr_create_area"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_qr_generation_button"
+                        android:layout_height="wrap_content"
+
+                        android:layout_margin="@dimen/dp_06"
+
                         android:elevation="4dp"
-                        android:orientation="vertical">
 
-                        <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1.368" />
+                        android:background="@drawable/shape_qr_generation_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/qr_scan_area"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="2.105"
-                            android:src="@drawable/ic_qr_generation_button_icon" />
 
-                        <Space
-                            android:layout_width="match_parent"
+                        <FrameLayout
+                            android:id="@+id/imageView01"
+                            android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:layout_weight="1.316" />
+
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" >
+
+                            <ImageView
+                                android:layout_width="@dimen/dp_56"
+                                android:layout_height="@dimen/dp_56"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_qr_generation_button_icon"/>
+                        </FrameLayout>
+
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:autoSizeTextType="uniform"
+                            android:id="@+id/textView18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+
+                            android:layout_marginHorizontal="@dimen/dp_08"
+                            android:layout_marginBottom="@dimen/dp_12"
+                            android:ellipsize="none"
                             android:gravity="center"
-                            android:text="@string/qr_generate_bt"
-                            android:textColor="@color/base_color" />
 
-                        <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1.382" />
-                    </LinearLayout>
+                            android:maxLines="1"
 
-                    <LinearLayout
+                            android:text="Create"
+
+
+                            android:textColor="@color/base_color"
+
+
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView01" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/qr_scan_area"
                         android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_margin="8dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_qr_scan_button"
+                        android:layout_height="wrap_content"
+
+                        android:layout_margin="@dimen/dp_06"
+
                         android:elevation="4dp"
-                        android:orientation="vertical">
 
-                        <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1.368" />
+                        android:background="@drawable/shape_qr_scan_button"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/qr_create_area"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="2.105"
-                            android:src="@drawable/ic_qr_scan_button_icon_" />
 
-                        <Space
-                            android:layout_width="match_parent"
+                        <FrameLayout
+                            android:id="@+id/imageView101"
+                            android:layout_width="0dp"
                             android:layout_height="0dp"
-                            android:layout_weight="1.316" />
+
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" >
+
+                            <ImageView
+                                android:layout_width="@dimen/dp_56"
+                                android:layout_height="@dimen/dp_56"
+                                android:layout_gravity="center"
+                                android:src="@drawable/ic_qr_scan_button_icon_"/>
+                        </FrameLayout>
+
+
+
 
                         <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1"
-                            android:autoSizeTextType="uniform"
-                            android:gravity="center"
-                            android:text="@string/qr_scan_bt"
-                            android:textColor="@color/base_color" />
+                            android:id="@+id/textView181"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/dp_08"
+                            android:layout_marginBottom="@dimen/dp_12"
 
-                        <Space
-                            android:layout_width="match_parent"
-                            android:layout_height="0dp"
-                            android:layout_weight="1.382" />
-                    </LinearLayout>
-                </LinearLayout>
+                            android:ellipsize="none"
+                            android:gravity="center"
+
+                            android:maxLines="1"
+
+                            android:text="Scan"
+
+                            android:textColor="@color/base_color"
+
+                            android:textSize="20sp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/imageView101" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </com.google.android.material.appbar.AppBarLayout>
 
             <androidx.recyclerview.widget.RecyclerView
@@ -138,8 +185,6 @@
                 android:layout_height="match_parent"
                 android:clipToPadding="false"
                 android:elevation="1dp"
-                android:paddingHorizontal="8dp"
-                android:paddingTop="8dp"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -148,58 +193,52 @@
                 app:mainViewModel="@{mViewModel}"
                 app:viewModel="@{hViewModel}" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <!-- 하단에서 올라오는 뷰 -->
 
-                <LinearLayout
-                    android:id="@+id/bottomView"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:background="@color/base_color"
-                    android:elevation="8dp"
-                    android:orientation="horizontal"
-                    android:padding="10dp"
-                    android:visibility="invisible"
-                    android:weightSum="5 "
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintDimensionRatio="H,7:1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <TextView
-                        android:id="@+id/item_add_button"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_button_outline"
-                        android:gravity="center"
-                        android:text="@string/home_bottom_bt_add"
-                        android:textColor="#999999"
-                        app:layout_constraintBottom_toBottomOf="parent" />
-
-                    <Space
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="3" />
-
-                    <TextView
-                        android:id="@+id/item_save_button"
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@drawable/shape_button_fill"
-                        android:gravity="center"
-                        android:text="@string/home_bottom_bt_done"
-                        android:textColor="#ffffff"
-                        app:layout_constraintBottom_toBottomOf="parent" />
-                </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
         </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottomView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/base_medium_color"
+            android:padding="@dimen/dp_08"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
+            <TextView
+                android:id="@+id/item_add_button"
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_button_outline"
+                android:gravity="center"
+                android:padding="@dimen/dp_02"
+                android:text="@string/home_bottom_bt_add"
+                android:maxLines="1"
+                android:textColor="#B8B8B8"
+                android:autoSizeTextType="uniform"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <TextView
+                android:id="@+id/item_save_button"
+                android:layout_width="@dimen/dp_80"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_button_fill"
+                android:gravity="center"
+                android:padding="@dimen/dp_02"
+                android:autoSizeTextType="uniform"
+                android:text="@string/home_bottom_bt_done"
+                android:maxLines="1"
+                android:textColor="@color/base_medium_color"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

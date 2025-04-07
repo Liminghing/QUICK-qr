@@ -12,8 +12,8 @@
     <string name="btn_all_item">전체</string>
 
     <!-- HomeFragment -->
-    <string name="qr_generate_bt">QR 생성</string>
-    <string name="qr_scan_bt">QR 스캔</string>
+    <string name="qr_generate_bt">생성</string>
+    <string name="qr_scan_bt">스캔</string>
     <string name="home_menu_add_bt">메뉴 추가</string>
     <string name="home_bottom_bt_add">추가</string>
     <string name="home_bottom_bt_done">완료</string>

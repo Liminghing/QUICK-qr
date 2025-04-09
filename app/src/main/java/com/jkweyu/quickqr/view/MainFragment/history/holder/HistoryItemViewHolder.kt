@@ -24,8 +24,14 @@ class HistoryItemViewHolder(
                 }
 
                 1 -> {
-                    // all -> 타이틀프레임의 히스토리에서 클릭한 경우
+                    /**
+                     * 나중에 필수적으로 처리해야할것
+                     * depth의 수치를 지정하는 방식이 아닌 더하는 방식으로 변경할 필요가 있음
+                     */
 
+                    // all -> 타이틀프레임의 히스토리에서 클릭한 경우
+                    viewModel.setFocusItem(item, "history")
+                    viewModel.changeFragment(fragmentConstants.FRAME)
 
                 }
                 2 -> {

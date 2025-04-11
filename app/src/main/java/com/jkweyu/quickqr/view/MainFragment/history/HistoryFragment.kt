@@ -48,6 +48,7 @@ class HistoryFragment: BaseFragment<FragmentHistoryBinding>(R.layout.fragment_hi
 
     }
     fun loadFragment(fragment: Fragment): Boolean {
+        Log.d("onHiddenChanged","<<<<loadFragment>>>>")
         childFragmentManager.beginTransaction()
             .replace(R.id.FrameLayout, fragment)
             .commit()

@@ -2,9 +2,12 @@ package com.jkweyu.quickqr.view.MainFragment.history.holder
 
 import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
+import com.jkweyu.quickqr.R
 import com.jkweyu.quickqr.constants.fragmentConstants
+import com.jkweyu.quickqr.constants.itemTypeConstants
 import com.jkweyu.quickqr.data.QRCodeItem
 import com.jkweyu.quickqr.databinding.ItemHistoryLayoutBinding
+import com.jkweyu.quickqr.util.DateTextUtil
 import com.jkweyu.quickqr.viewmodel.MainViewModel
 
 class HistoryItemViewHolder(
@@ -12,8 +15,16 @@ class HistoryItemViewHolder(
     private val viewModel: MainViewModel
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(item: QRCodeItem) {
-
         binding.item = item
+        when(item.itemType){
+            itemTypeConstants.QR_TYPE_TEXT -> binding.itemType.setImageResource(R.drawable.ic_icon_text_primary)
+            else -> binding.itemType.setImageResource(R.drawable.ic_icon_link_primary)
+        }
+
+
+        binding.itemTitle.text = item.title
+        binding.itemSubTitle.text = item.subTitle
+        binding.itemTime.text = DateTextUtil.formatTime(item.date)
         binding.root.setOnClickListener {
 
             when(viewModel.fragmentDepth.value) {

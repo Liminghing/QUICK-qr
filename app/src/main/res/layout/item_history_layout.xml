@@ -23,16 +23,16 @@
             app:layout_constraintGuide_percent="0.65" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/item_type"
             android:layout_width="@dimen/dp_52"
             android:layout_height="@dimen/dp_52"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:setHistoryItemIcon="@{item.itemType}" />
+            app:layout_constraintTop_toTopOf="parent"/>
+
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/item_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/dp_08"
@@ -43,7 +43,7 @@
             android:maxLength="10"
             android:maxLines="1"
 
-            android:text="@{item.subTitle, default=`Title`}"
+
 
             android:textSize="20sp"
 
@@ -51,11 +51,11 @@
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guideline15v"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/item_type"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/item_subTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
@@ -66,17 +66,16 @@
             android:maxLength="10"
             android:maxLines="1"
 
-            android:text="@{item.subTitle, default=`subTitle`}"
 
             android:textSize="18sp"
 
-            app:layout_constraintBottom_toTopOf="@+id/textView19"
+            app:layout_constraintBottom_toTopOf="@+id/item_time"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline15v"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView19"
+            android:id="@+id/item_time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
 
@@ -86,14 +85,13 @@
             android:maxLength="10"
             android:maxLines="1"
 
-            android:text="@{DateTextUtil.formatTime(item.date), default=`08:14`}"
 
             android:textSize="14sp"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/guideline15v"
-            app:layout_constraintTop_toBottomOf="@+id/textView20" />
+            app:layout_constraintTop_toBottomOf="@+id/item_subTitle" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

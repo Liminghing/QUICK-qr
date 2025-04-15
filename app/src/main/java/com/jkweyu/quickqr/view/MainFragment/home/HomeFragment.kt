@@ -84,18 +84,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home), B
         binding.apply {
             hViewModel = homeViewModel
             mViewModel = mainViewModel
-            lifecycleScope.launch {
-                val item = mainViewModel.loadHomeRVList()
-                mainViewModel.loadQRList()
-                delay(400)
-                if (item){
-                    mainViewModel.loadStatus()
 
-
-
-                    homeRecyclerview.adapter?.notifyDataSetChanged()
-                }
-            }
             qrCreateArea.setOnClickListener {
                 mainViewModel.changeFragment(fragmentConstants.FRAME)
             }
@@ -172,7 +161,7 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home), B
         super.onHiddenChanged(hidden)
         if(!hidden){
 
-            binding.statusDpi.text = getScreenDensityName(requireContext())
+//            binding.statusDpi.text = getScreenDensityName(requireContext())
         }else{
             homeViewModel.toggleItemVisibilityOff()
         }
@@ -208,6 +197,22 @@ class HomeFragment: BaseFragment<FragmentHomeBinding>(R.layout.fragment_home), B
                     // 특정 상수에 정확히 일치하지 않는 경우 숫자로 표시
                     "${density}dpi"
                 }
+            }
+        }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        lifecycleScope.launch {
+            val item = mainViewModel.loadHomeRVList()
+            mainViewModel.loadQRList()
+            delay(400)
+            if (item){
+                mainViewModel.loadStatus()
+
+
+
+                binding.homeRecyclerview.adapter?.notifyDataSetChanged()
             }
         }
     }

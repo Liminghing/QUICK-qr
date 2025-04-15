@@ -3,6 +3,7 @@ package com.jkweyu.quickqr.view.MainFragment
 import android.util.Log
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.jkweyu.quickqr.R
@@ -63,45 +64,46 @@ class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 
         binding.apply {
 
-            homeFragment = HomeFragment()
-            historyFragment = HistoryFragment()
-            favoritesFragment = FavoritesFragment()
-            allFragment = AllFragment()
-
-            childFragmentManager.beginTransaction()
-                .add(R.id.container, homeFragment,"HomeFragment").hide(homeFragment)
-                .add(R.id.container, historyFragment,"HistoryFragment").hide(historyFragment)
-                .add(R.id.container, favoritesFragment,"FavoritesFragment").hide(favoritesFragment)
-                .add(R.id.container, allFragment,"AllFragment").hide(allFragment)
-                .commit()
-
-            childFragmentManager.beginTransaction()
-                .show(homeFragment)
-                .hide(historyFragment)
-                .hide(favoritesFragment)
-                .hide(allFragment)
-                .commit()
-
+//            homeFragment = HomeFragment()
+//            historyFragment = HistoryFragment()
+//            favoritesFragment = FavoritesFragment()
+//            allFragment = AllFragment()
+//
+//            childFragmentManager.beginTransaction()
+//                .add(R.id.container, homeFragment,"HomeFragment").hide(homeFragment)
+//                .add(R.id.container, historyFragment,"HistoryFragment").hide(historyFragment)
+//                .add(R.id.container, favoritesFragment,"FavoritesFragment").hide(favoritesFragment)
+//                .add(R.id.container, allFragment,"AllFragment").hide(allFragment)
+//                .commit()
+//
+//            childFragmentManager.beginTransaction()
+//                .show(homeFragment)
+//                .hide(historyFragment)
+//                .hide(favoritesFragment)
+//                .hide(allFragment)
+//                .commit()
+            loadFragment(HomeFragment(),0)
             bottomNavigationView.setOnItemSelectedListener { item ->
                 when (item.itemId) {
                     R.id.navigation_home -> {
-//                        loadFragment(HomeFragment())
-                        childFragmentManager.beginTransaction()
-                            .show(homeFragment)
-                            .hide(historyFragment)
-                            .hide(favoritesFragment)
-                            .hide(allFragment)
-                            .commit()
+
+                        loadFragment(HomeFragment(),0)
+//                        childFragmentManager.beginTransaction()
+//                            .show(homeFragment)
+//                            .hide(historyFragment)
+//                            .hide(favoritesFragment)
+//                            .hide(allFragment)
+//                            .commit()
                         true
                     }
                     R.id.navigation_history -> {
-//                        loadFragment(HistoryFragment())
-                        childFragmentManager.beginTransaction()
-                            .show(historyFragment)
-                            .hide(favoritesFragment)
-                            .hide(allFragment)
-                            .hide(homeFragment)
-                            .commit()
+                        loadFragment(HistoryFragment(),1)
+//                        childFragmentManager.beginTransaction()
+//                            .show(historyFragment)
+//                            .hide(favoritesFragment)
+//                            .hide(allFragment)
+//                            .hide(homeFragment)
+//                            .commit()
                         true
                     }
 //                    R.id.navigation_payment -> {
@@ -109,23 +111,23 @@ class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
 //                        true
 //                    }
                     R.id.navigation_favorites -> {
-//                        loadFragment(FavoritesFragment())
-                        childFragmentManager.beginTransaction()
-                            .show(favoritesFragment)
-                            .hide(allFragment)
-                            .hide(homeFragment)
-                            .hide(historyFragment)
-                            .commit()
+                        loadFragment(FavoritesFragment(),2)
+//                        childFragmentManager.beginTransaction()
+//                            .show(favoritesFragment)
+//                            .hide(allFragment)
+//                            .hide(homeFragment)
+//                            .hide(historyFragment)
+//                            .commit()
                         true
                     }
                     R.id.navigation_all -> {
-//                        loadFragment(AllFragment())
-                        childFragmentManager.beginTransaction()
-                            .show(allFragment)
-                            .hide(homeFragment)
-                            .hide(historyFragment)
-                            .hide(favoritesFragment)
-                            .commit()
+                        loadFragment(AllFragment(),3)
+//                        childFragmentManager.beginTransaction()
+//                            .show(allFragment)
+//                            .hide(homeFragment)
+//                            .hide(historyFragment)
+//                            .hide(favoritesFragment)
+//                            .commit()
                         true
                     }
                     else -> false
@@ -133,20 +135,29 @@ class MainFragment: BaseFragment<FragmentMainBinding>(R.layout.fragment_main) {
             }
         }
     }
-    fun loadFragment(fragment: Fragment): Boolean {
-        // 현재 선택된 메뉴 아이템 ID 저장
-        val currentFragmentId = when (fragment) {
-            is HomeFragment -> R.id.navigation_home
-            is HistoryFragment -> R.id.navigation_history
-            is FavoritesFragment -> R.id.navigation_favorites
-            is AllFragment -> R.id.navigation_all
-            else -> null
+
+    fun loadFragment(fragment: Fragment,type: Int): Boolean {
+        when(type){
+            0 -> {
+                binding.logoTitle.isVisible = true
+                binding.textTitle.text = ""
+            }
+            1 -> {
+                binding.logoTitle.isVisible = false
+                binding.textTitle.text = "기록"
+            }
+            2 -> {
+                binding.logoTitle.isVisible = false
+                binding.textTitle.text = "즐겨찾기"
+            }
+            3 -> {
+                binding.logoTitle.isVisible = false
+                binding.textTitle.text = "전체"
+            }
         }
 
-        // Fragment 전환 시 백스택에 저장
         childFragmentManager.beginTransaction()
-            .replace(R.id.container, fragment)
-            .addToBackStack(currentFragmentId?.toString())
+            .replace(R.id.subFragment, fragment)
             .commit()
 
         return true

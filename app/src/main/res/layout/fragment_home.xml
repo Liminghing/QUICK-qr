@@ -21,7 +21,6 @@
             android:layout_height="match_parent"
             android:clipChildren="false"
             android:paddingHorizontal="@dimen/dp_08"
-            android:paddingTop="@dimen/dp_08"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,23 +31,6 @@
                 android:layout_height="wrap_content"
                 android:background="@color/base_color"
                 android:backgroundTint="@color/base_color">
-                <androidx.appcompat.widget.Toolbar
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    android:background="@color/base_color"
-                    android:padding="@dimen/dp_06"
-                    app:layout_scrollFlags="scroll|enterAlwaysCollapsed">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:src="@drawable/ic_app_title" />
-                    <TextView
-                        android:id="@+id/status_dpi"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="default"/>
-                </androidx.appcompat.widget.Toolbar>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

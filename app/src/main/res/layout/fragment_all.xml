@@ -12,44 +12,15 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/dp_08"
-            android:layout_marginHorizontal="@dimen/dp_08"
-
-            android:padding="@dimen/dp_06"
-
+            android:id="@+id/constraintLayout3"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@color/all_fragment_line"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/textView4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="28sp"
-
-                android:maxLength="10"
-                android:maxLines="1"
-
-                android:textStyle="bold"
-
-                android:text="@string/all_title"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout3"
-            android:layout_width="0dp"
-            android:background="@color/all_fragment_line"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
             <ScrollView
                 android:id="@+id/all_fragment_recyclerView"
                 android:layout_width="0dp"
@@ -59,7 +30,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" >
+                app:layout_constraintTop_toTopOf="parent">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -69,69 +41,72 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/base_color"
                         android:layout_marginTop="@dimen/dp_08"
-                        android:padding="@dimen/dp_14"
-                        android:orientation="vertical">
+                        android:background="@color/base_color"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dp_14">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
 
 
-                            android:textSize="20sp"
                             android:background="@color/base_color"
                             android:text="@string/all_qr_type_text_title"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
+
                         <com.jkweyu.quickqr.util.AllFragmentItemView
                             android:id="@+id/qr_type_text_history"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            app:count="@string/all_qr_type_text_history_hint"
                             app:icon="@drawable/ic_all_text_favorites"
-                            app:title="@string/all_qr_type_text_history_title"
-                            app:count="@string/all_qr_type_text_history_hint"/>
+                            app:title="@string/all_qr_type_text_history_title" />
 
                         <com.jkweyu.quickqr.util.AllFragmentItemView
                             android:id="@+id/qr_type_text_favorites"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            app:count="@string/all_qr_type_text_favorites_hint"
                             app:icon="@drawable/ic_all_text_history"
-                            app:title="@string/all_qr_type_text_favorites_title"
-                            app:count="@string/all_qr_type_text_favorites_hint"/>
+                            app:title="@string/all_qr_type_text_favorites_title" />
                     </LinearLayout>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/base_color"
                         android:layout_marginTop="@dimen/dp_04"
-                        android:padding="@dimen/dp_14"
-                        android:orientation="vertical">
+                        android:background="@color/base_color"
+                        android:orientation="vertical"
+                        android:padding="@dimen/dp_14">
+
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
 
 
-                            android:textSize="20sp"
                             android:background="@color/base_color"
                             android:text="@string/all_qr_type_link_title"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <com.jkweyu.quickqr.util.AllFragmentItemView
                             android:id="@+id/qr_type_link_history"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            app:count="@string/all_qr_type_link_history_hint"
                             app:icon="@drawable/ic_all_link_history"
-                            app:title="@string/all_qr_type_link_history_title"
-                            app:count="@string/all_qr_type_link_history_hint"/>
+                            app:title="@string/all_qr_type_link_history_title" />
 
 
                         <com.jkweyu.quickqr.util.AllFragmentItemView
                             android:id="@+id/qr_type_link_favorites"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            app:count="@string/all_qr_type_link_favorites_hint"
                             app:icon="@drawable/ic_all_link_favorites"
-                            app:title="@string/all_qr_type_link_favorites_title"
-                            app:count="@string/all_qr_type_link_favorites_hint"/>
+                            app:title="@string/all_qr_type_link_favorites_title" />
                     </LinearLayout>
 
 
